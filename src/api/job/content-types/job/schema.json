@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Jobs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "dateCreated": {
+      "type": "datetime"
+    },
+    "dateModified": {
+      "type": "datetime"
+    },
+    "dateDeleted": {
+      "type": "datetime"
+    },
+    "jobId": {
+      "type": "uid"
+    },
+    "job": {
+      "type": "json"
+    }
+  }
+}
