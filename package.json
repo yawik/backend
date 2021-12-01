@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "backend",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -11,13 +11,14 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.0.0",
-    "@strapi/plugin-users-permissions": "4.0.0",
     "@strapi/plugin-i18n": "4.0.0",
-    "sqlite3": "5.0.2"
+    "@strapi/plugin-users-permissions": "4.0.0",
+    "@strapi/strapi": "4.0.0",
+    "sqlite3": "5.0.2",
+    "strapi-provider-email-smtp": "^1.0.3"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Carsten Bleek"
   },
   "strapi": {
     "uuid": "f59ec2ba-d592-4290-847c-5183c3dfe382"
