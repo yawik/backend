@@ -1,6 +1,8 @@
 # Jobwizard backend
 
-this might become a backend for our  jobwizard
+this might become a backend for our https://jobwizard.yawik.org
+
+Sources are located at https://gitlab.com/yawik/jobwizard
 
 ## State: evaluation
 
@@ -8,7 +10,7 @@ this might become a backend for our  jobwizard
 
 ```
 git clone git@gitlab.com:yawik/backend.git
-de backend
+cd backend
 yarn
-yarn develop
+yarn dev
 ```
