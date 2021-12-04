@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/jobs": {
+    "/job-users": {
       "get": {
         "responses": {
           "200": {
@@ -19,65 +19,65 @@
                           "attributes": {
                             "type": "object",
                             "properties": {
-                              "title": {
+                              "sub": {
                                 "type": "string"
                               },
-                              "dateCreated": {
-                                "type": "string",
-                                "format": "date-time"
+                              "email_verified": {
+                                "type": "boolean"
                               },
-                              "dateModified": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "dateDeleted": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "jobId": {
+                              "name": {
                                 "type": "string"
                               },
-                              "job": {},
-                              "jobUser": {
+                              "given_name": {
+                                "type": "string"
+                              },
+                              "family_name": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string",
+                                "format": "email"
+                              },
+                              "preferred_username": {
+                                "type": "string"
+                              },
+                              "jobs": {
                                 "type": "object",
                                 "properties": {
                                   "data": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {
-                                          "sub": {
-                                            "type": "string"
-                                          },
-                                          "email_verified": {
-                                            "type": "boolean"
-                                          },
-                                          "name": {
-                                            "type": "string"
-                                          },
-                                          "given_name": {
-                                            "type": "string"
-                                          },
-                                          "family_name": {
-                                            "type": "string"
-                                          },
-                                          "email": {
-                                            "type": "string",
-                                            "format": "email"
-                                          },
-                                          "preferred_username": {
-                                            "type": "string"
-                                          },
-                                          "jobs": {
-                                            "type": "object",
-                                            "properties": {
-                                              "data": {
-                                                "type": "array",
-                                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "attributes": {
+                                          "type": "object",
+                                          "properties": {
+                                            "title": {
+                                              "type": "string"
+                                            },
+                                            "dateCreated": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "dateModified": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "dateDeleted": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "jobId": {
+                                              "type": "string"
+                                            },
+                                            "job": {},
+                                            "jobUser": {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
                                                   "type": "object",
                                                   "properties": {
                                                     "id": {
@@ -86,37 +86,43 @@
                                                     "attributes": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "title": {
+                                                        "sub": {
                                                           "type": "string"
                                                         },
-                                                        "dateCreated": {
-                                                          "type": "string",
-                                                          "format": "date-time"
+                                                        "email_verified": {
+                                                          "type": "boolean"
                                                         },
-                                                        "dateModified": {
-                                                          "type": "string",
-                                                          "format": "date-time"
-                                                        },
-                                                        "dateDeleted": {
-                                                          "type": "string",
-                                                          "format": "date-time"
-                                                        },
-                                                        "jobId": {
+                                                        "name": {
                                                           "type": "string"
                                                         },
-                                                        "job": {},
-                                                        "jobUser": {
+                                                        "given_name": {
+                                                          "type": "string"
+                                                        },
+                                                        "family_name": {
+                                                          "type": "string"
+                                                        },
+                                                        "email": {
+                                                          "type": "string",
+                                                          "format": "email"
+                                                        },
+                                                        "preferred_username": {
+                                                          "type": "string"
+                                                        },
+                                                        "jobs": {
                                                           "type": "object",
                                                           "properties": {
                                                             "data": {
-                                                              "type": "object",
-                                                              "properties": {
-                                                                "id": {
-                                                                  "type": "string"
-                                                                },
-                                                                "attributes": {
-                                                                  "type": "object",
-                                                                  "properties": {}
+                                                              "type": "array",
+                                                              "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "id": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "attributes": {
+                                                                    "type": "object",
+                                                                    "properties": {}
+                                                                  }
                                                                 }
                                                               }
                                                             }
@@ -424,49 +430,49 @@
                                                   }
                                                 }
                                               }
-                                            }
-                                          },
-                                          "createdAt": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "updatedAt": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "publishedAt": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "createdBy": {
-                                            "type": "object",
-                                            "properties": {
-                                              "data": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
+                                            },
+                                            "createdAt": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "updatedAt": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "publishedAt": {
+                                              "type": "string",
+                                              "format": "date-time"
+                                            },
+                                            "createdBy": {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "attributes": {
+                                                      "type": "object",
+                                                      "properties": {}
+                                                    }
                                                   }
                                                 }
                                               }
-                                            }
-                                          },
-                                          "updatedBy": {
-                                            "type": "object",
-                                            "properties": {
-                                              "data": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
+                                            },
+                                            "updatedBy": {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "attributes": {
+                                                      "type": "object",
+                                                      "properties": {}
+                                                    }
                                                   }
                                                 }
                                               }
@@ -704,7 +710,7 @@
           }
         },
         "tags": [
-          "Job"
+          "Job-user"
         ],
         "parameters": [
           {
@@ -806,65 +812,65 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
+                            "sub": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
+                            "email_verified": {
+                              "type": "boolean"
                             },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateDeleted": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "jobId": {
+                            "name": {
                               "type": "string"
                             },
-                            "job": {},
-                            "jobUser": {
+                            "given_name": {
+                              "type": "string"
+                            },
+                            "family_name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "preferred_username": {
+                              "type": "string"
+                            },
+                            "jobs": {
                               "type": "object",
                               "properties": {
                                 "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {
-                                        "sub": {
-                                          "type": "string"
-                                        },
-                                        "email_verified": {
-                                          "type": "boolean"
-                                        },
-                                        "name": {
-                                          "type": "string"
-                                        },
-                                        "given_name": {
-                                          "type": "string"
-                                        },
-                                        "family_name": {
-                                          "type": "string"
-                                        },
-                                        "email": {
-                                          "type": "string",
-                                          "format": "email"
-                                        },
-                                        "preferred_username": {
-                                          "type": "string"
-                                        },
-                                        "jobs": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "array",
-                                              "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "attributes": {
+                                        "type": "object",
+                                        "properties": {
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "dateCreated": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateModified": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateDeleted": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "jobId": {
+                                            "type": "string"
+                                          },
+                                          "job": {},
+                                          "jobUser": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
                                                 "type": "object",
                                                 "properties": {
                                                   "id": {
@@ -873,37 +879,43 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
+                                                      "sub": {
                                                         "type": "string"
                                                       },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
+                                                      "email_verified": {
+                                                        "type": "boolean"
                                                       },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateDeleted": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "jobId": {
+                                                      "name": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
-                                                      "jobUser": {
+                                                      "given_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "family_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "email": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "preferred_username": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobs": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                              "id": {
-                                                                "type": "string"
-                                                              },
-                                                              "attributes": {
-                                                                "type": "object",
-                                                                "properties": {}
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "attributes": {
+                                                                  "type": "object",
+                                                                  "properties": {}
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -1211,49 +1223,49 @@
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "createdAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "updatedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "publishedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "createdBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "publishedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "createdBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "updatedBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "updatedBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -1470,7 +1482,7 @@
           }
         },
         "tags": [
-          "Job"
+          "Job-user"
         ],
         "parameters": [],
         "requestBody": {
@@ -1482,35 +1494,41 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "title": {
+                      "sub": {
                         "type": "string"
                       },
-                      "dateCreated": {
-                        "type": "string",
-                        "format": "date-time"
+                      "email_verified": {
+                        "type": "boolean"
                       },
-                      "dateModified": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "dateDeleted": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "jobId": {
+                      "name": {
                         "type": "string"
                       },
-                      "job": {},
-                      "jobUser": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
+                      "given_name": {
+                        "type": "string"
+                      },
+                      "family_name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "preferred_username": {
+                        "type": "string"
+                      },
+                      "jobs": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "string or id"
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -1555,7 +1573,7 @@
         }
       }
     },
-    "/jobs/{id}": {
+    "/job-users/{id}": {
       "get": {
         "responses": {
           "200": {
@@ -1572,65 +1590,65 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
+                            "sub": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
+                            "email_verified": {
+                              "type": "boolean"
                             },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateDeleted": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "jobId": {
+                            "name": {
                               "type": "string"
                             },
-                            "job": {},
-                            "jobUser": {
+                            "given_name": {
+                              "type": "string"
+                            },
+                            "family_name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "preferred_username": {
+                              "type": "string"
+                            },
+                            "jobs": {
                               "type": "object",
                               "properties": {
                                 "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {
-                                        "sub": {
-                                          "type": "string"
-                                        },
-                                        "email_verified": {
-                                          "type": "boolean"
-                                        },
-                                        "name": {
-                                          "type": "string"
-                                        },
-                                        "given_name": {
-                                          "type": "string"
-                                        },
-                                        "family_name": {
-                                          "type": "string"
-                                        },
-                                        "email": {
-                                          "type": "string",
-                                          "format": "email"
-                                        },
-                                        "preferred_username": {
-                                          "type": "string"
-                                        },
-                                        "jobs": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "array",
-                                              "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "attributes": {
+                                        "type": "object",
+                                        "properties": {
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "dateCreated": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateModified": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateDeleted": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "jobId": {
+                                            "type": "string"
+                                          },
+                                          "job": {},
+                                          "jobUser": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
                                                 "type": "object",
                                                 "properties": {
                                                   "id": {
@@ -1639,37 +1657,43 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
+                                                      "sub": {
                                                         "type": "string"
                                                       },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
+                                                      "email_verified": {
+                                                        "type": "boolean"
                                                       },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateDeleted": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "jobId": {
+                                                      "name": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
-                                                      "jobUser": {
+                                                      "given_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "family_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "email": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "preferred_username": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobs": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                              "id": {
-                                                                "type": "string"
-                                                              },
-                                                              "attributes": {
-                                                                "type": "object",
-                                                                "properties": {}
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "attributes": {
+                                                                  "type": "object",
+                                                                  "properties": {}
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -1977,49 +2001,49 @@
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "createdAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "updatedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "publishedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "createdBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "publishedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "createdBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "updatedBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "updatedBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -2236,7 +2260,7 @@
           }
         },
         "tags": [
-          "Job"
+          "Job-user"
         ],
         "parameters": [
           {
@@ -2268,65 +2292,65 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
+                            "sub": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
+                            "email_verified": {
+                              "type": "boolean"
                             },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateDeleted": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "jobId": {
+                            "name": {
                               "type": "string"
                             },
-                            "job": {},
-                            "jobUser": {
+                            "given_name": {
+                              "type": "string"
+                            },
+                            "family_name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "preferred_username": {
+                              "type": "string"
+                            },
+                            "jobs": {
                               "type": "object",
                               "properties": {
                                 "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {
-                                        "sub": {
-                                          "type": "string"
-                                        },
-                                        "email_verified": {
-                                          "type": "boolean"
-                                        },
-                                        "name": {
-                                          "type": "string"
-                                        },
-                                        "given_name": {
-                                          "type": "string"
-                                        },
-                                        "family_name": {
-                                          "type": "string"
-                                        },
-                                        "email": {
-                                          "type": "string",
-                                          "format": "email"
-                                        },
-                                        "preferred_username": {
-                                          "type": "string"
-                                        },
-                                        "jobs": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "array",
-                                              "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "attributes": {
+                                        "type": "object",
+                                        "properties": {
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "dateCreated": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateModified": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "dateDeleted": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "jobId": {
+                                            "type": "string"
+                                          },
+                                          "job": {},
+                                          "jobUser": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
                                                 "type": "object",
                                                 "properties": {
                                                   "id": {
@@ -2335,37 +2359,43 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
+                                                      "sub": {
                                                         "type": "string"
                                                       },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
+                                                      "email_verified": {
+                                                        "type": "boolean"
                                                       },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateDeleted": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "jobId": {
+                                                      "name": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
-                                                      "jobUser": {
+                                                      "given_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "family_name": {
+                                                        "type": "string"
+                                                      },
+                                                      "email": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "preferred_username": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobs": {
                                                         "type": "object",
                                                         "properties": {
                                                           "data": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                              "id": {
-                                                                "type": "string"
-                                                              },
-                                                              "attributes": {
-                                                                "type": "object",
-                                                                "properties": {}
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "id": {
+                                                                  "type": "string"
+                                                                },
+                                                                "attributes": {
+                                                                  "type": "object",
+                                                                  "properties": {}
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -2673,49 +2703,49 @@
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "createdAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "updatedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "publishedAt": {
-                                          "type": "string",
-                                          "format": "date-time"
-                                        },
-                                        "createdBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "publishedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                          },
+                                          "createdBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
-                                          }
-                                        },
-                                        "updatedBy": {
-                                          "type": "object",
-                                          "properties": {
-                                            "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                          },
+                                          "updatedBy": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -2932,7 +2962,7 @@
           }
         },
         "tags": [
-          "Job"
+          "Job-user"
         ],
         "parameters": [
           {
@@ -2955,35 +2985,41 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "title": {
+                      "sub": {
                         "type": "string"
                       },
-                      "dateCreated": {
-                        "type": "string",
-                        "format": "date-time"
+                      "email_verified": {
+                        "type": "boolean"
                       },
-                      "dateModified": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "dateDeleted": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "jobId": {
+                      "name": {
                         "type": "string"
                       },
-                      "job": {},
-                      "jobUser": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
+                      "given_name": {
+                        "type": "string"
+                      },
+                      "family_name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "preferred_username": {
+                        "type": "string"
+                      },
+                      "jobs": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "string or id"
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -3186,7 +3222,7 @@
           }
         },
         "tags": [
-          "Job"
+          "Job-user"
         ],
         "parameters": [
           {
