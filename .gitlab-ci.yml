@@ -1,0 +1,15 @@
+image: keymetrics/pm2:6
+
+stages:
+  - deploy
+
+deploy_prod:
+  stage: deploy
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
+    - pm2 deploy ecosystem.config.js production
+  only:
+  - master
