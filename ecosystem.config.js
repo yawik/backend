@@ -2,25 +2,24 @@ const name = 'backend_' + process.env.NODE_ENV
 
 module.exports = {
   apps : [{
-    name: name,
+    name: 'backend_staging',
     script: 'npm',
     args: 'start',
-    env: {
-      NODE_ENV: "development",
-      PORT: 1337,
-    },
     env_staging: {
       NODE_ENV: "staging",
       PORT: 4000,
-
     },
+  },
+  {
+    name: 'backend_production',
+    script: 'npm',
+    args: 'start',
     env_production: {
       NODE_ENV: "production",
       PORT: 3000,
-
     }
   }],
-
+  
   deploy : {
     production : {
       user : 'yawik',
