@@ -8,7 +8,7 @@ module.exports = {
       PORT: 1337,
     },
     env_staging: {
-      NODE_ENV: "staging"
+      NODE_ENV: "staging",
       PORT: 4000,
 
     },
