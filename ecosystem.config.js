@@ -1,6 +1,8 @@
+const name = 'backend_' + process.env.NODE_ENV
+
 module.exports = {
   apps : [{
-    name: 'backend',
+    name: name,
     script: 'npm',
     args: 'start',
     env: {
@@ -37,7 +39,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/staging',
       'pre-deploy-local': 'echo STAGING',
-      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env staging',
+      'post-deploy' : 'yarn && NODE_ENV=staging pm2 reload ecosystem.config.js --env staging',
       'pre-setup': 'pm2 ps'
     }
   }
