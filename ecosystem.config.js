@@ -26,7 +26,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/production',
       'pre-deploy-local': 'ls -l',
-      'post-deploy' : 'yarn && NODE_ENV=production pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'yarn && NODE_ENV=production pm2 reload backend_production --env production',
       'pre-setup': 'pm2 ps'
     },
     staging : {
@@ -36,7 +36,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/staging',
       'pre-deploy-local': 'echo STAGING',
-      'post-deploy' : 'yarn && NODE_ENV=staging pm2 reload ecosystem.config.js --env staging',
+      'post-deploy' : 'yarn && NODE_ENV=staging pm2 reload backend_staging --env staging',
       'pre-setup': 'pm2 ps'
     }
   }
