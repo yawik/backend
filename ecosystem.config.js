@@ -32,7 +32,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/staging',
       'pre-deploy-local': 'echo STAGING',
-      'post-deploy' : 'yarn && NODE_ENV=production pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env staging',
       'pre-setup': 'pm2 ps'
     }
   }
