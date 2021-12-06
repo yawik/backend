@@ -4,13 +4,18 @@ module.exports = {
     script: 'npm',
     args: 'start',
     env: {
-      NODE_ENV: "development"
+      NODE_ENV: "development",
+      PORT: 1337,
     },
     env_staging: {
       NODE_ENV: "staging"
+      PORT: 4000,
+
     },
     env_production: {
-      NODE_ENV: "production"
+      NODE_ENV: "production",
+      PORT: 3000,
+
     }
   }],
 
