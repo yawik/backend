@@ -6,12 +6,11 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - apt-get update && apt-get -qq -y install openssh-client git
+    - apt-get -qq update && apt-get -qq -y install openssh-client git
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
-    - ssh yawik@api.yawik.org ls -l
     - pm2 deploy ecosystem.config.js production
   only:
   - main
