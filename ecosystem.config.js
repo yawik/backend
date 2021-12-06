@@ -13,7 +13,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/backend',
       'pre-deploy-local': 'ls -l',
-      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'yarn && NODE_ENV=production pm2 reload ecosystem.config.js --env production',
       'pre-setup': 'pm2 ps'
     }
   }
