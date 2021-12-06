@@ -19,7 +19,7 @@ module.exports = {
   }],
   
   deploy : {
-    production : {
+    production: {
       user : 'yawik',
       host : 'api.yawik.org',
       ref  : 'origin/main',
@@ -29,9 +29,9 @@ module.exports = {
       'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env production',
       'pre-setup': 'pm2 ps'
     },
-    staging : {
+    staging: {
       user : 'yawik',
-      host : 'api.yawik.org',
+      host : 'staging.api.yawik.org',
       ref  : 'origin/staging',
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/staging',
