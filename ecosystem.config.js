@@ -2,7 +2,13 @@ module.exports = {
   apps : [{
     name: 'backend',
     script: 'npm',
-    args: 'start'
+    args: 'start',
+    env: {
+      NODE_ENV: "development"
+    },
+    env_production: {
+      NODE_ENV: "production"
+    }
   }],
 
   deploy : {
