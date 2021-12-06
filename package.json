@@ -1,8 +1,8 @@
 {
   "name": "backend",
   "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "version": "0.1.1",
+  "description": "jobwizard backend based on strapi",
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",

@@ -2,20 +2,19 @@ module.exports = {
   apps : [{
     name: 'backend',
     script: 'npm',
-    args: 'start',
-    watch: '.'
+    args: 'start'
   }],
 
   deploy : {
     production : {
-      user : 'SSH_USERNAME',
-      host : 'SSH_HOSTMACHINE',
-      ref  : 'origin/master',
-      repo : 'GIT_REPOSITORY',
-      path : 'DESTINATION_PATH',
-      'pre-deploy-local': '',
+      user : 'yawik',
+      host : 'api.yawik.org',
+      ref  : 'origin/main',
+      repo : 'https://gitlab.com/yawik/backend.git',
+      path : '/home/yawik/backend',
+      'pre-deploy-local': 'ls -l',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+      'pre-setup': 'pm2 ps'
     }
   }
 };
