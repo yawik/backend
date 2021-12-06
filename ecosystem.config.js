@@ -1,5 +1,3 @@
-const name = 'backend_' + process.env.NODE_ENV
-
 module.exports = {
   apps : [{
     name: 'backend_staging',
