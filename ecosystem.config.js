@@ -48,7 +48,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/production',
       'pre-deploy-local': 'ls -l',
-      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env production --port 3000',
+      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env production -- --port 3000',
       'pre-setup': 'pm2 ps'
     },
     staging: {
@@ -58,7 +58,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/staging',
       'pre-deploy-local': 'echo STAGING',
-      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env staging --port 4000',
+      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env staging -- --port 4000',
       'pre-setup': 'pm2 ps'
     },
     development: {
@@ -68,7 +68,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/develop',
       'pre-deploy-local': 'echo DEVELOP',
-      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env development --port 1337',
+      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env development -- --port 1337',
       'pre-setup': 'pm2 ps'
     }
   }
