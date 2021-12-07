@@ -6,13 +6,22 @@ module.exports = {
     env: {
       NODE_ENV: "development",
       PORT: 1337
-    }
+    },
+    env_development: {
+      NODE_ENV: "development",
+      PORT: 1337
+    },
+
   },
   {
     name: 'backend_staging',
     script: 'yarn',
     args: 'start',
     env: {
+      NODE_ENV: "staging",
+      PORT: 4000
+    },
+    env_staging: {
       NODE_ENV: "staging",
       PORT: 4000
     },
@@ -24,7 +33,11 @@ module.exports = {
     env: {
       NODE_ENV: "production",
       PORT: 3000
-    }
+    },
+    env_production: {
+      NODE_ENV: "production",
+      PORT: 3000
+    },
   }],
   
   deploy : {
@@ -46,6 +59,16 @@ module.exports = {
       path : '/home/yawik/staging',
       'pre-deploy-local': 'echo STAGING',
       'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env staging',
+      'pre-setup': 'pm2 ps'
+    },
+    development: {
+      user : 'yawik',
+      host : 'staging.api.yawik.org',
+      ref  : 'origin/master',
+      repo : 'https://gitlab.com/yawik/backend.git',
+      path : '/home/yawik/develop',
+      'pre-deploy-local': 'echo DEVELOP',
+      'post-deploy' : 'yarn && pm2 reload ecosystem.config.js --env development',
       'pre-setup': 'pm2 ps'
     }
   }
