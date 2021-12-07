@@ -64,7 +64,7 @@ module.exports = {
     development: {
       user : 'yawik',
       host : 'staging.api.yawik.org',
-      ref  : 'origin/master',
+      ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/develop',
       'pre-deploy-local': 'echo DEVELOP',
