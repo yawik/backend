@@ -14,3 +14,16 @@ cd backend
 yarn
 yarn dev
 ```
+
+## Environment
+
+you can start a development env with `yarn dev`. If you need to test against
+staging or production you can start all environments locally by:
+
+```
+pm2 start
+```
+
+* develop: Port 1337
+* staging: Port 4000
+* production: Port 3000

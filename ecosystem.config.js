@@ -1,20 +1,29 @@
 module.exports = {
   apps : [{
-    name: 'backend_staging',
-    script: 'npm',
+    name: 'backend_develop',
+    script: 'yarn',
     args: 'start',
-    env_staging: {
+    env: {
+      NODE_ENV: "development",
+      PORT: 1337
+    }
+  },
+  {
+    name: 'backend_staging',
+    script: 'yarn',
+    args: 'start',
+    env: {
       NODE_ENV: "staging",
-      PORT: 4000,
+      PORT: 4000
     },
   },
   {
     name: 'backend_production',
-    script: 'npm',
+    script: 'yarn',
     args: 'start',
-    env_production: {
+    env: {
       NODE_ENV: "production",
-      PORT: 3000,
+      PORT: 3000
     }
   }],
   
