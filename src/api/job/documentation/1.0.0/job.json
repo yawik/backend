@@ -22,7 +22,7 @@
                               "title": {
                                 "type": "string"
                               },
-                              "Organization": {
+                              "organization": {
                                 "type": "string"
                               },
                               "dateCreated": {
@@ -62,17 +62,17 @@
                                           "name": {
                                             "type": "string"
                                           },
-                                          "givenName": {
+                                          "given_name": {
                                             "type": "string"
                                           },
-                                          "familyName": {
+                                          "family_name": {
                                             "type": "string"
                                           },
                                           "email": {
                                             "type": "string",
                                             "format": "email"
                                           },
-                                          "DisplayName": {
+                                          "preferred_username": {
                                             "type": "string"
                                           },
                                           "jobs": {
@@ -92,7 +92,7 @@
                                                         "title": {
                                                           "type": "string"
                                                         },
-                                                        "Organization": {
+                                                        "organization": {
                                                           "type": "string"
                                                         },
                                                         "dateCreated": {
@@ -835,7 +835,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "Organization": {
+                            "organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -875,17 +875,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "givenName": {
+                                        "given_name": {
                                           "type": "string"
                                         },
-                                        "familyName": {
+                                        "family_name": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "DisplayName": {
+                                        "preferred_username": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -905,7 +905,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "Organization": {
+                                                      "organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -1566,7 +1566,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "Organization": {
+                            "organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -1606,17 +1606,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "givenName": {
+                                        "given_name": {
                                           "type": "string"
                                         },
-                                        "familyName": {
+                                        "family_name": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "DisplayName": {
+                                        "preferred_username": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -1636,7 +1636,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "Organization": {
+                                                      "organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -2288,7 +2288,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "Organization": {
+                            "organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -2328,17 +2328,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "givenName": {
+                                        "given_name": {
                                           "type": "string"
                                         },
-                                        "familyName": {
+                                        "family_name": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "DisplayName": {
+                                        "preferred_username": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -2358,7 +2358,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "Organization": {
+                                                      "organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -3001,7 +3001,7 @@
                       "title": {
                         "type": "string"
                       },
-                      "Organization": {
+                      "organization": {
                         "type": "string"
                       },
                       "dateCreated": {

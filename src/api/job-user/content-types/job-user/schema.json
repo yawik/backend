@@ -21,16 +21,16 @@
     "name": {
       "type": "string"
     },
-    "givenName": {
+    "given_name": {
       "type": "string"
     },
-    "familyName": {
+    "family_name": {
       "type": "string"
     },
     "email": {
       "type": "email"
     },
-    "DisplayName": {
+    "preferred_username": {
       "type": "string"
     },
     "jobs": {
