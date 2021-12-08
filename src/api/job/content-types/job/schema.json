@@ -15,11 +15,9 @@
     "title": {
       "type": "string"
     },
-    "CompanyName": {
-      "type": "string"
-    },
-    "Location": {
-      "type": "string"
+    "Organization": {
+      "type": "string",
+      "maxLength": 100
     },
     "dateCreated": {
       "type": "datetime"
@@ -31,7 +29,8 @@
       "type": "datetime"
     },
     "jobId": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "job": {
       "type": "json"
@@ -41,6 +40,18 @@
       "relation": "manyToOne",
       "target": "api::job-user.job-user",
       "inversedBy": "jobs"
+    },
+    "location": {
+      "type": "json"
+    },
+    "intro": {
+      "type": "richtext"
+    },
+    "task": {
+      "type": "richtext"
+    },
+    "offer": {
+      "type": "richtext"
     }
   }
 }

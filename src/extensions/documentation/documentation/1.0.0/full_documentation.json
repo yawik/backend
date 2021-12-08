@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2021-12-08T13:02:38.325Z"
+    "x-generation-date": "2021-12-08T15:04:05.745Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -72,10 +72,7 @@
                               "title": {
                                 "type": "string"
                               },
-                              "CompanyName": {
-                                "type": "string"
-                              },
-                              "Location": {
+                              "Organization": {
                                 "type": "string"
                               },
                               "dateCreated": {
@@ -115,17 +112,17 @@
                                           "name": {
                                             "type": "string"
                                           },
-                                          "given_name": {
+                                          "givenName": {
                                             "type": "string"
                                           },
-                                          "family_name": {
+                                          "familyName": {
                                             "type": "string"
                                           },
                                           "email": {
                                             "type": "string",
                                             "format": "email"
                                           },
-                                          "preferred_username": {
+                                          "DisplayName": {
                                             "type": "string"
                                           },
                                           "jobs": {
@@ -145,10 +142,7 @@
                                                         "title": {
                                                           "type": "string"
                                                         },
-                                                        "CompanyName": {
-                                                          "type": "string"
-                                                        },
-                                                        "Location": {
+                                                        "Organization": {
                                                           "type": "string"
                                                         },
                                                         "dateCreated": {
@@ -183,6 +177,16 @@
                                                               }
                                                             }
                                                           }
+                                                        },
+                                                        "location": {},
+                                                        "intro": {
+                                                          "type": "string"
+                                                        },
+                                                        "task": {
+                                                          "type": "string"
+                                                        },
+                                                        "offer": {
+                                                          "type": "string"
                                                         },
                                                         "createdAt": {
                                                           "type": "string",
@@ -540,6 +544,16 @@
                                   }
                                 }
                               },
+                              "location": {},
+                              "intro": {
+                                "type": "string"
+                              },
+                              "task": {
+                                "type": "string"
+                              },
+                              "offer": {
+                                "type": "string"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -871,10 +885,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "CompanyName": {
-                              "type": "string"
-                            },
-                            "Location": {
+                            "Organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -914,17 +925,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "given_name": {
+                                        "givenName": {
                                           "type": "string"
                                         },
-                                        "family_name": {
+                                        "familyName": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "preferred_username": {
+                                        "DisplayName": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -944,10 +955,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "CompanyName": {
-                                                        "type": "string"
-                                                      },
-                                                      "Location": {
+                                                      "Organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -982,6 +990,16 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "location": {},
+                                                      "intro": {
+                                                        "type": "string"
+                                                      },
+                                                      "task": {
+                                                        "type": "string"
+                                                      },
+                                                      "offer": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -1338,6 +1356,16 @@
                                   }
                                 }
                               }
+                            },
+                            "location": {},
+                            "intro": {
+                              "type": "string"
+                            },
+                            "task": {
+                              "type": "string"
+                            },
+                            "offer": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -1556,75 +1584,8 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "title": {
-                        "type": "string"
-                      },
-                      "CompanyName": {
-                        "type": "string"
-                      },
-                      "Location": {
-                        "type": "string"
-                      },
-                      "dateCreated": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "dateModified": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "dateDeleted": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
                       "jobId": {
                         "type": "string"
-                      },
-                      "job": {},
-                      "jobUser": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "publishedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "createdBy": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "updatedBy": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
                       }
                     }
                   }
@@ -1655,10 +1616,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "CompanyName": {
-                              "type": "string"
-                            },
-                            "Location": {
+                            "Organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -1698,17 +1656,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "given_name": {
+                                        "givenName": {
                                           "type": "string"
                                         },
-                                        "family_name": {
+                                        "familyName": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "preferred_username": {
+                                        "DisplayName": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -1728,10 +1686,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "CompanyName": {
-                                                        "type": "string"
-                                                      },
-                                                      "Location": {
+                                                      "Organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -1766,6 +1721,16 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "location": {},
+                                                      "intro": {
+                                                        "type": "string"
+                                                      },
+                                                      "task": {
+                                                        "type": "string"
+                                                      },
+                                                      "offer": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -2122,6 +2087,16 @@
                                   }
                                 }
                               }
+                            },
+                            "location": {},
+                            "intro": {
+                              "type": "string"
+                            },
+                            "task": {
+                              "type": "string"
+                            },
+                            "offer": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -2363,10 +2338,7 @@
                             "title": {
                               "type": "string"
                             },
-                            "CompanyName": {
-                              "type": "string"
-                            },
-                            "Location": {
+                            "Organization": {
                               "type": "string"
                             },
                             "dateCreated": {
@@ -2406,17 +2378,17 @@
                                         "name": {
                                           "type": "string"
                                         },
-                                        "given_name": {
+                                        "givenName": {
                                           "type": "string"
                                         },
-                                        "family_name": {
+                                        "familyName": {
                                           "type": "string"
                                         },
                                         "email": {
                                           "type": "string",
                                           "format": "email"
                                         },
-                                        "preferred_username": {
+                                        "DisplayName": {
                                           "type": "string"
                                         },
                                         "jobs": {
@@ -2436,10 +2408,7 @@
                                                       "title": {
                                                         "type": "string"
                                                       },
-                                                      "CompanyName": {
-                                                        "type": "string"
-                                                      },
-                                                      "Location": {
+                                                      "Organization": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -2474,6 +2443,16 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "location": {},
+                                                      "intro": {
+                                                        "type": "string"
+                                                      },
+                                                      "task": {
+                                                        "type": "string"
+                                                      },
+                                                      "offer": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -2831,6 +2810,16 @@
                                 }
                               }
                             },
+                            "location": {},
+                            "intro": {
+                              "type": "string"
+                            },
+                            "task": {
+                              "type": "string"
+                            },
+                            "offer": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -3062,10 +3051,7 @@
                       "title": {
                         "type": "string"
                       },
-                      "CompanyName": {
-                        "type": "string"
-                      },
-                      "Location": {
+                      "Organization": {
                         "type": "string"
                       },
                       "dateCreated": {
@@ -3094,6 +3080,16 @@
                           }
                         ],
                         "example": "string or id"
+                      },
+                      "location": {},
+                      "intro": {
+                        "type": "string"
+                      },
+                      "task": {
+                        "type": "string"
+                      },
+                      "offer": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -3341,17 +3337,17 @@
                               "name": {
                                 "type": "string"
                               },
-                              "given_name": {
+                              "givenName": {
                                 "type": "string"
                               },
-                              "family_name": {
+                              "familyName": {
                                 "type": "string"
                               },
                               "email": {
                                 "type": "string",
                                 "format": "email"
                               },
-                              "preferred_username": {
+                              "DisplayName": {
                                 "type": "string"
                               },
                               "jobs": {
@@ -3371,10 +3367,7 @@
                                             "title": {
                                               "type": "string"
                                             },
-                                            "CompanyName": {
-                                              "type": "string"
-                                            },
-                                            "Location": {
+                                            "Organization": {
                                               "type": "string"
                                             },
                                             "dateCreated": {
@@ -3414,17 +3407,17 @@
                                                         "name": {
                                                           "type": "string"
                                                         },
-                                                        "given_name": {
+                                                        "givenName": {
                                                           "type": "string"
                                                         },
-                                                        "family_name": {
+                                                        "familyName": {
                                                           "type": "string"
                                                         },
                                                         "email": {
                                                           "type": "string",
                                                           "format": "email"
                                                         },
-                                                        "preferred_username": {
+                                                        "DisplayName": {
                                                           "type": "string"
                                                         },
                                                         "jobs": {
@@ -3749,6 +3742,16 @@
                                                   }
                                                 }
                                               }
+                                            },
+                                            "location": {},
+                                            "intro": {
+                                              "type": "string"
+                                            },
+                                            "task": {
+                                              "type": "string"
+                                            },
+                                            "offer": {
+                                              "type": "string"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -4140,17 +4143,17 @@
                             "name": {
                               "type": "string"
                             },
-                            "given_name": {
+                            "givenName": {
                               "type": "string"
                             },
-                            "family_name": {
+                            "familyName": {
                               "type": "string"
                             },
                             "email": {
                               "type": "string",
                               "format": "email"
                             },
-                            "preferred_username": {
+                            "DisplayName": {
                               "type": "string"
                             },
                             "jobs": {
@@ -4170,10 +4173,7 @@
                                           "title": {
                                             "type": "string"
                                           },
-                                          "CompanyName": {
-                                            "type": "string"
-                                          },
-                                          "Location": {
+                                          "Organization": {
                                             "type": "string"
                                           },
                                           "dateCreated": {
@@ -4213,17 +4213,17 @@
                                                       "name": {
                                                         "type": "string"
                                                       },
-                                                      "given_name": {
+                                                      "givenName": {
                                                         "type": "string"
                                                       },
-                                                      "family_name": {
+                                                      "familyName": {
                                                         "type": "string"
                                                       },
                                                       "email": {
                                                         "type": "string",
                                                         "format": "email"
                                                       },
-                                                      "preferred_username": {
+                                                      "DisplayName": {
                                                         "type": "string"
                                                       },
                                                       "jobs": {
@@ -4548,6 +4548,16 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "location": {},
+                                          "intro": {
+                                            "type": "string"
+                                          },
+                                          "task": {
+                                            "type": "string"
+                                          },
+                                          "offer": {
+                                            "type": "string"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -4828,17 +4838,17 @@
                       "name": {
                         "type": "string"
                       },
-                      "given_name": {
+                      "givenName": {
                         "type": "string"
                       },
-                      "family_name": {
+                      "familyName": {
                         "type": "string"
                       },
                       "email": {
                         "type": "string",
                         "format": "email"
                       },
-                      "preferred_username": {
+                      "DisplayName": {
                         "type": "string"
                       },
                       "jobs": {
@@ -4924,17 +4934,17 @@
                             "name": {
                               "type": "string"
                             },
-                            "given_name": {
+                            "givenName": {
                               "type": "string"
                             },
-                            "family_name": {
+                            "familyName": {
                               "type": "string"
                             },
                             "email": {
                               "type": "string",
                               "format": "email"
                             },
-                            "preferred_username": {
+                            "DisplayName": {
                               "type": "string"
                             },
                             "jobs": {
@@ -4954,10 +4964,7 @@
                                           "title": {
                                             "type": "string"
                                           },
-                                          "CompanyName": {
-                                            "type": "string"
-                                          },
-                                          "Location": {
+                                          "Organization": {
                                             "type": "string"
                                           },
                                           "dateCreated": {
@@ -4997,17 +5004,17 @@
                                                       "name": {
                                                         "type": "string"
                                                       },
-                                                      "given_name": {
+                                                      "givenName": {
                                                         "type": "string"
                                                       },
-                                                      "family_name": {
+                                                      "familyName": {
                                                         "type": "string"
                                                       },
                                                       "email": {
                                                         "type": "string",
                                                         "format": "email"
                                                       },
-                                                      "preferred_username": {
+                                                      "DisplayName": {
                                                         "type": "string"
                                                       },
                                                       "jobs": {
@@ -5332,6 +5339,16 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "location": {},
+                                          "intro": {
+                                            "type": "string"
+                                          },
+                                          "task": {
+                                            "type": "string"
+                                          },
+                                          "offer": {
+                                            "type": "string"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -5632,17 +5649,17 @@
                             "name": {
                               "type": "string"
                             },
-                            "given_name": {
+                            "givenName": {
                               "type": "string"
                             },
-                            "family_name": {
+                            "familyName": {
                               "type": "string"
                             },
                             "email": {
                               "type": "string",
                               "format": "email"
                             },
-                            "preferred_username": {
+                            "DisplayName": {
                               "type": "string"
                             },
                             "jobs": {
@@ -5662,10 +5679,7 @@
                                           "title": {
                                             "type": "string"
                                           },
-                                          "CompanyName": {
-                                            "type": "string"
-                                          },
-                                          "Location": {
+                                          "Organization": {
                                             "type": "string"
                                           },
                                           "dateCreated": {
@@ -5705,17 +5719,17 @@
                                                       "name": {
                                                         "type": "string"
                                                       },
-                                                      "given_name": {
+                                                      "givenName": {
                                                         "type": "string"
                                                       },
-                                                      "family_name": {
+                                                      "familyName": {
                                                         "type": "string"
                                                       },
                                                       "email": {
                                                         "type": "string",
                                                         "format": "email"
                                                       },
-                                                      "preferred_username": {
+                                                      "DisplayName": {
                                                         "type": "string"
                                                       },
                                                       "jobs": {
@@ -6041,6 +6055,16 @@
                                               }
                                             }
                                           },
+                                          "location": {},
+                                          "intro": {
+                                            "type": "string"
+                                          },
+                                          "task": {
+                                            "type": "string"
+                                          },
+                                          "offer": {
+                                            "type": "string"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -6331,17 +6355,17 @@
                       "name": {
                         "type": "string"
                       },
-                      "given_name": {
+                      "givenName": {
                         "type": "string"
                       },
-                      "family_name": {
+                      "familyName": {
                         "type": "string"
                       },
                       "email": {
                         "type": "string",
                         "format": "email"
                       },
-                      "preferred_username": {
+                      "DisplayName": {
                         "type": "string"
                       },
                       "jobs": {

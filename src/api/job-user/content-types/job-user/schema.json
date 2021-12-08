@@ -4,7 +4,8 @@
   "info": {
     "singularName": "job-user",
     "pluralName": "job-users",
-    "displayName": "JobUser"
+    "displayName": "JobUser",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,16 +21,16 @@
     "name": {
       "type": "string"
     },
-    "given_name": {
+    "givenName": {
       "type": "string"
     },
-    "family_name": {
+    "familyName": {
       "type": "string"
     },
     "email": {
       "type": "email"
     },
-    "preferred_username": {
+    "DisplayName": {
       "type": "string"
     },
     "jobs": {
