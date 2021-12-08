@@ -82,7 +82,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               newJob.data.jobUser = newUserCreated.id;
               let jobs = await strapi.query("api::job.job").create(newJob);
-              return jobs;
+              return {
+                success: {
+                  job: jobs
+                }
+              }
             }
           } else {
             // todo create job owned by sub
@@ -105,13 +109,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 error: {
                     status: 0,
                     name: "Job Already Exist",
-                    message: "Job Already Exist",
+                    message: "Job " + jobId + " already Exist",
                 },
             };
           } else {
             newJob.data.jobUser = isUserExist[0].id;
             let jobs = await strapi.query("api::job.job").create(newJob);
-            return jobs;
+            return {
+              success: {
+                job: jobs
+              }
+            }
           }
         }
         
