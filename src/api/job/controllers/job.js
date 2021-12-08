@@ -44,6 +44,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           organization,
           intro,
           offer,
+          salary,
           job,
           publishedAt,
         } = ctx.request.body.data;
@@ -66,6 +67,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             jobTitle: jobTitle || '',
             organization: organization || '',
             location: location || {},
+            salary: salary || {},
             tasks: tasks || '',
             offer: offer || '',
             intro: intro || '',
@@ -120,8 +122,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           console.log(isJobExist);
           if (isJobExist && isJobExist.length > 0) {
             // todo update job
-            let jobUpdated = await strapi.service("api::job.job").update({jobId:jobId}, newJob );
-            if (!jobUpdated) {
+            let updateResponse = await strapi.service("api::job.job").update( ctx );
+            if (!updateResponse) {
               return {
                 error: {
                     status: 5001,
