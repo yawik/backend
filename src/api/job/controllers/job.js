@@ -38,9 +38,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           dateModified,
           dateDeleted,
           jobId,
+          jobTitle,
+          tasks,
+          location,
+          organization,
+          intro,
+          offer,
           job,
           publishedAt,
         } = ctx.request.body.data;
+        
+        console.log(ctx.request.body.data);
 
         if (!jobId) {
           return {
@@ -55,6 +63,12 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         let newJob = {
           data: {
             title: title,
+            jobTitle: jobTitle || '',
+            organization: organization || '',
+            location: location || {},
+            tasks: tasks || '',
+            offer: offer || '',
+            intro: intro || '',
             dateCreated: dateCreated || "2021-12-03T15:50:41.398Z",
             dateModified: dateModified || "2021-12-03T15:50:41.398Z",
             dateDeleted: dateDeleted || "2021-12-03T15:50:41.398Z",
@@ -133,6 +147,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         };
       }
     } catch (e) {
+      console.log(e);
       return {
         error: {
           status: 5000,

@@ -47,11 +47,29 @@
     "intro": {
       "type": "richtext"
     },
-    "task": {
+    "tasks": {
       "type": "richtext"
     },
     "offer": {
       "type": "richtext"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "salary": {
+      "type": "json"
+    },
+    "applyEmail": {
+      "type": "email"
+    },
+    "applyUrl": {
+      "type": "string"
+    },
+    "formattedAddress": {
+      "type": "string"
     }
   }
 }

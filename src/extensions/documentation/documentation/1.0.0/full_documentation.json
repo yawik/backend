@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2021-12-08T15:18:49.763Z"
+    "x-generation-date": "2021-12-08T16:09:09.539Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -182,10 +182,27 @@
                                                         "intro": {
                                                           "type": "string"
                                                         },
-                                                        "task": {
+                                                        "tasks": {
                                                           "type": "string"
                                                         },
                                                         "offer": {
+                                                          "type": "string"
+                                                        },
+                                                        "jobTitle": {
+                                                          "type": "string"
+                                                        },
+                                                        "reference": {
+                                                          "type": "string"
+                                                        },
+                                                        "salary": {},
+                                                        "applyEmail": {
+                                                          "type": "string",
+                                                          "format": "email"
+                                                        },
+                                                        "applyUrl": {
+                                                          "type": "string"
+                                                        },
+                                                        "formattedAddress": {
                                                           "type": "string"
                                                         },
                                                         "createdAt": {
@@ -548,10 +565,27 @@
                               "intro": {
                                 "type": "string"
                               },
-                              "task": {
+                              "tasks": {
                                 "type": "string"
                               },
                               "offer": {
+                                "type": "string"
+                              },
+                              "jobTitle": {
+                                "type": "string"
+                              },
+                              "reference": {
+                                "type": "string"
+                              },
+                              "salary": {},
+                              "applyEmail": {
+                                "type": "string",
+                                "format": "email"
+                              },
+                              "applyUrl": {
+                                "type": "string"
+                              },
+                              "formattedAddress": {
                                 "type": "string"
                               },
                               "createdAt": {
@@ -995,10 +1029,27 @@
                                                       "intro": {
                                                         "type": "string"
                                                       },
-                                                      "task": {
+                                                      "tasks": {
                                                         "type": "string"
                                                       },
                                                       "offer": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobTitle": {
+                                                        "type": "string"
+                                                      },
+                                                      "reference": {
+                                                        "type": "string"
+                                                      },
+                                                      "salary": {},
+                                                      "applyEmail": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "applyUrl": {
+                                                        "type": "string"
+                                                      },
+                                                      "formattedAddress": {
                                                         "type": "string"
                                                       },
                                                       "createdAt": {
@@ -1361,10 +1412,27 @@
                             "intro": {
                               "type": "string"
                             },
-                            "task": {
+                            "tasks": {
                               "type": "string"
                             },
                             "offer": {
+                              "type": "string"
+                            },
+                            "jobTitle": {
+                              "type": "string"
+                            },
+                            "reference": {
+                              "type": "string"
+                            },
+                            "salary": {},
+                            "applyEmail": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "applyUrl": {
+                              "type": "string"
+                            },
+                            "formattedAddress": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -1726,10 +1794,27 @@
                                                       "intro": {
                                                         "type": "string"
                                                       },
-                                                      "task": {
+                                                      "tasks": {
                                                         "type": "string"
                                                       },
                                                       "offer": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobTitle": {
+                                                        "type": "string"
+                                                      },
+                                                      "reference": {
+                                                        "type": "string"
+                                                      },
+                                                      "salary": {},
+                                                      "applyEmail": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "applyUrl": {
+                                                        "type": "string"
+                                                      },
+                                                      "formattedAddress": {
                                                         "type": "string"
                                                       },
                                                       "createdAt": {
@@ -2092,10 +2177,27 @@
                             "intro": {
                               "type": "string"
                             },
-                            "task": {
+                            "tasks": {
                               "type": "string"
                             },
                             "offer": {
+                              "type": "string"
+                            },
+                            "jobTitle": {
+                              "type": "string"
+                            },
+                            "reference": {
+                              "type": "string"
+                            },
+                            "salary": {},
+                            "applyEmail": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "applyUrl": {
+                              "type": "string"
+                            },
+                            "formattedAddress": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -2448,10 +2550,27 @@
                                                       "intro": {
                                                         "type": "string"
                                                       },
-                                                      "task": {
+                                                      "tasks": {
                                                         "type": "string"
                                                       },
                                                       "offer": {
+                                                        "type": "string"
+                                                      },
+                                                      "jobTitle": {
+                                                        "type": "string"
+                                                      },
+                                                      "reference": {
+                                                        "type": "string"
+                                                      },
+                                                      "salary": {},
+                                                      "applyEmail": {
+                                                        "type": "string",
+                                                        "format": "email"
+                                                      },
+                                                      "applyUrl": {
+                                                        "type": "string"
+                                                      },
+                                                      "formattedAddress": {
                                                         "type": "string"
                                                       },
                                                       "createdAt": {
@@ -2814,10 +2933,27 @@
                             "intro": {
                               "type": "string"
                             },
-                            "task": {
+                            "tasks": {
                               "type": "string"
                             },
                             "offer": {
+                              "type": "string"
+                            },
+                            "jobTitle": {
+                              "type": "string"
+                            },
+                            "reference": {
+                              "type": "string"
+                            },
+                            "salary": {},
+                            "applyEmail": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "applyUrl": {
+                              "type": "string"
+                            },
+                            "formattedAddress": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -3085,10 +3221,27 @@
                       "intro": {
                         "type": "string"
                       },
-                      "task": {
+                      "tasks": {
                         "type": "string"
                       },
                       "offer": {
+                        "type": "string"
+                      },
+                      "jobTitle": {
+                        "type": "string"
+                      },
+                      "reference": {
+                        "type": "string"
+                      },
+                      "salary": {},
+                      "applyEmail": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "applyUrl": {
+                        "type": "string"
+                      },
+                      "formattedAddress": {
                         "type": "string"
                       },
                       "createdAt": {
@@ -3747,10 +3900,27 @@
                                             "intro": {
                                               "type": "string"
                                             },
-                                            "task": {
+                                            "tasks": {
                                               "type": "string"
                                             },
                                             "offer": {
+                                              "type": "string"
+                                            },
+                                            "jobTitle": {
+                                              "type": "string"
+                                            },
+                                            "reference": {
+                                              "type": "string"
+                                            },
+                                            "salary": {},
+                                            "applyEmail": {
+                                              "type": "string",
+                                              "format": "email"
+                                            },
+                                            "applyUrl": {
+                                              "type": "string"
+                                            },
+                                            "formattedAddress": {
                                               "type": "string"
                                             },
                                             "createdAt": {
@@ -4553,10 +4723,27 @@
                                           "intro": {
                                             "type": "string"
                                           },
-                                          "task": {
+                                          "tasks": {
                                             "type": "string"
                                           },
                                           "offer": {
+                                            "type": "string"
+                                          },
+                                          "jobTitle": {
+                                            "type": "string"
+                                          },
+                                          "reference": {
+                                            "type": "string"
+                                          },
+                                          "salary": {},
+                                          "applyEmail": {
+                                            "type": "string",
+                                            "format": "email"
+                                          },
+                                          "applyUrl": {
+                                            "type": "string"
+                                          },
+                                          "formattedAddress": {
                                             "type": "string"
                                           },
                                           "createdAt": {
@@ -5344,10 +5531,27 @@
                                           "intro": {
                                             "type": "string"
                                           },
-                                          "task": {
+                                          "tasks": {
                                             "type": "string"
                                           },
                                           "offer": {
+                                            "type": "string"
+                                          },
+                                          "jobTitle": {
+                                            "type": "string"
+                                          },
+                                          "reference": {
+                                            "type": "string"
+                                          },
+                                          "salary": {},
+                                          "applyEmail": {
+                                            "type": "string",
+                                            "format": "email"
+                                          },
+                                          "applyUrl": {
+                                            "type": "string"
+                                          },
+                                          "formattedAddress": {
                                             "type": "string"
                                           },
                                           "createdAt": {
@@ -6059,10 +6263,27 @@
                                           "intro": {
                                             "type": "string"
                                           },
-                                          "task": {
+                                          "tasks": {
                                             "type": "string"
                                           },
                                           "offer": {
+                                            "type": "string"
+                                          },
+                                          "jobTitle": {
+                                            "type": "string"
+                                          },
+                                          "reference": {
+                                            "type": "string"
+                                          },
+                                          "salary": {},
+                                          "applyEmail": {
+                                            "type": "string",
+                                            "format": "email"
+                                          },
+                                          "applyUrl": {
+                                            "type": "string"
+                                          },
+                                          "formattedAddress": {
                                             "type": "string"
                                           },
                                           "createdAt": {
