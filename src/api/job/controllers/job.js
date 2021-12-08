@@ -42,7 +42,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           publishedAt,
         } = ctx.request.body.data;
 
-        if (!userData.jobId) {
+        if (!userData.data.jobId) {
           return {
             error: {
               status: 4002,
@@ -85,6 +85,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               return jobs;
             }
           } else {
+            // todo create job owned by sub
             return {
                 error: {
                   status: 0,
