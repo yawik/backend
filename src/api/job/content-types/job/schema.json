@@ -15,6 +15,12 @@
     "title": {
       "type": "string"
     },
+    "CompanyName": {
+      "type": "string"
+    },
+    "Location": {
+      "type": "string"
+    },
     "dateCreated": {
       "type": "datetime"
     },

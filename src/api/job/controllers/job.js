@@ -42,12 +42,12 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           publishedAt,
         } = ctx.request.body.data;
 
-        if (!userData.data.jobId) {
+        if (!jobId) {
           return {
             error: {
               status: 4002,
               name: "no_job_id",
-              message: "Request requires a uuid jobId",
+              message: "Request requires a uuid jobId" + jobId,
             },
           };
         }
@@ -129,7 +129,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         error: {
           status: 5000,
           name: "internal_error",
-          message: "UnAuthorization",
+          message: "Internal Server Error",
         },
       };
     }

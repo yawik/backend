@@ -22,6 +22,12 @@
                               "title": {
                                 "type": "string"
                               },
+                              "CompanyName": {
+                                "type": "string"
+                              },
+                              "Location": {
+                                "type": "string"
+                              },
                               "dateCreated": {
                                 "type": "string",
                                 "format": "date-time"
@@ -87,6 +93,12 @@
                                                       "type": "object",
                                                       "properties": {
                                                         "title": {
+                                                          "type": "string"
+                                                        },
+                                                        "CompanyName": {
+                                                          "type": "string"
+                                                        },
+                                                        "Location": {
                                                           "type": "string"
                                                         },
                                                         "dateCreated": {
@@ -809,6 +821,12 @@
                             "title": {
                               "type": "string"
                             },
+                            "CompanyName": {
+                              "type": "string"
+                            },
+                            "Location": {
+                              "type": "string"
+                            },
                             "dateCreated": {
                               "type": "string",
                               "format": "date-time"
@@ -874,6 +892,12 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "CompanyName": {
+                                                        "type": "string"
+                                                      },
+                                                      "Location": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -1485,6 +1509,12 @@
                       "title": {
                         "type": "string"
                       },
+                      "CompanyName": {
+                        "type": "string"
+                      },
+                      "Location": {
+                        "type": "string"
+                      },
                       "dateCreated": {
                         "type": "string",
                         "format": "date-time"
@@ -1575,6 +1605,12 @@
                             "title": {
                               "type": "string"
                             },
+                            "CompanyName": {
+                              "type": "string"
+                            },
+                            "Location": {
+                              "type": "string"
+                            },
                             "dateCreated": {
                               "type": "string",
                               "format": "date-time"
@@ -1640,6 +1676,12 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "CompanyName": {
+                                                        "type": "string"
+                                                      },
+                                                      "Location": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -2271,6 +2313,12 @@
                             "title": {
                               "type": "string"
                             },
+                            "CompanyName": {
+                              "type": "string"
+                            },
+                            "Location": {
+                              "type": "string"
+                            },
                             "dateCreated": {
                               "type": "string",
                               "format": "date-time"
@@ -2336,6 +2384,12 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "CompanyName": {
+                                                        "type": "string"
+                                                      },
+                                                      "Location": {
                                                         "type": "string"
                                                       },
                                                       "dateCreated": {
@@ -2956,6 +3010,12 @@
                     "type": "object",
                     "properties": {
                       "title": {
+                        "type": "string"
+                      },
+                      "CompanyName": {
+                        "type": "string"
+                      },
+                      "Location": {
                         "type": "string"
                       },
                       "dateCreated": {
