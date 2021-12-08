@@ -33,7 +33,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         }
 
         const {
-          title,
           dateCreated,
           dateModified,
           dateDeleted,
@@ -63,7 +62,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
 
         let newJob = {
           data: {
-            title: title,
             jobTitle: jobTitle || '',
             organization: organization || '',
             location: location || {},
@@ -115,9 +113,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               };    
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
-          let title = newJob.data.title;
           let jobId = newJob.data.jobId;
-          console.log('user  found', title, jobId)
+          console.log('user  found', jobId)
           let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
           console.log(isJobExist);
           if (isJobExist && isJobExist.length > 0) {

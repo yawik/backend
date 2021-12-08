@@ -19,9 +19,6 @@
                           "attributes": {
                             "type": "object",
                             "properties": {
-                              "title": {
-                                "type": "string"
-                              },
                               "organization": {
                                 "type": "string"
                               },
@@ -89,9 +86,6 @@
                                                     "attributes": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "title": {
-                                                          "type": "string"
-                                                        },
                                                         "organization": {
                                                           "type": "string"
                                                         },
@@ -866,9 +860,6 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
-                              "type": "string"
-                            },
                             "organization": {
                               "type": "string"
                             },
@@ -936,9 +927,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
                                                       "organization": {
                                                         "type": "string"
                                                       },
@@ -1631,9 +1619,6 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
-                              "type": "string"
-                            },
                             "organization": {
                               "type": "string"
                             },
@@ -1701,9 +1686,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
                                                       "organization": {
                                                         "type": "string"
                                                       },
@@ -2387,9 +2369,6 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "title": {
-                              "type": "string"
-                            },
                             "organization": {
                               "type": "string"
                             },
@@ -2457,9 +2436,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
                                                       "organization": {
                                                         "type": "string"
                                                       },
@@ -3134,9 +3110,6 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "title": {
-                        "type": "string"
-                      },
                       "organization": {
                         "type": "string"
                       },
