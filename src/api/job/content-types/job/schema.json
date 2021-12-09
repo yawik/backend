@@ -5,7 +5,7 @@
     "singularName": "job",
     "pluralName": "jobs",
     "displayName": "Jobs",
-    "description": ""
+    "description": "Job advertisement. It describes the requirements for an advertised position and is aimed at applicants."
   },
   "options": {
     "draftAndPublish": true
