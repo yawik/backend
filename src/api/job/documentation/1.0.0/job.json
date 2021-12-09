@@ -29,7 +29,6 @@
                               "jobId": {
                                 "type": "string"
                               },
-                              "job": {},
                               "jobUser": {
                                 "type": "object",
                                 "properties": {
@@ -88,7 +87,6 @@
                                                         "jobId": {
                                                           "type": "string"
                                                         },
-                                                        "job": {},
                                                         "jobUser": {
                                                           "type": "object",
                                                           "properties": {
@@ -133,6 +131,38 @@
                                                         "formattedAddress": {
                                                           "type": "string"
                                                         },
+                                                        "workKind": {},
+                                                        "applyPost": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "partTimePercentage": {
+                                                          "type": "integer"
+                                                        },
+                                                        "shiftWorkAmount": {
+                                                          "type": "integer"
+                                                        },
+                                                        "salaryVisibility": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "introLabel": {
+                                                          "type": "string"
+                                                        },
+                                                        "taskLabel": {
+                                                          "type": "string"
+                                                        },
+                                                        "profileLabel": {
+                                                          "type": "string"
+                                                        },
+                                                        "offerLabel": {
+                                                          "type": "string"
+                                                        },
+                                                        "contactInfoLabel": {
+                                                          "type": "string"
+                                                        },
+                                                        "contactInfo": {
+                                                          "type": "string"
+                                                        },
+                                                        "workDuration": {},
                                                         "createdAt": {
                                                           "type": "string",
                                                           "format": "date-time"
@@ -516,6 +546,38 @@
                               "formattedAddress": {
                                 "type": "string"
                               },
+                              "workKind": {},
+                              "applyPost": {
+                                "type": "boolean"
+                              },
+                              "partTimePercentage": {
+                                "type": "integer"
+                              },
+                              "shiftWorkAmount": {
+                                "type": "integer"
+                              },
+                              "salaryVisibility": {
+                                "type": "boolean"
+                              },
+                              "introLabel": {
+                                "type": "string"
+                              },
+                              "taskLabel": {
+                                "type": "string"
+                              },
+                              "profileLabel": {
+                                "type": "string"
+                              },
+                              "offerLabel": {
+                                "type": "string"
+                              },
+                              "contactInfoLabel": {
+                                "type": "string"
+                              },
+                              "contactInfo": {
+                                "type": "string"
+                              },
+                              "workDuration": {},
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -854,7 +916,6 @@
                             "jobId": {
                               "type": "string"
                             },
-                            "job": {},
                             "jobUser": {
                               "type": "object",
                               "properties": {
@@ -913,7 +974,6 @@
                                                       "jobId": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
                                                       "jobUser": {
                                                         "type": "object",
                                                         "properties": {
@@ -958,6 +1018,38 @@
                                                       "formattedAddress": {
                                                         "type": "string"
                                                       },
+                                                      "workKind": {},
+                                                      "applyPost": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "partTimePercentage": {
+                                                        "type": "integer"
+                                                      },
+                                                      "shiftWorkAmount": {
+                                                        "type": "integer"
+                                                      },
+                                                      "salaryVisibility": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "introLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "taskLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "profileLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "offerLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfoLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfo": {
+                                                        "type": "string"
+                                                      },
+                                                      "workDuration": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -1341,6 +1433,38 @@
                             "formattedAddress": {
                               "type": "string"
                             },
+                            "workKind": {},
+                            "applyPost": {
+                              "type": "boolean"
+                            },
+                            "partTimePercentage": {
+                              "type": "integer"
+                            },
+                            "shiftWorkAmount": {
+                              "type": "integer"
+                            },
+                            "salaryVisibility": {
+                              "type": "boolean"
+                            },
+                            "introLabel": {
+                              "type": "string"
+                            },
+                            "taskLabel": {
+                              "type": "string"
+                            },
+                            "profileLabel": {
+                              "type": "string"
+                            },
+                            "offerLabel": {
+                              "type": "string"
+                            },
+                            "contactInfoLabel": {
+                              "type": "string"
+                            },
+                            "contactInfo": {
+                              "type": "string"
+                            },
+                            "workDuration": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -1597,7 +1721,6 @@
                             "jobId": {
                               "type": "string"
                             },
-                            "job": {},
                             "jobUser": {
                               "type": "object",
                               "properties": {
@@ -1656,7 +1779,6 @@
                                                       "jobId": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
                                                       "jobUser": {
                                                         "type": "object",
                                                         "properties": {
@@ -1701,6 +1823,38 @@
                                                       "formattedAddress": {
                                                         "type": "string"
                                                       },
+                                                      "workKind": {},
+                                                      "applyPost": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "partTimePercentage": {
+                                                        "type": "integer"
+                                                      },
+                                                      "shiftWorkAmount": {
+                                                        "type": "integer"
+                                                      },
+                                                      "salaryVisibility": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "introLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "taskLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "profileLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "offerLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfoLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfo": {
+                                                        "type": "string"
+                                                      },
+                                                      "workDuration": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -2084,6 +2238,38 @@
                             "formattedAddress": {
                               "type": "string"
                             },
+                            "workKind": {},
+                            "applyPost": {
+                              "type": "boolean"
+                            },
+                            "partTimePercentage": {
+                              "type": "integer"
+                            },
+                            "shiftWorkAmount": {
+                              "type": "integer"
+                            },
+                            "salaryVisibility": {
+                              "type": "boolean"
+                            },
+                            "introLabel": {
+                              "type": "string"
+                            },
+                            "taskLabel": {
+                              "type": "string"
+                            },
+                            "profileLabel": {
+                              "type": "string"
+                            },
+                            "offerLabel": {
+                              "type": "string"
+                            },
+                            "contactInfoLabel": {
+                              "type": "string"
+                            },
+                            "contactInfo": {
+                              "type": "string"
+                            },
+                            "workDuration": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -2331,7 +2517,6 @@
                             "jobId": {
                               "type": "string"
                             },
-                            "job": {},
                             "jobUser": {
                               "type": "object",
                               "properties": {
@@ -2390,7 +2575,6 @@
                                                       "jobId": {
                                                         "type": "string"
                                                       },
-                                                      "job": {},
                                                       "jobUser": {
                                                         "type": "object",
                                                         "properties": {
@@ -2435,6 +2619,38 @@
                                                       "formattedAddress": {
                                                         "type": "string"
                                                       },
+                                                      "workKind": {},
+                                                      "applyPost": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "partTimePercentage": {
+                                                        "type": "integer"
+                                                      },
+                                                      "shiftWorkAmount": {
+                                                        "type": "integer"
+                                                      },
+                                                      "salaryVisibility": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "introLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "taskLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "profileLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "offerLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfoLabel": {
+                                                        "type": "string"
+                                                      },
+                                                      "contactInfo": {
+                                                        "type": "string"
+                                                      },
+                                                      "workDuration": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -2818,6 +3034,38 @@
                             "formattedAddress": {
                               "type": "string"
                             },
+                            "workKind": {},
+                            "applyPost": {
+                              "type": "boolean"
+                            },
+                            "partTimePercentage": {
+                              "type": "integer"
+                            },
+                            "shiftWorkAmount": {
+                              "type": "integer"
+                            },
+                            "salaryVisibility": {
+                              "type": "boolean"
+                            },
+                            "introLabel": {
+                              "type": "string"
+                            },
+                            "taskLabel": {
+                              "type": "string"
+                            },
+                            "profileLabel": {
+                              "type": "string"
+                            },
+                            "offerLabel": {
+                              "type": "string"
+                            },
+                            "contactInfoLabel": {
+                              "type": "string"
+                            },
+                            "contactInfo": {
+                              "type": "string"
+                            },
+                            "workDuration": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -3056,7 +3304,6 @@
                       "jobId": {
                         "type": "string"
                       },
-                      "job": {},
                       "jobUser": {
                         "oneOf": [
                           {
@@ -3095,6 +3342,38 @@
                       "formattedAddress": {
                         "type": "string"
                       },
+                      "workKind": {},
+                      "applyPost": {
+                        "type": "boolean"
+                      },
+                      "partTimePercentage": {
+                        "type": "integer"
+                      },
+                      "shiftWorkAmount": {
+                        "type": "integer"
+                      },
+                      "salaryVisibility": {
+                        "type": "boolean"
+                      },
+                      "introLabel": {
+                        "type": "string"
+                      },
+                      "taskLabel": {
+                        "type": "string"
+                      },
+                      "profileLabel": {
+                        "type": "string"
+                      },
+                      "offerLabel": {
+                        "type": "string"
+                      },
+                      "contactInfoLabel": {
+                        "type": "string"
+                      },
+                      "contactInfo": {
+                        "type": "string"
+                      },
+                      "workDuration": {},
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"

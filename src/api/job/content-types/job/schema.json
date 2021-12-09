@@ -23,9 +23,6 @@
       "type": "uid",
       "required": true
     },
-    "job": {
-      "type": "json"
-    },
     "jobUser": {
       "type": "relation",
       "relation": "manyToOne",
@@ -61,6 +58,42 @@
     },
     "formattedAddress": {
       "type": "string"
+    },
+    "workKind": {
+      "type": "json"
+    },
+    "applyPost": {
+      "type": "boolean"
+    },
+    "partTimePercentage": {
+      "type": "integer"
+    },
+    "shiftWorkAmount": {
+      "type": "integer"
+    },
+    "salaryVisibility": {
+      "type": "boolean"
+    },
+    "introLabel": {
+      "type": "string"
+    },
+    "taskLabel": {
+      "type": "string"
+    },
+    "profileLabel": {
+      "type": "string"
+    },
+    "offerLabel": {
+      "type": "string"
+    },
+    "contactInfoLabel": {
+      "type": "string"
+    },
+    "contactInfo": {
+      "type": "richtext"
+    },
+    "workDuration": {
+      "type": "json"
     }
   }
 }
