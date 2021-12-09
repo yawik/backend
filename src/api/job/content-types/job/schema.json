@@ -8,7 +8,11 @@
     "description": "Job advertisement. It describes the requirements for an advertised position and is aimed at applicants."
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populateCreatorFields": true,
+    "autoPK": false,
+    "autoCreatedAt": true,
+    "autoUpdatedAt": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -21,6 +25,7 @@
     },
     "jobId": {
       "type": "uid",
+      "primaryKey": true,
       "required": true
     },
     "jobUser": {

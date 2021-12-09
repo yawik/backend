@@ -52,6 +52,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           publishedAt,
           reference,
           salary,
+          salaryVisibility,
           taskLabel,
           tasks,
           workDuration,
@@ -90,6 +91,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             profileLabel: profileLabel || '',
             reference: reference || '',
             salary: salary || {},
+            salaryVisibility: salaryVisibility || true,
             taskLabel: taskLabel || '',
             tasks: tasks || '',
             workDuration: workDuration || [],
@@ -111,13 +113,24 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                   message: "Could not create User",
                 },
               };
+            } else {
+              newJob.data.jobUser = newUserCreated.id;
+              let job = await strapi.query("api::job.job").create(newJob);
+              console.log('Debug OK2');
+              return {
+                success: {
+                  job: job
+                }
+              }            
             }
-          } 
-          newJob.data.jobUser = newUserCreated.id;
-          let job = await strapi.query("api::job.job").create(newJob);
-          return {
-            success: {
-              job: job
+          } else {
+            newJob.data.jobUser = isUserExist.id;
+            let job = await strapi.query("api::job.job").create(newJob);
+            console.log('Debug OK3');
+            return {
+              success: {
+                job: job
+              }
             }
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
@@ -140,6 +153,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 },
               };
             } else {
+              console.log('Debug OK4');
               return {
                 success: {
                   job: job
@@ -149,6 +163,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           } else {
             newJob.data.jobUser = isUserExist[0].id;
             let job = await strapi.query("api::job.job").create(newJob);
+            console.log('Debug OK5');
             return {
               success: {
                 job: job

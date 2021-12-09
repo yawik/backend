@@ -5,7 +5,7 @@
     "singularName": "job-user",
     "pluralName": "job-users",
     "displayName": "JobUser",
-    "description": ""
+    "description": "Recruiter. Owner of job postings."
   },
   "options": {
     "draftAndPublish": true
