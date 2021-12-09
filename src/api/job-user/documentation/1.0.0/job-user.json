@@ -58,14 +58,6 @@
                                             "organization": {
                                               "type": "string"
                                             },
-                                            "dateCreated": {
-                                              "type": "string",
-                                              "format": "date-time"
-                                            },
-                                            "dateModified": {
-                                              "type": "string",
-                                              "format": "date-time"
-                                            },
                                             "dateDeleted": {
                                               "type": "string",
                                               "format": "date-time"
@@ -878,14 +870,6 @@
                                           "organization": {
                                             "type": "string"
                                           },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
                                           "dateDeleted": {
                                             "type": "string",
                                             "format": "date-time"
@@ -1683,14 +1667,6 @@
                                           "organization": {
                                             "type": "string"
                                           },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
                                           "dateDeleted": {
                                             "type": "string",
                                             "format": "date-time"
@@ -2411,14 +2387,6 @@
                                         "properties": {
                                           "organization": {
                                             "type": "string"
-                                          },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
                                           },
                                           "dateDeleted": {
                                             "type": "string",

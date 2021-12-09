@@ -33,9 +33,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         }
 
         const {
-          dateCreated,
-          dateModified,
-          dateDeleted,
           jobId,
           jobTitle,
           tasks,
@@ -43,8 +40,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           organization,
           intro,
           offer,
+          reference,
           salary,
-          job,
+          formattedAddress,
+          applyEmail,
+          applyUrl,
           publishedAt,
         } = ctx.request.body.data;
         
@@ -69,21 +69,20 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             tasks: tasks || '',
             offer: offer || '',
             intro: intro || '',
-            dateCreated: dateCreated || new Date(Date.now()),
-            dateModified: dateModified || "2021-12-03T15:50:41.398Z",
-            dateDeleted: dateDeleted || "2021-12-03T15:50:41.398Z",
+            reference: reference || '',
+            formattedAddress: formattedAddress || '',
+            applyEmail: applyEmail || '',
+            applyUrl: applyUrl || '',
             jobId: jobId,
-            job: job || "Bilal",
-            publishedAt: publishedAt || "2021-12-03T15:50:41.398Z",
           },
         };
 
         const sub =  userData.data.sub;
         let isUserExist =await strapi.service('api::job-user.job-user').findOneUser({sub: sub});
-
+        
         if (!isUserExist || !(isUserExist.length > 0)) {
           if (userData?.data?.sub) {
-            userData.data.publishedAt = newJob.data.publishedAt;
+            userData.data.publishedAt = new Date(Date.now());
             let newUserCreated =await strapi.query('api::job-user.job-user').create({ data: userData.data });
             if (!newUserCreated) {
               return {
@@ -104,21 +103,24 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             // todo create job owned by sub
+            newJob.data.jobUser = newUserCreated.id;
+            let jobs = await strapi.query("api::job.job").create(newJob);
             return {
-                error: {
-                  status: 0,
-                  name: "UnAuthorization",
-                  message: "UnAuthorization",
-                },
-              };    
+              success: {
+                job: jobs
+              }
+            }
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
           let jobId = newJob.data.jobId;
+          
           console.log('user  found', jobId)
           let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
           console.log(isJobExist);
           if (isJobExist && isJobExist.length > 0) {
             // todo update job
+            ctx.request.body.data.id=isJobExist.id;
+            console.log(ctx.request.body.data);
             let updateResponse = await strapi.service("api::job.job").update( ctx );
             if (!updateResponse) {
               return {

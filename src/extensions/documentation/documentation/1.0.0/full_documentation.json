@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2021-12-08T18:52:36.483Z"
+    "x-generation-date": "2021-12-09T08:10:29.951Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -71,14 +71,6 @@
                             "properties": {
                               "organization": {
                                 "type": "string"
-                              },
-                              "dateCreated": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "dateModified": {
-                                "type": "string",
-                                "format": "date-time"
                               },
                               "dateDeleted": {
                                 "type": "string",
@@ -138,14 +130,6 @@
                                                       "properties": {
                                                         "organization": {
                                                           "type": "string"
-                                                        },
-                                                        "dateCreated": {
-                                                          "type": "string",
-                                                          "format": "date-time"
-                                                        },
-                                                        "dateModified": {
-                                                          "type": "string",
-                                                          "format": "date-time"
                                                         },
                                                         "dateDeleted": {
                                                           "type": "string",
@@ -913,14 +897,6 @@
                             "organization": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
                             "dateDeleted": {
                               "type": "string",
                               "format": "date-time"
@@ -979,14 +955,6 @@
                                                     "properties": {
                                                       "organization": {
                                                         "type": "string"
-                                                      },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
                                                       },
                                                       "dateDeleted": {
                                                         "type": "string",
@@ -1672,14 +1640,6 @@
                             "organization": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
                             "dateDeleted": {
                               "type": "string",
                               "format": "date-time"
@@ -1738,14 +1698,6 @@
                                                     "properties": {
                                                       "organization": {
                                                         "type": "string"
-                                                      },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
                                                       },
                                                       "dateDeleted": {
                                                         "type": "string",
@@ -2422,14 +2374,6 @@
                             "organization": {
                               "type": "string"
                             },
-                            "dateCreated": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "dateModified": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
                             "dateDeleted": {
                               "type": "string",
                               "format": "date-time"
@@ -2488,14 +2432,6 @@
                                                     "properties": {
                                                       "organization": {
                                                         "type": "string"
-                                                      },
-                                                      "dateCreated": {
-                                                        "type": "string",
-                                                        "format": "date-time"
-                                                      },
-                                                      "dateModified": {
-                                                        "type": "string",
-                                                        "format": "date-time"
                                                       },
                                                       "dateDeleted": {
                                                         "type": "string",
@@ -3163,14 +3099,6 @@
                       "organization": {
                         "type": "string"
                       },
-                      "dateCreated": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "dateModified": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
                       "dateDeleted": {
                         "type": "string",
                         "format": "date-time"
@@ -3492,14 +3420,6 @@
                                           "properties": {
                                             "organization": {
                                               "type": "string"
-                                            },
-                                            "dateCreated": {
-                                              "type": "string",
-                                              "format": "date-time"
-                                            },
-                                            "dateModified": {
-                                              "type": "string",
-                                              "format": "date-time"
                                             },
                                             "dateDeleted": {
                                               "type": "string",
@@ -4313,14 +4233,6 @@
                                           "organization": {
                                             "type": "string"
                                           },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
                                           "dateDeleted": {
                                             "type": "string",
                                             "format": "date-time"
@@ -5118,14 +5030,6 @@
                                           "organization": {
                                             "type": "string"
                                           },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
                                           "dateDeleted": {
                                             "type": "string",
                                             "format": "date-time"
@@ -5846,14 +5750,6 @@
                                         "properties": {
                                           "organization": {
                                             "type": "string"
-                                          },
-                                          "dateCreated": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                          },
-                                          "dateModified": {
-                                            "type": "string",
-                                            "format": "date-time"
                                           },
                                           "dateDeleted": {
                                             "type": "string",

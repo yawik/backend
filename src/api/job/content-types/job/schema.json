@@ -16,12 +16,6 @@
       "type": "string",
       "maxLength": 100
     },
-    "dateCreated": {
-      "type": "datetime"
-    },
-    "dateModified": {
-      "type": "datetime"
-    },
     "dateDeleted": {
       "type": "datetime"
     },
