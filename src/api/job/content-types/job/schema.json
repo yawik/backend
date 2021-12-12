@@ -99,6 +99,13 @@
     },
     "workDuration": {
       "type": "json"
+    },
+    "html": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
