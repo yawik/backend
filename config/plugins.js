@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
   email: {
-    provider: 'smtp',
+    provider: 'strapi-provider-email-smtp',
     providerOptions: {
       host: env('EMAIL_SMTP_HOST', 'mc.cross-solution.de'), //SMTP Host
       port: env('EMAIL_SMTP_PORT', 465)   , //SMTP Port
