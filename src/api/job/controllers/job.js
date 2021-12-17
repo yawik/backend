@@ -58,8 +58,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
         } = ctx.request.body.data;
-        
-        console.log(ctx.request.body.data);
 
         if (!jobId) {
           return {
@@ -116,13 +114,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               newJob.data.jobUser = newUserCreated.id;
               let job = await strapi.query("api::job.job").create(newJob);
-
-              await strapi.plugins['email'].services.email.send({
-                to: userData.data.email,
-                subject: 'Job Created',
-                text: 'Job Created',
-                html: `<div><div>OK2 New job created: </div><div>ID:${jobs.id} </div></div>`,
-              });
                 
               return {
                 success: {
@@ -133,14 +124,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           } else {
             newJob.data.jobUser = isUserExist.id;
             let job = await strapi.query("api::job.job").create(newJob);
-            
-            await strapi.plugins['email'].services.email.send({
-              to: 'bleek@cross-solution.de',
-              subject: 'Job Created',
-              text: 'Job Created',
-              html: `<div><div>OK3 New job created: </div><div>ID:${job.id} </div></div>`,
-            });
-
             console.log(job.id, job.uuid)
 
             return {
@@ -179,14 +162,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           } else {
             newJob.data.jobUser = isUserExist[0].id;
             let job = await strapi.query("api::job.job").create(newJob);
-            
-            await strapi.plugins['email'].services.email.send({
-              to: 'bleek@cross-solution.de',
-              subject: 'Job Created',
-              text: 'Job Created',
-              html: `<div><div>OK5 New job created: </div><div>ID:${job.id} </div></div>`,
-            });
-            
             console.log('Debug OK5');
             return {
               success: {
