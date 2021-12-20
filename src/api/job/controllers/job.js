@@ -99,7 +99,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
 
         const sub =  userData.data.sub;
         let isUserExist =await strapi.service('api::job-user.job-user').findOneUser({sub: sub});
-        
+
         if (!isUserExist || !(isUserExist.length > 0)) {
           if (userData?.data?.sub) {
             let newUserCreated =await strapi.query('api::job-user.job-user').create({ data: userData.data });
@@ -114,12 +114,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               newJob.data.jobUser = newUserCreated.id;
               let job = await strapi.query("api::job.job").create(newJob);
-                
+
+              /**
+               *  Send template email
+               */
+              const _finalRes = await strapi.service('api::email.email').sendMailchimpMail({});
+              console.log("_finalRes ------------>>", _finalRes)
               return {
                 success: {
                   job: job
                 }
-              }            
+              }
             }
           } else {
             newJob.data.jobUser = isUserExist.id;
@@ -134,7 +139,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
           let jobId = newJob.data.jobId;
-          
+
           console.log('user found', jobId)
           let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
           console.log(isJobExist);
@@ -170,7 +175,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           }
         }
-        
+
       } else {
         return {
           error: {
