@@ -28,12 +28,6 @@
       "primaryKey": true,
       "required": true
     },
-    "jobUser": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::job-user.job-user",
-      "inversedBy": "jobs"
-    },
     "location": {
       "type": "json"
     },
@@ -101,11 +95,30 @@
       "type": "json"
     },
     "html": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "jobs"
+    },
+    "country": {
+      "type": "string"
+    },
+    "remoteWork": {
+      "type": "boolean"
+    },
+    "remoteWorkPercentage": {
+      "type": "integer"
+    },
+    "acceptTerms": {
+      "type": "boolean"
     }
   }
 }

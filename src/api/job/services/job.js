@@ -4,6 +4,8 @@
  * job service.
  */
 
+const _ = require('lodash/fp');
+
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::job.job', ({ strapi }) =>  ({
@@ -17,15 +19,32 @@ module.exports = createCoreService('api::job.job', ({ strapi }) =>  ({
   
       return response
     },
-  
-    // Method 2: Wrapping a core service (leaves core logic in place)
     
-    // Method 3: Replacing a core service
+    /**
+     * Promise to edit a/an job.
+     * @return {Promise}
+     */
+    async edit(id, data) {
+      if ( _.isPlainObject(id) === false ) {
+        console.log('id NO OBJECT');
+      }
+      
+      if ( _.isPlainObject(data) === false ) {
+        console.log('data NO OBJECT');
+      }
+    
+      console.log('UPDATE', id, data );
+      
+      return strapi
+        .query('api::job.job')
+        .update(id, data);
+    },
+
+  
     async JobFindOne(filters) {
         const entries = await strapi.entityService.findMany('api::job.job', {
             filters: filters,
         });
         return entries
-    //   return strapi.entityService.findOne('api::job.job', jobId);
     }
   }));

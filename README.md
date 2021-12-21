@@ -17,6 +17,8 @@ yarn dev
 
 ## Environment
 
+copy .env.example  to .env and modify values
+
 you can start a development env with `yarn dev`. If you need to test against
 staging or production you can start all environments locally by:
 
