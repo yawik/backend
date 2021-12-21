@@ -93,16 +93,23 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             taskLabel: taskLabel || '',
             tasks: tasks || '',
             workDuration: workDuration || [],
-            workKind: workKind || [],
+            workKind: workKind || []
           },
         };
 
         const sub =  userData.data.sub;
-        let isUserExist =await strapi.service('api::job-user.job-user').findOneUser({sub: sub});
+        let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
+        console.log('UserData: ', userData.data, strapiUser);
         
-        if (!isUserExist || !(isUserExist.length > 0)) {
-          if (userData?.data?.sub) {
-            let newUserCreated =await strapi.query('api::job-user.job-user').create({ data: userData.data });
+        if (!strapiUser) {
+          console.log('Create User');
+          if (userData?.data?.sub) {            
+            let newUserCreated = await strapi.service('plugin::users-permissions.user').add(
+            {
+              sub: sub,
+              email: userData.data.email,
+              username: userData.data.name
+            });
             if (!newUserCreated) {
               return {
                 error: {
@@ -112,7 +119,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 },
               };
             } else {
-              newJob.data.jobUser = newUserCreated.id;
+              newJob.data.user = newUserCreated.id;
               let job = await strapi.query("api::job.job").create(newJob);
                 
               return {
@@ -122,7 +129,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               }            
             }
           } else {
-            newJob.data.jobUser = isUserExist.id;
+            console.log('USER found');          
+            newJob.data.user = strapiUser.id;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log(job.id, job.uuid)
 
@@ -137,18 +145,18 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           
           console.log('user found', jobId)
           let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
-          console.log(isJobExist);
-          if (isJobExist && isJobExist.length > 0) {
+          console.log("Job found !!!!!!", isJobExist);
+          if (isJobExist && isJobExist.length>0) {
             // todo update job
-            ctx.request.body.data.id=isJobExist.id;
-            console.log(ctx.request.body.data);
-            let updateResponse = await strapi.service("api::job.job").update( ctx );
+            let data = ctx.request.body.data;
+            console.log("CTX", data );
+            let updateResponse = await strapi.service("api::job.job").edit({id: isJobExist[0].id}, { jobTitle: data.jobTitle } );
             if (!updateResponse) {
               return {
                 error: {
                     status: 5001,
                     name: "update_failed",
-                    message: "Job " + jobId + " already Exist",
+                    message: "Job " + jobId + " already Exist!",
                 },
               };
             } else {
@@ -160,7 +168,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               }
             }
           } else {
-            newJob.data.jobUser = isUserExist[0].id;
+            console.log('Debug OK5', strapiUser);
+            newJob.data.user = strapiUser.id;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log('Debug OK5');
             return {
@@ -186,7 +195,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         error: {
           status: 5000,
           name: "internal_error",
-          message: "Internal Server Error",
+          message: " " + e,
         },
       };
     }
