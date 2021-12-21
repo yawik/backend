@@ -114,12 +114,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               newJob.data.jobUser = newUserCreated.id;
               let job = await strapi.query("api::job.job").create(newJob);
-
-              /**
-               *  Send template email
-               */
-              const _finalRes = await strapi.service('api::email.email').sendMailchimpMail({});
-              console.log("_finalRes ------------>>", _finalRes)
               return {
                 success: {
                   job: job
