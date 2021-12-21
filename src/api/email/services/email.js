@@ -12,7 +12,7 @@ module.exports = createCoreService('api::job.job', ({ strapi }) =>({
     const mailchimpClient = require('@mailchimp/mailchimp_transactional')(process.env.MAILCHIMP);
     let messageBody = {
       subject: subject,
-      from_email: "bleek@cross-solution.de",
+      from_email: "contact@yawik.org",
       important: true,
       merge: true,
       merge_language: "handlebars",
