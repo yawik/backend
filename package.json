@@ -7,9 +7,12 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
+    "build:mail": "./node_modules/.bin/mjml ./mjml/job-created.mjml --config.filePath ./mjml/partials/ --output ./mjml/job-created.html",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mjml": "^4.11.0"
+  },
   "dependencies": {
     "@mailchimp/mailchimp_transactional": "^1.0.46",
     "@strapi/plugin-documentation": "4.0.0",

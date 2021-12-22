@@ -1,0 +1,12 @@
+<mj-section>
+
+  <mj-column>
+    <mj-text>
+      <p>
+        Diese Mail wurde versendet vom <a href="https://jobwizard.yawik.org">jobwizard </a>.
+        Ein Yawik Service.
+      </p>
+    </mj-text>
+  </mj-column>
+
+</mj-section>

@@ -1,0 +1,9 @@
+<mj-head>
+  <mj-title>
+   Jobwizard {{jobTitle}}
+  </mj-title>
+  <mj-attributes>
+    <mj-text align="center" color="#555" />
+    <mj-all font-family="Arial" />
+  </mj-attributes>
+</mj-head>

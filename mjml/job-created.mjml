@@ -1,0 +1,19 @@
+<mjml>
+
+  <mj-include path="./head.mjml" />
+
+  <mj-body background-color="#eee">
+
+    <mj-section>
+      <mj-column>
+        <mj-text> 
+          <h2>Stellenanzeige angelegt: {{jobTitle}}</h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-include path="./footer.mjml" />
+
+  </mj-body>
+
+</mjml>
