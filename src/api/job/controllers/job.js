@@ -1,11 +1,38 @@
 "use strict";
 const axios = require("axios");
+const fs = require("fs");
 
 /**
  *  job controller
  */
 
 const { createCoreController } = require("@strapi/strapi").factories;
+
+/**
+ * INFO: Upload html file to locally for job
+ * @param {*} strapi
+ * @param {Object} file
+ * @param {String} refId
+ * @returns File reference object
+ */
+const uploadHtml = async (strapi, file, refId) => {
+  const fileStat = fs.statSync(file.path);
+  const _upload = await strapi.plugins.upload.services.upload.upload({
+    data: {
+      refId: refId,
+      ref: "job",
+      field: "html",
+    },
+    files: {
+      path: file.path,
+      name: file.name,
+      type: file.type,
+      size: fileStat.size,
+    },
+  });
+  console.log("_upload ====--------=====------>> ", _upload)
+  return _upload;
+}
 
 module.exports = createCoreController("api::job.job", ({ strapi }) => ({
   async create(ctx) {
@@ -57,6 +84,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           tasks,
           workDuration,
           workKind,
+          html
         } = ctx.request.body.data;
 
         if (!jobId) {
@@ -100,10 +128,10 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         const sub =  userData.data.sub;
         let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
         console.log('UserData: ', userData.data, strapiUser);
-        
+
         if (!strapiUser) {
           console.log('Create User');
-          if (userData?.data?.sub) {            
+          if (userData?.data?.sub) {
             let newUserCreated = await strapi.service('plugin::users-permissions.user').add(
             {
               sub: sub,
@@ -119,7 +147,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 },
               };
             } else {
+              let _html;
+              let file = ctx.request.files;
+              if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+                file = file.html;
+                _html = await uploadHtml(strapi, file, jobId);
+              } else if (html && Object.keys(html).length > 0) {
+                file = html;
+                _html = await uploadHtml(strapi, file, jobId);
+              }
               newJob.data.user = newUserCreated.id;
+              newJob.data.html = _html;
               let job = await strapi.query("api::job.job").create(newJob);
               return {
                 success: {
@@ -128,7 +166,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               }
             }
           } else {
-            console.log('USER found');          
+            console.log('USER found');
             newJob.data.user = strapiUser.id;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log(job.id, job.uuid)
