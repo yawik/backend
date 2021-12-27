@@ -58,7 +58,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-
+        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data): {};
         const {
           applyEmail,
           applyPost,
@@ -85,7 +85,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
           html
-        } = ctx.request.body.data;
+        } = bodyData;
 
         if (!jobId) {
           return {
@@ -179,7 +179,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             newJob.data.user = strapiUser.id;
             newJob.data.html = _html;
             let job = await strapi.query("api::job.job").create(newJob);
-            console.log(job.id, job.uuid)
 
             return {
               success: {
