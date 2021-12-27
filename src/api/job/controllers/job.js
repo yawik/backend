@@ -167,7 +167,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('USER found');
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
             newJob.data.user = strapiUser.id;
+            newJob.data.html = _html;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log(job.id, job.uuid)
 
@@ -187,6 +197,16 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             // todo update job
             let data = ctx.request.body.data;
             console.log("CTX", data );
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
+            newJob.data.html = _html;
             let updateResponse = await strapi.service("api::job.job").edit({id: isJobExist[0].id}, { jobTitle: data.jobTitle } );
             if (!updateResponse) {
               return {
@@ -206,7 +226,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('Debug OK5', strapiUser);
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
             newJob.data.user = strapiUser.id;
+            newJob.data.html = _html;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log('Debug OK5');
             return {
