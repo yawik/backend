@@ -1,3 +1,8 @@
+<!--
+
+mail is sent to the review team.
+ 
+-->
 <mjml>
 
   <mj-include path="./head.mjml" />
@@ -9,6 +14,14 @@
         <mj-text> 
           <h2>Stellenanzeige angelegt: {{jobTitle}}</h2>
         </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
+          Zur Stellenanzeige {{ link }}
+        </mj-button>
       </mj-column>
     </mj-section>
 

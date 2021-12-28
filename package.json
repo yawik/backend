@@ -7,7 +7,7 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "build:mail": "./node_modules/.bin/mjml ./mjml/job-created.mjml --config.filePath ./mjml/partials/ --output ./mjml/job-created.html",
+    "build:mail": "./node_modules/.bin/mjml ./mjml/de/job-created.mjml --config.filePath ./mjml/de/partials/ --output ./mjml/de/job-created.html",
     "strapi": "strapi"
   },
   "devDependencies": {
