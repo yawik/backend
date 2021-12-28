@@ -58,7 +58,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-
+        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data): {};
         const {
           applyEmail,
           applyPost,
@@ -85,7 +85,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
           html
-        } = ctx.request.body.data;
+        } = bodyData;
 
         if (!jobId) {
           return {
@@ -167,9 +167,18 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('USER found');
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
             newJob.data.user = strapiUser.id;
+            newJob.data.html = _html;
             let job = await strapi.query("api::job.job").create(newJob);
-            console.log(job.id, job.uuid)
 
             return {
               success: {
@@ -187,6 +196,16 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             // todo update job
             let data = ctx.request.body.data;
             console.log("CTX", data );
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
+            newJob.data.html = _html;
             let updateResponse = await strapi.service("api::job.job").edit({id: isJobExist[0].id}, { jobTitle: data.jobTitle } );
             if (!updateResponse) {
               return {
@@ -206,7 +225,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('Debug OK5', strapiUser);
+            let _html;
+            let file = ctx.request.files;
+            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              _html = await uploadHtml(strapi, file, jobId);
+            }
             newJob.data.user = strapiUser.id;
+            newJob.data.html = _html;
             let job = await strapi.query("api::job.job").create(newJob);
             console.log('Debug OK5');
             return {
