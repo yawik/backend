@@ -12,15 +12,15 @@ mail is sent to the review team.
     <mj-section>
       <mj-column>
         <mj-text> 
-          <h2>Stellenanzeige angelegt: {{jobTitle}}</h2>
+          <h2>Stellenanzeige angelegt: <span mc:edit="jobTitle">default job title</span></h2>
         </mj-text>
       </mj-column>
     </mj-section>
 
     <mj-section>
       <mj-column>
-        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
-          Zur Stellenanzeige {{ link }}
+        <mj-button href="*|link|*" font-family="Helvetica" background-color="#f45e43" color="white">
+          Zur Stellenanzeige
         </mj-button>
       </mj-column>
     </mj-section>

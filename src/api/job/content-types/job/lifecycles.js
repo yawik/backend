@@ -11,10 +11,16 @@ module.exports = {
       const _mergeContent = [
         { name: "Language", content: "en" }
       ]
+      
+      if (data && data.result)
+        console.log("data.result------>>", data.result)     
       if (data && data.result && data.result.jobTitle)
         _mergeContent.push({ name: "jobTitle", content: data.result.jobTitle })
       if (data && data.result && data.result.html)
         _mergeContent.push({ name: "link", content: data.result.html })
+        
+      // there is no link in data set. Let's test with an hardcoded url  
+      _mergeContent.push({ name: "link", content: 'https://jobwizard.yawik.org' })
       const _finalRes = await strapi.service('api::email.email')
         .sendMailchimpMail('Job Created', 'contact@yawik.org', 'yawik-default', _mergeContent);
 
