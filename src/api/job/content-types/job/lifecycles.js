@@ -8,8 +8,15 @@ module.exports = {
        * @param {String} template
        * @param {Array} mergeTags --> Need to send language based on country or region of reciever user
        */
+      const _mergeContent = [
+        { name: "Language", content: "en" }
+      ]
+      if (data && data.result && data.result.jobTitle)
+        _mergeContent.push({ name: "jobTitle", content: data.result.jobTitle })
+      if (data && data.result && data.result.html)
+        _mergeContent.push({ name: "link", content: data.result.html })
       const _finalRes = await strapi.service('api::email.email')
-        .sendMailchimpMail('Job Created', 'contact@yawik.org', 'yawik-default', [{ name: "Language", content: "en" }]);
+        .sendMailchimpMail('Job Created', 'contact@yawik.org', 'yawik-default', _mergeContent);
 
       console.log("_finalRes in lifecycle =====------=====------>>", _finalRes)
         // await strapi.plugins['email'].services.email.send({

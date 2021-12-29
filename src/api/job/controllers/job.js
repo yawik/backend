@@ -149,7 +149,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               let _html;
               let file = ctx.request.files;
-              if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
                 file = file.html;
                 _html = await uploadHtml(strapi, file, jobId);
               } else if (html && Object.keys(html).length > 0) {
@@ -169,7 +169,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log('USER found');
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {
@@ -198,7 +198,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log("CTX", data );
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {
@@ -227,7 +227,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log('Debug OK5', strapiUser);
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {
