@@ -22,7 +22,7 @@ module.exports = {
       // there is no link in data set. Let's test with an hardcoded url  
       _mergeContent.push({ name: "link", content: 'https://jobwizard.yawik.org' })
       const _finalRes = await strapi.service('api::email.email')
-        .sendMailchimpMail('Job Created', 'contact@yawik.org', 'yawik-default', _mergeContent);
+        .sendMailchimpMail('Job Created', 'contact@yawik.org', 'de-job-created-check', _mergeContent);
 
       console.log("_finalRes in lifecycle =====------=====------>>", _finalRes)
         // await strapi.plugins['email'].services.email.send({

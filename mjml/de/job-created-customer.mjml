@@ -19,12 +19,11 @@ mail is sent to the review team.
 	    Hallo <span mc:edit="firstname">firstname</span> <span mc:edit="lastname">lastname</span>,
           </p>
           <p>
-            ihre Stellenanzeige <b><span mc:edit="jobTitle">jobTitle</span> wurde veröffenlticht. Wir 
-            wünschen ihnen viel Erfolg bei der Besetzung der offenen Position.
+            ihre Stellenanzeige ist bei uns angekommen. Sie wird von uns kurz &uuml;berpr&uuml;ft 
+            und dann freigeschaltet. Wir informieren Sie, wenn die Anzeige online ist.
           </p>
-          <p>
-            Ihr Yawik Service
-          </p>
+          <h2>Titel: <span mc:edit="jobTitle">default job title</span></h2>
+          <h2>Firma: <span mc:edit="companyname">companyname AG</span></h2>
         </mj-text>
       </mj-column>
     </mj-section>

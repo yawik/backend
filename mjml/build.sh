@@ -2,4 +2,10 @@
 
 MJML=../node_modules/.bin/mjml
 
-$MJML ./de/job-created.mjml --config.filePath ./de/partials/ --output ./de/job-created.html
+
+for file in `ls -1 de/*.mjml`
+do 
+  $MJML ${file%.*}.mjml --config.filePath ./de/partials/ --output ${file%.*}.html
+done
+
+
