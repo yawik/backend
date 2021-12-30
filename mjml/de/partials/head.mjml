@@ -1,9 +1,19 @@
 <mj-head>
   <mj-title>
-   Jobwizard {{jobTitle}}
+   Jobwizard: {{jobTitle}}
   </mj-title>
+
+  <mj-preview>Neue Stellenanzeige</mj-preview>
+
   <mj-attributes>
     <mj-text align="center" color="#555" />
     <mj-all font-family="Arial" />
+    <mj-class name="color-secondary" color="#FAA427" />
   </mj-attributes>
+
+  <mj-html-attributes>
+    <mj-selector path=".primary div">
+      <mj-html-attribute name="data-id">#5498D7</mj-html-attribute>
+    </mj-selector>
+  </mj-html-attributes>
 </mj-head>

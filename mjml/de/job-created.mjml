@@ -9,17 +9,28 @@ mail is sent to the review team.
 
   <mj-body background-color="#eee">
 
-    <mj-section>
+    <mj-include path="./header.mjml" />
+
+    <mj-section background-color="#fff">
+
       <mj-column>
-        <mj-text> 
-          <h2>Stellenanzeige angelegt: <span mc:edit="jobTitle">default job title</span></h2>
+        <mj-text align="left">
+          <p>
+	    Hallo <span mc:edit="firstname">firstname</span> <span mc:edit="lastname">lastname</span>,
+          </p>
+          <p>
+            ihre Stellenanzeige ist bei uns angekommen. Sie wird von uns kurz &uuml;berpr&uuml;ft 
+            und dann freigeschaltet. Wir informieren Sie, wenn die Anzeige online ist.
+          </p>
+          <h2>Titel: <span mc:edit="jobTitle">default job title</span></h2>
+          <h2>Firma: <span mc:edit="companyname">companyname AG</span></h2>
         </mj-text>
       </mj-column>
     </mj-section>
 
-    <mj-section>
+    <mj-section background-color="#fff">
       <mj-column>
-        <mj-button href="*|link|*" font-family="Helvetica" background-color="#f45e43" color="white">
+        <mj-button href="*|link|*" font-family="Helvetica" background-color="#5498D7" color="white">
           Zur Stellenanzeige
         </mj-button>
       </mj-column>
