@@ -1,6 +1,7 @@
 "use strict";
 const axios = require("axios");
 const fs = require("fs");
+const authUrl = "https://sso.cross-solution.de/auth/realms/YAWIK/protocol/openid-connect/userinfo";
 
 /**
  *  job controller
@@ -44,7 +45,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: "https://sso.cross-solution.de/auth/realms/YAWIK/protocol/openid-connect/userinfo",
+          url: authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
@@ -266,4 +267,62 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       };
     }
   },
+  async find(ctx) {
+    try {
+      if (
+        ctx.request &&
+        ctx.request.header &&
+        ctx.request.header.authorization
+      ) {
+        const userData = await axios({
+          method: "GET",
+          url: authUrl,
+          headers: {
+            Authorization: ctx.request.header.authorization,
+          },
+        });
+        if (userData?.data?.sub) {
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
+          if (strapiUser && strapiUser.id) {
+            let job = await strapi.service("api::job.job").find({ user: strapiUser.id });
+            return {
+              success: {
+                job: job
+              }
+            }
+          } else {
+            let job = await strapi.service("api::job.job").find();
+            return {
+              success: {
+                job: job
+              }
+            }
+          }
+        } else {
+          let job = await strapi.service("api::job.job").find();
+          return {
+            success: {
+              job: job
+            }
+          }
+        }
+      } else {
+        let job = await strapi.service("api::job.job").find();
+        return {
+          success: {
+            job: job
+          }
+        }
+      }
+    } catch (e) {
+      console.log("xxx eee =======================", e)
+      return {
+        error: {
+          status: 5000,
+          name: "internal_error",
+          message: " " + e,
+        },
+      };
+    }
+  }
 }));
