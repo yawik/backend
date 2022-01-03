@@ -307,10 +307,15 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           }
         }
       } else {
-        let job = await strapi.service("api::job.job").find();
+        let job = await strapi.service("api::job.job").find(ctx.query);
+
         return {
-          success: {
-            job: job
+          data: job.results.map( val => {
+            console.log(val);
+            return { id: val.id, attributes: val };
+          },jobs.results),
+          meta: {
+            pagination: job.pagination,
           }
         }
       }
