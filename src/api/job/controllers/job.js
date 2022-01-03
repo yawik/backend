@@ -1,6 +1,7 @@
 "use strict";
 const axios = require("axios");
 const fs = require("fs");
+const authUrl = "https://sso.cross-solution.de/auth/realms/YAWIK/protocol/openid-connect/userinfo";
 
 /**
  *  job controller
@@ -44,7 +45,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: "https://sso.cross-solution.de/auth/realms/YAWIK/protocol/openid-connect/userinfo",
+          url: process.env.auth_url ? process.env.auth_url: authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
@@ -206,7 +207,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               _html = await uploadHtml(strapi, file, jobId);
             }
             newJob.data.html = _html;
-            let updateResponse = await strapi.service("api::job.job").edit({id: isJobExist[0].id}, { jobTitle: data.jobTitle } );
+            let updateResponse = await strapi.service("api::job.job").edit(isJobExist[0].id, newJob);
             if (!updateResponse) {
               return {
                 error: {
@@ -219,7 +220,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               console.log('Debug OK4');
               return {
                 success: {
-                  job: job
+                  job: updateResponse
                 }
               }
             }
