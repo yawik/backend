@@ -16,7 +16,7 @@ mail is sent to the review team.
       <mj-column>
         <mj-text align="left">
           <p>
-	    Hallo <span mc:edit="firstname">firstname</span> <span mc:edit="lastname">lastname</span>,
+	    Hallo <span mc:edit="username">firstname lastname</span>,
           </p>
           <p>
             ihre Stellenanzeige ist bei uns angekommen. Sie wird von uns kurz &uuml;berpr&uuml;ft 
