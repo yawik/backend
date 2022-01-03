@@ -45,7 +45,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: process.env.auth_url ? process.env.auth_url: authUrl,
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
@@ -86,14 +86,16 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
           html
-        } = bodyData;
+        } = JSON.parse(bodyData);
+        
+        console.log(JSON.parse(bodyData));
 
         if (!jobId) {
           return {
             error: {
               status: 4002,
               name: "no_job_id",
-              message: "Request requires a uuid jobId" + jobId,
+              message: "Request requires a uuid jobId " + jobId,
             },
           };
         }
