@@ -14,8 +14,12 @@ module.exports = {
         { name: "Language", content: "en" }
       ]
 
-      if (data && data.result && data.result.jobTitle)
+      if (data && data.result && data.result.jobTitle) {
         _mergeContent.push({ name: "jobTitle", content: data.result.jobTitle })
+      }
+      if (data && data.result && data.result.organization) {
+        _mergeContent.push({ name: "companyname", content: data.result.organization })
+      }
       if (data?.params?.data?.html) {
         let _htmlFile = data?.params?.data?.html;
         _htmlFile = _htmlFile && _htmlFile.length && _htmlFile[0].url;
