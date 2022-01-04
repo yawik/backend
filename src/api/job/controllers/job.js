@@ -287,11 +287,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           console.log('authenticated user', strapiUser.id);
           if (strapiUser && strapiUser.id) {
-            let query = ctx.query;
-            query.where = { user: strapiUser.id, jobTitle: 'CROSS Solution' }
-            let job = await strapi.service("api::job.job").find(query);
-            console.log('jobs by user', job);
-            console.log('QUERY', ctx.query);
+            ctx.query = { ...ctx.query, filters: {user: strapiUser.id} }
+            let job = await strapi.service("api::job.job").find(ctx.query);
             return {
               data: job.results.map( val => {
                 return { id: val.id, attributes: val };
@@ -324,10 +321,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         }
       } else {
         let job = await strapi.service("api::job.job").find(ctx.query);
-        console.log("CTX", ctx.request, )
         return {
           data: job.results.map( val => {
-            console.log(val);
             return { id: val.id, attributes: val };
           },job.results),
           meta: {
@@ -362,10 +357,9 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           },
         });
         if (userData?.data?.sub) {
-          console.log(ctx);
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           if (strapiUser && strapiUser.id) {
-            let job = await strapi.service("api::job.job").findOne({ jobId: strapiUser.id });
+            let job = await strapi.service("api::job.job").findOne(ctx.query);
             return {
               success: {
                 job: job
@@ -389,10 +383,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         }
       } else {
         let job = await strapi.service("api::job.job").find(ctx.query);
-        console.log("CTX", ctx.request)
         return {
           data: job.results.map( val => {
-            console.log(val);
             return { id: val.id, attributes: val };
           },job.results),
           meta: {
