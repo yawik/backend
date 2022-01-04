@@ -313,7 +313,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           data: job.results.map( val => {
             console.log(val);
             return { id: val.id, attributes: val };
-          },jobs.results),
+          },job.results),
           meta: {
             pagination: job.pagination,
           }
