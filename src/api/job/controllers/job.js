@@ -87,7 +87,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workKind,
           html
         } = JSON.parse(bodyData);
-        
+
         console.log(JSON.parse(bodyData));
 
         if (!jobId) {
@@ -278,42 +278,38 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: authUrl,
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
         });
         if (userData?.data?.sub) {
-          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData?.data?.sub});
           if (strapiUser && strapiUser.id) {
             let job = await strapi.service("api::job.job").find({ user: strapiUser.id });
             return {
-              success: {
-                job: job
-              }
+              data: job?.results,
+              meta: { pagination: job?.pagination }
             }
           } else {
             let job = await strapi.service("api::job.job").find();
             return {
-              success: {
-                job: job
-              }
+              data: job?.results,
+              meta: { pagination: job?.pagination }
             }
           }
         } else {
           let job = await strapi.service("api::job.job").find();
           return {
-            success: {
-              job: job
-            }
+            data: job?.results,
+            meta: { pagination: job?.pagination }
           }
         }
       } else {
         let job = await strapi.service("api::job.job").find();
         return {
-          success: {
-            job: job
-          }
+          data: job?.results,
+          meta: { pagination: job?.pagination }
         }
       }
     } catch (e) {
