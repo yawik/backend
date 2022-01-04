@@ -45,7 +45,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: process.env.auth_url ? process.env.auth_url: authUrl,
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
@@ -59,7 +59,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data): {};
+        const bodyData = ctx.request.body && ctx.request.body.data ? ctx.request.body.data : {};
         const {
           applyEmail,
           applyPost,
@@ -86,14 +86,16 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
           html
-        } = bodyData;
+        } = JSON.parse(bodyData);
+        
+        console.log(JSON.parse(bodyData));
 
         if (!jobId) {
           return {
             error: {
               status: 4002,
               name: "no_job_id",
-              message: "Request requires a uuid jobId" + jobId,
+              message: "Request requires a uuid jobId " + jobId,
             },
           };
         }
@@ -207,7 +209,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               _html = await uploadHtml(strapi, file, jobId);
             }
             newJob.data.html = _html;
-            let updateResponse = await strapi.service("api::job.job").edit(isJobExist[0].id, newJob);
+            let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
             if (!updateResponse) {
               return {
                 error: {
