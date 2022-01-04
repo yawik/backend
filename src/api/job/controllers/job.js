@@ -284,9 +284,88 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           },
         });
         if (userData?.data?.sub) {
-          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
+          console.log('authenticated user', strapiUser.id);
           if (strapiUser && strapiUser.id) {
-            let job = await strapi.service("api::job.job").find({ user: strapiUser.id });
+            let query = ctx.query;
+            query.where = { user: strapiUser.id, jobTitle: 'CROSS Solution' }
+            let job = await strapi.service("api::job.job").find(query);
+            console.log('jobs by user', job);
+            console.log('QUERY', ctx.query);
+            return {
+              data: job.results.map( val => {
+                return { id: val.id, attributes: val };
+              },job.results),
+              meta: {
+                pagination: job.pagination,
+              }
+            }
+          } else {
+            let job = await strapi.service("api::job.job").find();
+            return {
+              data: job.results.map( val => {
+                return { id: val.id, attributes: val };
+              },job.results),
+              meta: {
+                pagination: job.pagination,
+              }
+            }
+          }
+        } else {
+          let job = await strapi.service("api::job.job").find();
+          return {
+            data: job.results.map( val => {
+              return { id: val.id, attributes: val };
+            },job.results),
+            meta: {
+              pagination: job.pagination,
+            }
+          }
+        }
+      } else {
+        let job = await strapi.service("api::job.job").find(ctx.query);
+        console.log("CTX", ctx.request, )
+        return {
+          data: job.results.map( val => {
+            console.log(val);
+            return { id: val.id, attributes: val };
+          },job.results),
+          meta: {
+            pagination: job.pagination,
+          }
+        }
+      }
+    } catch (e) {
+      console.log("xxx eee =======================", e)
+      return {
+        error: {
+          status: 5000,
+          name: "internal_error",
+          message: " " + e,
+        },
+      };
+    }
+  },
+  async findOne(ctx) {
+    try {
+      if (
+        ctx.request &&
+        ctx.request.header &&
+        ctx.request.header.authorization
+      ) {
+        console.log("START findOne", ctx);
+        const userData = await axios({
+          method: "GET",
+          url: authUrl,
+          headers: {
+            Authorization: ctx.request.header.authorization,
+          },
+        });
+        if (userData?.data?.sub) {
+          console.log(ctx);
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
+          if (strapiUser && strapiUser.id) {
+            let job = await strapi.service("api::job.job").findOne({ jobId: strapiUser.id });
             return {
               success: {
                 job: job
@@ -310,7 +389,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         }
       } else {
         let job = await strapi.service("api::job.job").find(ctx.query);
-
+        console.log("CTX", ctx.request)
         return {
           data: job.results.map( val => {
             console.log(val);

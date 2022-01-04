@@ -12,8 +12,11 @@ module.exports = createCoreRouter('api::job.job',{
       find: {
         auth: false
       },
+      findOne: {
+        auth: false
+      },
       create: {
         auth: false
-      },   
+      }
     }
   });
