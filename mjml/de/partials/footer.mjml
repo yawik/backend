@@ -1,11 +1,10 @@
 <mj-section>
 
   <mj-column>
+    <mj-divider border-color="#FAA427"></mj-divider>
     <mj-text>
-      <p>
-        Diese Mail wurde versendet vom <a href="https://jobwizard.yawik.org">jobwizard </a>.
-        Ein Yawik Service.
-      </p>
+      Diese Mail wurde versendet vom <a href="https://jobwizard.yawik.org">jobwizard </a>.
+      Ein Yawik Service.
     </mj-text>
   </mj-column>
 

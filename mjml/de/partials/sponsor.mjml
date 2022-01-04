@@ -1,0 +1,14 @@
+<mj-section>
+
+  <mj-column>
+    <mj-divider border-color="#FAA427"></mj-divider>
+    <mj-text>
+      Dieser Service ist kostenlos. Sie k&ouml;nnen diesen Dienst einmalig oder
+      monatlich per Github Sponsors unterst&uuml;tzen. 
+    </mj-text>
+    <mj-button font-family="Helvetica" background-color="#f45e43" href="https://github.com/sponsors/cbleek" color="white">
+      Github Sponsors
+    </mj-button>
+  </mj-column>
+
+</mj-section>

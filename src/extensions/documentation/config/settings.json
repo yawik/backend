@@ -1,0 +1,17 @@
+{
+  "info": {
+    "version": "1.0.0",
+    "title": "jobwizard",
+    "description": "create, manage and publish jobpostings. Can be used with the https://jobwizard.yawik.org/de frontend ",
+    "termsOfService": "",
+    "contact": {
+      "name": "yawik",
+      "email": "contact@yawik.org",
+      "url": "jobwizatd.yawik.org"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://gitlab.com/yawik/jobwizard/-/blob/master/LICENSE"
+    }
+  }
+}

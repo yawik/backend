@@ -45,7 +45,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       ) {
         const userData = await axios({
           method: "GET",
-          url: authUrl,
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
           headers: {
             Authorization: ctx.request.header.authorization,
           },
@@ -59,7 +59,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data): {};
+        const bodyData = ctx.request.body && ctx.request.body.data ? ctx.request.body.data : {};
         const {
           applyEmail,
           applyPost,
@@ -86,14 +86,16 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           workDuration,
           workKind,
           html
-        } = bodyData;
+        } = JSON.parse(bodyData);
+        
+        console.log(JSON.parse(bodyData));
 
         if (!jobId) {
           return {
             error: {
               status: 4002,
               name: "no_job_id",
-              message: "Request requires a uuid jobId" + jobId,
+              message: "Request requires a uuid jobId " + jobId,
             },
           };
         }
@@ -150,7 +152,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             } else {
               let _html;
               let file = ctx.request.files;
-              if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
                 file = file.html;
                 _html = await uploadHtml(strapi, file, jobId);
               } else if (html && Object.keys(html).length > 0) {
@@ -170,7 +172,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log('USER found');
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {
@@ -199,7 +201,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log("CTX", data );
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {
@@ -207,7 +209,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               _html = await uploadHtml(strapi, file, jobId);
             }
             newJob.data.html = _html;
-            let updateResponse = await strapi.service("api::job.job").edit({id: isJobExist[0].id}, { jobTitle: data.jobTitle } );
+            let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
             if (!updateResponse) {
               return {
                 error: {
@@ -220,7 +222,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               console.log('Debug OK4');
               return {
                 success: {
-                  job: job
+                  job: updateResponse
                 }
               }
             }
@@ -228,7 +230,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             console.log('Debug OK5', strapiUser);
             let _html;
             let file = ctx.request.files;
-            if (Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
               file = file.html;
               _html = await uploadHtml(strapi, file, jobId);
             } else if (html && Object.keys(html).length > 0) {

@@ -25,19 +25,10 @@ module.exports = createCoreService('api::job.job', ({ strapi }) =>  ({
      * @return {Promise}
      */
     async edit(id, data) {
-      if ( _.isPlainObject(id) === false ) {
-        console.log('id NO OBJECT');
-      }
-      
-      if ( _.isPlainObject(data) === false ) {
+      if (_.isPlainObject(data) === false) {
         console.log('data NO OBJECT');
       }
-    
-      console.log('UPDATE', id, data );
-      
-      return strapi
-        .query('api::job.job')
-        .update(id, data);
+      return await strapi.query('api::job.job').update({ where: { id }, ...data });
     },
 
   
