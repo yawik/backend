@@ -222,7 +222,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               console.log('Debug OK4');
               return {
                 success: {
-                  job: job
+                  job: updateResponse
                 }
               }
             }
