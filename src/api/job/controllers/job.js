@@ -287,7 +287,14 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           console.log('authenticated user', strapiUser.id);
           if (strapiUser && strapiUser.id) {
-            ctx.query = { ...ctx.query, filters: {user: strapiUser.id} }
+            ctx.query = { 
+              ...ctx.query, 
+              publicationState: 'preview',
+              filters: {
+                user: strapiUser.id
+              } 
+            }
+            console.log('authenticated user', strapiUser.id, ctx.query);
             let job = await strapi.service("api::job.job").find(ctx.query);
             return {
               data: job.results.map( val => {
