@@ -72,6 +72,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           jobId,
           jobTitle,
           location,
+          meta,
           offer,
           offerLabel,
           organization,
@@ -113,6 +114,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             jobId: jobId,
             jobTitle: jobTitle || '',
             location: location || {},
+            meta: meta || {},
             offer: offer || '',
             offerLabel: offerLabel || '',
             organization: organization || '',
@@ -275,7 +277,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request &&
         ctx.request.header &&
         ctx.request.header.authorization
-      ) {
+      ) {  
         const userData = await axios({
           method: "GET",
           url: authUrl,
@@ -417,5 +419,171 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         },
       };
     }
+  },
+  async update(ctx) {
+    const { id } = ctx.params;
+    try {
+      if (
+        ctx.request &&
+        ctx.request.header &&
+        ctx.request.header.authorization
+      ) {
+        console.log("START update", ctx);
+        const userData = await axios({
+          method: "GET",
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
+          headers: {
+            Authorization: ctx.request.header.authorization,
+          },
+        });
+        if (!userData || userData.data && userData.data.error) {
+          return {
+            error: {
+              status: 4001,
+              name: "invalid_token",
+              message: "Token verification failed",
+            },
+          };
+        }
+        const bodyData = ctx.request.body && ctx.request.body.data ? ctx.request.body.data : {};
+        const {
+          applyEmail,
+          applyPost,
+          applyUrl,
+          contactInfo,
+          contactInfoLabel,
+          formattedAddress,
+          intro,
+          introLabel,
+          jobId,
+          jobTitle,
+          location,
+          meta,
+          offer,
+          offerLabel,
+          organization,
+          profile,
+          profileLabel,
+          publishedAt,
+          reference,
+          salary,
+          salaryVisibility,
+          taskLabel,
+          tasks,
+          workDuration,
+          workKind,
+          html
+        } = JSON.parse(bodyData);
+        
+        console.log(JSON.parse(bodyData));
+
+        if (!jobId) {
+          return {
+            error: {
+              status: 4002,
+              name: "no_job_id",
+              message: "Request requires a uuid jobId " + jobId,
+            },
+          };
+        }
+
+        let newJob = {
+          data: {
+            applyEmail: applyEmail || '',
+            applyPost: applyPost || false,
+            applyUrl: applyUrl || '',
+            contactInfo: contactInfo || '',
+            contactInfoLabel: contactInfoLabel || '',
+            formattedAddress: formattedAddress || '',
+            intro: intro || '',
+            introLabel: introLabel || '',
+            jobId: jobId,
+            jobTitle: jobTitle || '',
+            location: location || {},
+            meta: meta || {},
+            offer: offer || '',
+            offerLabel: offerLabel || '',
+            organization: organization || '',
+            profile: profile || '',
+            profileLabel: profileLabel || '',
+            reference: reference || '',
+            salary: salary || {},
+            salaryVisibility: salaryVisibility || true,
+            taskLabel: taskLabel || '',
+            tasks: tasks || '',
+            workDuration: workDuration || [],
+            workKind: workKind || []
+          },
+        };
+
+        if (userData?.data?.sub) {
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
+          if (strapiUser && strapiUser.id) {
+            ctx.query = { 
+              ...ctx.query, 
+              filters: {
+                user: strapiUser.id
+              }
+            }
+            let _html;
+            let file = ctx.request.files;
+            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+              file = file.html;
+              _html = await uploadHtml(strapi, file, jobId);
+            } else if (html && Object.keys(html).length > 0) {
+              file = html;
+              html = await uploadHtml(strapi, file, jobId);
+            }
+            newJob.data.user = strapiUser.id;
+            newJob.data.html = _html;
+            
+            console.log(ctx.data);
+            
+            let job = await strapi.service("api::job.job").update(id, newJob);
+            return {
+              success: {
+                job: job
+              }
+            }
+          } else {
+            return {
+              error: {
+                status: 4002,
+                name: "no_job_id",
+                message: "Request requires a uuid jobId " + jobId,
+              },
+            };
+          }
+        } else {
+          return {
+            error: {
+              status: 4002,
+              name: "no_job_id",
+              message: "Request requires a uuid jobId " + jobId,
+            },
+          };
+        }
+      } else {
+        let job = await strapi.service("api::job.job").find(ctx.query);
+        return {
+          data: job.results.map( val => {
+            return { id: val.id, attributes: val };
+          },job.results),
+          meta: {
+            pagination: job.pagination,
+          }
+        }
+      }
+    } catch (e) {
+      console.log("xxx eee =======================", e)
+      return {
+        error: {
+          status: 5000,
+          name: "internal_error",
+          message: " " + e,
+        },
+      };
+    }
   }
+
 }));

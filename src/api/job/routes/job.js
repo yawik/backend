@@ -17,6 +17,9 @@ module.exports = createCoreRouter('api::job.job',{
       },
       create: {
         auth: false
-      }
+      },
+      update: {
+        auth: false
+      },
     }
   });
