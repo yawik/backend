@@ -349,6 +349,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
     }
   },
   async findOne(ctx) {
+    const { id } = ctx.params;
     try {
       if (
         ctx.request &&
@@ -366,7 +367,14 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         if (userData?.data?.sub) {
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           if (strapiUser && strapiUser.id) {
-            let job = await strapi.service("api::job.job").findOne(ctx.query);
+            ctx.query = { 
+              ...ctx.query, 
+              filters: {
+                user: strapiUser.id
+              }
+            }
+            console.log(ctx);
+            let job = await strapi.service("api::job.job").findOne(id, ctx.query);
             return {
               success: {
                 job: job

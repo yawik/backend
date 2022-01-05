@@ -1400,6 +1400,7 @@
                                                         "acceptTerms": {
                                                           "type": "boolean"
                                                         },
+                                                        "meta": {},
                                                         "createdAt": {
                                                           "type": "string",
                                                           "format": "date-time"
@@ -2339,6 +2340,7 @@
                               "acceptTerms": {
                                 "type": "boolean"
                               },
+                              "meta": {},
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -4048,6 +4050,7 @@
                                                       "acceptTerms": {
                                                         "type": "boolean"
                                                       },
+                                                      "meta": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -4987,6 +4990,7 @@
                             "acceptTerms": {
                               "type": "boolean"
                             },
+                            "meta": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -6614,6 +6618,7 @@
                                                       "acceptTerms": {
                                                         "type": "boolean"
                                                       },
+                                                      "meta": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -7553,6 +7558,7 @@
                             "acceptTerms": {
                               "type": "boolean"
                             },
+                            "meta": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -9171,6 +9177,7 @@
                                                       "acceptTerms": {
                                                         "type": "boolean"
                                                       },
+                                                      "meta": {},
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -10110,6 +10117,7 @@
                             "acceptTerms": {
                               "type": "boolean"
                             },
+                            "meta": {},
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -10441,6 +10449,7 @@
                       "acceptTerms": {
                         "type": "boolean"
                       },
+                      "meta": {},
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
