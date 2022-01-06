@@ -584,6 +584,87 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         },
       };
     }
-  }
+  },
+  async delete(ctx) {
+    const { id } = ctx.params;
+    try {
+      if (
+        ctx.request &&
+        ctx.request.header &&
+        ctx.request.header.authorization
+      ) {
+        console.log("START delete", ctx);
+        const userData = await axios({
+          method: "GET",
+          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
+          headers: {
+            Authorization: ctx.request.header.authorization,
+          },
+        });
+        if (!userData || userData.data && userData.data.error) {
+          return {
+            error: {
+              status: 4001,
+              name: "invalid_token",
+              message: "Token verification failed",
+            },
+          };
+        }
 
+        if (userData?.data?.sub) {
+          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
+          if (strapiUser && strapiUser.id) {
+            ctx.query = { 
+              ...ctx.query, 
+              filters: {
+                user: strapiUser.id
+              }
+            }
+            
+            let job = await strapi.service("api::job.job").delete(id, ctx.query);
+            return {
+              success: {
+                job: job
+              }
+            }
+          } else {
+            return {
+              error: {
+                status: 4002,
+                name: "no_job_id",
+                message: "Request requires a uuid jobId " + jobId,
+              },
+            };
+          }
+        } else {
+          return {
+            error: {
+              status: 4002,
+              name: "no_job_id",
+              message: "Request requires a uuid jobId " + jobId,
+            },
+          };
+        }
+      } else {
+        let job = await strapi.service("api::job.job").find(ctx.query);
+        return {
+          data: job.results.map( val => {
+            return { id: val.id, attributes: val };
+          },job.results),
+          meta: {
+            pagination: job.pagination,
+          }
+        }
+      }
+    } catch (e) {
+      console.log("xxx eee =======================", e)
+      return {
+        error: {
+          status: 5000,
+          name: "internal_error",
+          message: " " + e,
+        },
+      };
+    }
+  },   
 }));
