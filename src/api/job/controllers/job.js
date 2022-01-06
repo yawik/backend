@@ -35,6 +35,32 @@ const uploadHtml = async (strapi, file, refId) => {
   return _upload;
 }
 
+/**
+ * INFO: Upload logo file to locally for job
+ * @param {*} strapi
+ * @param {Object} file
+ * @param {String} refId
+ * @returns File reference object
+ */
+const uploadLogo = async (strapi, file, refId) => {
+  const fileStat = fs.statSync(file.path);
+  const _upload = await strapi.plugins.upload.services.upload.upload({
+    data: {
+      refId: refId,
+      ref: "job",
+      field: "logo",
+    },
+    files: {
+      path: file.path,
+      name: file.name,
+      type: file.type,
+      size: fileStat.size,
+    },
+  });
+  console.log("_upload ====--------=====------>> ", _upload)
+  return _upload;
+}
+
 module.exports = createCoreController("api::job.job", ({ strapi }) => ({
   async create(ctx) {
     try {
@@ -536,8 +562,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
             newJob.data.user = strapiUser.id;
             newJob.data.html = _html;
-            
-            console.log(ctx.data);
+                        
+            console.log(ctx.request.files);
             
             let job = await strapi.service("api::job.job").update(id, newJob);
             return {

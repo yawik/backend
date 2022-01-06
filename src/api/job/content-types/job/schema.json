@@ -46,9 +46,6 @@
     "reference": {
       "type": "string"
     },
-    "salary": {
-      "type": "json"
-    },
     "applyEmail": {
       "type": "email"
     },
@@ -58,19 +55,7 @@
     "formattedAddress": {
       "type": "string"
     },
-    "workKind": {
-      "type": "json"
-    },
     "applyPost": {
-      "type": "boolean"
-    },
-    "partTimePercentage": {
-      "type": "integer"
-    },
-    "shiftWorkAmount": {
-      "type": "integer"
-    },
-    "salaryVisibility": {
       "type": "boolean"
     },
     "introLabel": {
@@ -91,9 +76,6 @@
     "contactInfo": {
       "type": "richtext"
     },
-    "workDuration": {
-      "type": "json"
-    },
     "html": {
       "type": "media",
       "multiple": false,
@@ -108,20 +90,25 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "jobs"
     },
-    "country": {
-      "type": "string"
-    },
-    "remoteWork": {
-      "type": "boolean"
-    },
-    "remoteWorkPercentage": {
-      "type": "integer"
-    },
-    "acceptTerms": {
-      "type": "boolean"
-    },
     "meta": {
       "type": "json"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "header": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
