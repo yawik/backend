@@ -14,15 +14,16 @@ const { createCoreController } = require("@strapi/strapi").factories;
  * @param {*} strapi
  * @param {Object} file
  * @param {String} refId
+ * @param {String} field // such as html, logo default for html
  * @returns File reference object
  */
-const uploadHtml = async (strapi, file, refId) => {
+const uploadHtml = async (strapi, file, refId, field = "html") => {
   const fileStat = fs.statSync(file.path);
   const _upload = await strapi.plugins.upload.services.upload.upload({
     data: {
       refId: refId,
       ref: "job",
-      field: "html",
+      field: field,
     },
     files: {
       path: file.path,
@@ -35,31 +36,6 @@ const uploadHtml = async (strapi, file, refId) => {
   return _upload;
 }
 
-/**
- * INFO: Upload logo file to locally for job
- * @param {*} strapi
- * @param {Object} file
- * @param {String} refId
- * @returns File reference object
- */
-const uploadLogo = async (strapi, file, refId) => {
-  const fileStat = fs.statSync(file.path);
-  const _upload = await strapi.plugins.upload.services.upload.upload({
-    data: {
-      refId: refId,
-      ref: "job",
-      field: "logo",
-    },
-    files: {
-      path: file.path,
-      name: file.name,
-      type: file.type,
-      size: fileStat.size,
-    },
-  });
-  console.log("_upload ====--------=====------>> ", _upload)
-  return _upload;
-}
 
 module.exports = createCoreController("api::job.job", ({ strapi }) => ({
   async create(ctx) {
@@ -69,55 +45,12 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header &&
         ctx.request.header.authorization
       ) {
-        const userData = await axios({
-          method: "GET",
-          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
-          headers: {
-            Authorization: ctx.request.header.authorization,
-          },
-        });
-        if (!userData || userData.data && userData.data.error) {
-          return {
-            error: {
-              status: 4001,
-              name: "invalid_token",
-              message: "Token verification failed",
-            },
-          };
-        }
-        const bodyData = ctx.request.body && ctx.request.body.data ? ctx.request.body.data : {};
-        const {
-          applyEmail,
-          applyPost,
-          applyUrl,
-          contactInfo,
-          contactInfoLabel,
-          formattedAddress,
-          intro,
-          introLabel,
-          jobId,
-          jobTitle,
-          location,
-          meta,
-          offer,
-          offerLabel,
-          organization,
-          profile,
-          profileLabel,
-          publishedAt,
-          reference,
-          salary,
-          salaryVisibility,
-          taskLabel,
-          tasks,
-          workDuration,
-          workKind,
-          html
-        } = JSON.parse(bodyData);
-        
-        console.log(JSON.parse(bodyData));
-
-        if (!jobId) {
+        const userData = await authUser(ctx.request.header.authorization);
+        if (userData && userData.error) return userData;
+        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {};
+        console.log(bodyData);
+        const newJob = createJobObject(bodyData);
+        if (!newJob?.data?.jobId) {
           return {
             error: {
               status: 4002,
@@ -126,36 +59,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-
-        let newJob = {
-          data: {
-            applyEmail: applyEmail || '',
-            applyPost: applyPost || false,
-            applyUrl: applyUrl || '',
-            contactInfo: contactInfo || '',
-            contactInfoLabel: contactInfoLabel || '',
-            formattedAddress: formattedAddress || '',
-            intro: intro || '',
-            introLabel: introLabel || '',
-            jobId: jobId,
-            jobTitle: jobTitle || '',
-            location: location || {},
-            meta: meta || {},
-            offer: offer || '',
-            offerLabel: offerLabel || '',
-            organization: organization || '',
-            profile: profile || '',
-            profileLabel: profileLabel || '',
-            reference: reference || '',
-            salary: salary || {},
-            salaryVisibility: salaryVisibility || true,
-            taskLabel: taskLabel || '',
-            tasks: tasks || '',
-            workDuration: workDuration || [],
-            workKind: workKind || []
-          },
-        };
-
         const sub =  userData.data.sub;
         let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
         console.log('UserData: ', userData.data, strapiUser);
@@ -178,44 +81,13 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 },
               };
             } else {
-              let _html;
-              let file = ctx.request.files;
-              if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
-                file = file.html;
-                _html = await uploadHtml(strapi, file, jobId);
-              } else if (html && Object.keys(html).length > 0) {
-                file = html;
-                _html = await uploadHtml(strapi, file, jobId);
-              }
-              newJob.data.user = newUserCreated.id;
-              newJob.data.html = _html;
-              let job = await strapi.query("api::job.job").create(newJob);
-              return {
-                success: {
-                  job: job
-                }
-              }
+              let job = await createUser(strapi, newUserCreated.id, newJob, ctx.request.files, bodyData.html);
+              return job;
             }
           } else {
             console.log('USER found');
-            let _html;
-            let file = ctx.request.files;
-            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
-              file = file.html;
-              _html = await uploadHtml(strapi, file, jobId);
-            } else if (html && Object.keys(html).length > 0) {
-              file = html;
-              _html = await uploadHtml(strapi, file, jobId);
-            }
-            newJob.data.user = strapiUser.id;
-            newJob.data.html = _html;
-            let job = await strapi.query("api::job.job").create(newJob);
-
-            return {
-              success: {
-                job: job
-              }
-            }
+            let job = await createUser(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
+            return job;
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
           let jobId = newJob.data.jobId;
@@ -223,19 +95,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           console.log('user found', jobId)
           let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
           console.log("Job found !!!!!!", isJobExist);
-          if (isJobExist && isJobExist.length>0) {
+          if (isJobExist && isJobExist.length > 0) {
             // todo update job
             let data = ctx.request.body.data;
             console.log("CTX", data );
-            let _html;
-            let file = ctx.request.files;
-            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
-              file = file.html;
-              _html = await uploadHtml(strapi, file, jobId);
-            } else if (html && Object.keys(html).length > 0) {
-              file = html;
-              _html = await uploadHtml(strapi, file, jobId);
-            }
+            let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, jobId);
             newJob.data.html = _html;
             let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
             if (!updateResponse) {
@@ -256,24 +120,9 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('Debug OK5', strapiUser);
-            let _html;
-            let file = ctx.request.files;
-            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
-              file = file.html;
-              _html = await uploadHtml(strapi, file, jobId);
-            } else if (html && Object.keys(html).length > 0) {
-              file = html;
-              _html = await uploadHtml(strapi, file, jobId);
-            }
-            newJob.data.user = strapiUser.id;
-            newJob.data.html = _html;
-            let job = await strapi.query("api::job.job").create(newJob);
+            let job = await createUser(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
             console.log('Debug OK5');
-            return {
-              success: {
-                job: job
-              }
-            }
+            return job;
           }
         }
 
@@ -304,13 +153,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header &&
         ctx.request.header.authorization
       ) {  
-        const userData = await axios({
-          method: "GET",
-          url: authUrl,
-          headers: {
-            Authorization: ctx.request.header.authorization,
-          },
-        });
+        const userData = await authUser(ctx.request.header.authorization);
         if (userData?.data?.sub) {
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           console.log('authenticated user', strapiUser.id);
@@ -323,47 +166,19 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
               } 
             }
             console.log('authenticated user', strapiUser.id, ctx.query);
-            let job = await strapi.service("api::job.job").find(ctx.query);
-            return {
-              data: job.results.map( val => {
-                return { id: val.id, attributes: val };
-              },job.results),
-              meta: {
-                pagination: job.pagination,
-              }
-            }
+            let job = await getJobs(ctx.query);
+            return job;
           } else {
-            let job = await strapi.service("api::job.job").find();
-            return {
-              data: job.results.map( val => {
-                return { id: val.id, attributes: val };
-              },job.results),
-              meta: {
-                pagination: job.pagination,
-              }
-            }
+            let job = await getJobs();
+            return job;
           }
         } else {
-          let job = await strapi.service("api::job.job").find();
-          return {
-            data: job.results.map( val => {
-              return { id: val.id, attributes: val };
-            },job.results),
-            meta: {
-              pagination: job.pagination,
-            }
-          }
+          let job = await getJobs();
+          return job;
         }
       } else {
-        let job = await strapi.service("api::job.job").find(ctx.query);
-        return {
-          data: job.results.map( val => {
-            return { id: val.id, attributes: val };
-          },job.results),
-          meta: {
-            pagination: job.pagination,
-          }
-        }
+        let job = await getJobs(ctx.query);
+        return job;
       }
     } catch (e) {
       console.log("xxx eee =======================", e)
@@ -385,13 +200,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START findOne", ctx);
-        const userData = await axios({
-          method: "GET",
-          url: authUrl,
-          headers: {
-            Authorization: ctx.request.header.authorization,
-          },
-        });
+        const userData = await authUser(ctx.request.header.authorization);
         if (userData?.data?.sub) {
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           if (strapiUser && strapiUser.id) {
@@ -425,15 +234,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           }
         }
       } else {
-        let job = await strapi.service("api::job.job").find(ctx.query);
-        return {
-          data: job.results.map( val => {
-            return { id: val.id, attributes: val };
-          },job.results),
-          meta: {
-            pagination: job.pagination,
-          }
-        }
+        let job = await getJobs(ctx.query);
+        return job;
       }
     } catch (e) {
       console.log("xxx eee =======================", e)
@@ -455,55 +257,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START update", ctx);
-        const userData = await axios({
-          method: "GET",
-          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
-          headers: {
-            Authorization: ctx.request.header.authorization,
-          },
-        });
-        if (!userData || userData.data && userData.data.error) {
-          return {
-            error: {
-              status: 4001,
-              name: "invalid_token",
-              message: "Token verification failed",
-            },
-          };
-        }
-        const bodyData = ctx.request.body && ctx.request.body.data ? ctx.request.body.data : {};
-        const {
-          applyEmail,
-          applyPost,
-          applyUrl,
-          contactInfo,
-          contactInfoLabel,
-          formattedAddress,
-          intro,
-          introLabel,
-          jobId,
-          jobTitle,
-          location,
-          meta,
-          offer,
-          offerLabel,
-          organization,
-          profile,
-          profileLabel,
-          publishedAt,
-          reference,
-          salary,
-          salaryVisibility,
-          taskLabel,
-          tasks,
-          workDuration,
-          workKind,
-          html
-        } = JSON.parse(bodyData);
-        
-        console.log(JSON.parse(bodyData));
-
-        if (!jobId) {
+        const userData = await authUser(ctx.request.header.authorization);
+        if (userData && userData.error) return userData;
+        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {};
+        const newJob = createJobObject(bodyData);
+        if (!newJob?.data?.jobId) {
           return {
             error: {
               status: 4002,
@@ -512,35 +270,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             },
           };
         }
-
-        let newJob = {
-          data: {
-            applyEmail: applyEmail || '',
-            applyPost: applyPost || false,
-            applyUrl: applyUrl || '',
-            contactInfo: contactInfo || '',
-            contactInfoLabel: contactInfoLabel || '',
-            formattedAddress: formattedAddress || '',
-            intro: intro || '',
-            introLabel: introLabel || '',
-            jobId: jobId,
-            jobTitle: jobTitle || '',
-            location: location || {},
-            meta: meta || {},
-            offer: offer || '',
-            offerLabel: offerLabel || '',
-            organization: organization || '',
-            profile: profile || '',
-            profileLabel: profileLabel || '',
-            reference: reference || '',
-            salary: salary || {},
-            salaryVisibility: salaryVisibility || true,
-            taskLabel: taskLabel || '',
-            tasks: tasks || '',
-            workDuration: workDuration || [],
-            workKind: workKind || []
-          },
-        };
 
         if (userData?.data?.sub) {
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
@@ -551,20 +280,9 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 user: strapiUser.id
               }
             }
-            let _html;
-            let file = ctx.request.files;
-            if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
-              file = file.html;
-              _html = await uploadHtml(strapi, file, jobId);
-            } else if (html && Object.keys(html).length > 0) {
-              file = html;
-              html = await uploadHtml(strapi, file, jobId);
-            }
+            let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, newJob.data.jobId);
             newJob.data.user = strapiUser.id;
             newJob.data.html = _html;
-                        
-            console.log(ctx.request.files);
-            
             let job = await strapi.service("api::job.job").update(id, newJob);
             return {
               success: {
@@ -590,15 +308,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           };
         }
       } else {
-        let job = await strapi.service("api::job.job").find(ctx.query);
-        return {
-          data: job.results.map( val => {
-            return { id: val.id, attributes: val };
-          },job.results),
-          meta: {
-            pagination: job.pagination,
-          }
-        }
+        let job = await getJobs(ctx.query);
+        return job;
       }
     } catch (e) {
       console.log("xxx eee =======================", e)
@@ -620,23 +331,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START delete", ctx);
-        const userData = await axios({
-          method: "GET",
-          url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
-          headers: {
-            Authorization: ctx.request.header.authorization,
-          },
-        });
-        if (!userData || userData.data && userData.data.error) {
-          return {
-            error: {
-              status: 4001,
-              name: "invalid_token",
-              message: "Token verification failed",
-            },
-          };
-        }
-
+        const userData = await authUser(ctx.request.header.authorization);
+        if (userData && userData.error) return userData;
         if (userData?.data?.sub) {
           let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
           if (strapiUser && strapiUser.id) {
@@ -672,15 +368,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           };
         }
       } else {
-        let job = await strapi.service("api::job.job").find(ctx.query);
-        return {
-          data: job.results.map( val => {
-            return { id: val.id, attributes: val };
-          },job.results),
-          meta: {
-            pagination: job.pagination,
-          }
-        }
+        let job = await getJobs(ctx.query);
+        return job;
       }
     } catch (e) {
       console.log("xxx eee =======================", e)
@@ -694,3 +383,126 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
     }
   },   
 }));
+
+// ================= HELPER FUNCTIONS FOR JOBS AD ===========
+
+/**
+ * INFO: Prepare data to create job
+ * @param {Object} payload 
+ * @returns Jobs object
+ */
+const createJobObject = (payload) => {
+  let newJob = {
+    data: {
+      applyEmail: payload.applyEmail || '',
+      applyPost: payload.applyPost || false,
+      applyUrl: payload.applyUrl || '',
+      contactInfo: payload.contactInfo || '',
+      contactInfoLabel: payload.contactInfoLabel || '',
+      formattedAddress: payload.formattedAddress || '',
+      intro: payload.intro || '',
+      introLabel: payload.introLabel || '',
+      jobId: payload.jobId,
+      jobTitle: payload.jobTitle || '',
+      location: payload.location || {},
+      meta: payload.meta || {},
+      offer: payload.offer || '',
+      offerLabel: payload.offerLabel || '',
+      organization: payload.organization || '',
+      profile: payload.profile || '',
+      profileLabel: payload.profileLabel || '',
+      reference: payload.reference || '',
+      salary: payload.salary || {},
+      salaryVisibility: payload.salaryVisibility || true,
+      taskLabel: payload.taskLabel || '',
+      tasks: payload.tasks || '',
+      workDuration: payload.workDuration || [],
+      workKind: payload.workKind || []
+    },
+  };
+  return newJob;
+}
+
+/**
+ * INFO: Authenticate user from token
+ * @param {Token} authorization 
+ * @returns authenticated user
+ */
+const authUser = async (authorization) => {
+  const userData = await axios({
+    method: "GET",
+    url: process.env.AUTH_URL ? process.env.AUTH_URL : authUrl,
+    headers: {
+      Authorization: authorization,
+    },
+  });
+  if (!userData || userData.data && userData.data.error) {
+    return {
+      error: {
+        status: 4001,
+        name: "invalid_token",
+        message: "Token verification failed",
+      },
+    };
+  } else {
+    return userData
+  }
+}
+
+/**
+ * INFO:Upload job ad file
+ * @param {Scope} strapi 
+ * @param {File} file 
+ * @param {Object} html 
+ * @param {String} jobId 
+ * @returns File objects
+ */
+const htmlUpload = async (strapi, file, html, jobId) => {
+  let _html;
+  if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+    file = file.html;
+    _html = await uploadHtml(strapi, file, jobId);
+  } else if (html && Object.keys(html).length > 0) {
+    file = html;
+    _html = await uploadHtml(strapi, file, jobId);
+  }
+  return _html;
+}
+
+/**
+ * INFO: Create job
+ * @param {Scope} strapi 
+ * @param {String} strapiUserId 
+ * @param {Object} Jobs 
+ * @param {Files} file 
+ * @param {Object} html 
+ * @returns Job success
+ */
+const createUser = async (strapi, strapiUserId, Jobs, file, html) => {
+  let _html = await htmlUpload(strapi, file, html, Jobs.data.jobId);
+  Jobs.data.user = strapiUserId;
+  Jobs.data.html = _html;
+  let job = await strapi.query("api::job.job").create(Jobs);
+  return {
+    success: {
+      job: job
+    }
+  }
+}
+
+/**
+ * INFO: Get all jobs
+ * @param {Object} payload 
+ * @returns All jobs array
+ */
+const getJobs = async (payload = null) => {
+  let job = payload ? await strapi.service("api::job.job").find(ctx.query): await strapi.service("api::job.job").find();
+  return {
+    data: job.results.map( val => {
+      return { id: val.id, attributes: val };
+    },job.results),
+    meta: {
+      pagination: job.pagination,
+    }
+  }
+}
