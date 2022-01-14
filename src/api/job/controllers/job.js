@@ -495,8 +495,8 @@ const createUser = async (strapi, strapiUserId, Jobs, file, html) => {
  * @param {Object} payload 
  * @returns All jobs array
  */
-const getJobs = async (query, payload = null) => {
-  let job = payload ? await strapi.service("api::job.job").find(query): await strapi.service("api::job.job").find();
+const getJobs = async (payload = null) => {
+  let job = payload ? await strapi.service("api::job.job").find(payload): await strapi.service("api::job.job").find();
   return {
     data: job.results.map( val => {
       return { id: val.id, attributes: val };
