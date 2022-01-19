@@ -17,7 +17,7 @@ const { createCoreController } = require("@strapi/strapi").factories;
  * @param {String} field // such as html, logo default for html
  * @returns File reference object
  */
-const uploadHtml = async (strapi, file, refId, field = "html") => {
+const uploadFiles = async (strapi, file, refId, field = "html") => {
   const fileStat = fs.statSync(file.path);
   const _upload = await strapi.plugins.upload.services.upload.upload({
     data: {
@@ -62,6 +62,10 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         const sub =  userData.data.sub;
         let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
         console.log('UserData: ', userData.data, strapiUser);
+        let { _logo, _org } = await createOrgnization(strapi, bodyData.organization, bodyData.jobId, ctx.request.files, bodyData.logo, bodyData.header);
+        if (newJob?.data) {
+          newJob.data.logo = _logo;
+        }
 
         if (!strapiUser) {
           console.log('Create User');
@@ -81,12 +85,12 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
                 },
               };
             } else {
-              let job = await createUser(strapi, newUserCreated.id, newJob, ctx.request.files, bodyData.html);
+              let job = await createJob(strapi, newUserCreated.id, newJob, ctx.request.files, bodyData.html);
               return job;
             }
           } else {
             console.log('USER found');
-            let job = await createUser(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
+            let job = await createJob(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
             return job;
           }
         } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
@@ -120,7 +124,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             console.log('Debug OK5', strapiUser);
-            let job = await createUser(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
+            let job = await createJob(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
             console.log('Debug OK5');
             return job;
           }
@@ -283,6 +287,10 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, newJob.data.jobId);
             newJob.data.user = strapiUser.id;
             newJob.data.html = _html;
+            let { _logo, _org } = await createOrgnization(strapi, newJob.data.organization, newJob.data.jobId, ctx.request.files, bodyData.logo, bodyData.header);
+            if (newJob?.data) {
+              newJob.data.logo = _logo;
+            }
             let job = await strapi.service("api::job.job").update(id, newJob);
             return {
               success: {
@@ -459,14 +467,54 @@ const authUser = async (authorization) => {
  */
 const htmlUpload = async (strapi, file, html, jobId) => {
   let _html;
-  if (file && Object.keys(file).length > 0 && Object.keys(file.html).length > 0) {
+  if (file && Object.keys(file).length > 0 && file.html && Object.keys(file.html).length > 0) {
     file = file.html;
-    _html = await uploadHtml(strapi, file, jobId);
+    _html = await uploadFiles(strapi, file, jobId);
   } else if (html && Object.keys(html).length > 0) {
     file = html;
-    _html = await uploadHtml(strapi, file, jobId);
+    _html = await uploadFiles(strapi, file, jobId);
   }
   return _html;
+}
+
+/**
+ * INFO:Upload orgnization logo file
+ * @param {Scope} strapi 
+ * @param {File} file 
+ * @param {Object} logo 
+ * @param {String} jobId 
+ * @returns File objects
+ */
+const logoUpload = async (strapi, file, logo, jobId) => {
+  let _logo;
+  if (file && Object.keys(file).length > 0 && file.logo && Object.keys(file.logo).length > 0) {
+    file = file.logo;
+    _logo = await uploadFiles(strapi, file, jobId, 'logo');
+  } else if (logo && Object.keys(logo).length > 0) {
+    file = logo;
+    _logo = await uploadFiles(strapi, file, jobId, 'logo');
+  }
+  return _logo;
+}
+
+/**
+ * INFO:Upload orgnization header file
+ * @param {Scope} strapi 
+ * @param {File} file 
+ * @param {Object} header 
+ * @param {String} jobId 
+ * @returns File objects
+ */
+const headerUpload = async (strapi, file, header, jobId) => {
+  let _header;
+  if (file && Object.keys(file).length > 0 && file.header && Object.keys(file.header).length > 0) {
+    file = file.header;
+    _header = await uploadFiles(strapi, file, jobId, 'header');
+  } else if (header && Object.keys(header).length > 0) {
+    file = header;
+    _header = await uploadFiles(strapi, file, jobId, 'header');
+  }
+  return _header;
 }
 
 /**
@@ -478,7 +526,34 @@ const htmlUpload = async (strapi, file, html, jobId) => {
  * @param {Object} html 
  * @returns Job success
  */
-const createUser = async (strapi, strapiUserId, Jobs, file, html) => {
+const createOrgnization = async (strapi, orgName, JobId, file, logo, header) => {
+  let isOrgExist = await strapi.service('api::organization.organization').orgByName({ name: orgName });
+  let _logo = await logoUpload(strapi, file, logo, JobId);
+  let _org = {}
+  if (!(isOrgExist && isOrgExist.length > 0)) {
+    let _header = await headerUpload(strapi, file, header, JobId);
+    let orgObj = {
+      data: {
+        name: orgName,
+        logo: _logo,
+        header: _header,
+      }
+    }
+    _org = await strapi.service('api::organization.organization').addOrg(orgObj);
+  }
+  return { _logo, _org };
+}
+
+/**
+ * INFO: Create job
+ * @param {Scope} strapi 
+ * @param {String} strapiUserId 
+ * @param {Object} Jobs 
+ * @param {Files} file 
+ * @param {Object} html 
+ * @returns Job success
+ */
+const createJob = async (strapi, strapiUserId, Jobs, file, html) => {
   let _html = await htmlUpload(strapi, file, html, Jobs.data.jobId);
   Jobs.data.user = strapiUserId;
   Jobs.data.html = _html;
