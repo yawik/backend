@@ -9,7 +9,7 @@
   },
   "options": {
     "draftAndPublish": true,
-    "populateCreatorFields": true,
+    "populateCreatorFields": false,
     "autoPK": false,
     "autoCreatedAt": true,
     "autoUpdatedAt": true
