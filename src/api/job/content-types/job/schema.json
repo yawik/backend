@@ -104,11 +104,17 @@
       ]
     },
     "header": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "org": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization.organization"
     }
   }
 }
