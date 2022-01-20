@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organization",
     "pluralName": "organizations",
-    "displayName": "Organizations"
+    "displayName": "Organizations",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,24 +16,31 @@
       "type": "string"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "Header": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "organizations"
+    },
+    "jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job.job"
     }
   }
 }
