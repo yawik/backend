@@ -62,9 +62,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         const sub =  userData.data.sub;
         let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
         console.log('UserData: ', userData.data, strapiUser);
-        let { _logo, _org } = await createOrgnization(strapi, bodyData.organization, bodyData.jobId, ctx.request.files, bodyData.logo, bodyData.header);
+        let { _logo, _header, _org, _orgId } = await createOrgnization(strapi, bodyData.organization, bodyData.jobId, ctx.request.files, bodyData.logo, bodyData.header);
         if (newJob?.data) {
           newJob.data.logo = _logo;
+          newJob.data.header = _header;
+          newJob.data.org = _orgId;
         }
 
         if (!strapiUser) {
@@ -287,9 +289,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, newJob.data.jobId);
             newJob.data.user = strapiUser.id;
             newJob.data.html = _html;
-            let { _logo, _org } = await createOrgnization(strapi, newJob.data.organization, newJob.data.jobId, ctx.request.files, bodyData.logo, bodyData.header);
+            let { _logo, _header, _org, _orgId } = await createOrgnization(strapi, newJob.data.organization, newJob.data.jobId, ctx.request.files, bodyData.logo, bodyData.header);
             if (newJob?.data) {
               newJob.data.logo = _logo;
+              newJob.data.header = _header;
+              newJob.data.org = _orgId;
             }
             let job = await strapi.service("api::job.job").update(id, newJob);
             return {
@@ -529,9 +533,9 @@ const headerUpload = async (strapi, file, header, jobId) => {
 const createOrgnization = async (strapi, orgName, JobId, file, logo, header) => {
   let isOrgExist = await strapi.service('api::organization.organization').orgByName({ name: orgName });
   let _logo = await logoUpload(strapi, file, logo, JobId);
-  let _org = {}
+  let _header = await headerUpload(strapi, file, header, JobId);
+  let _org = {}, _orgId;
   if (!(isOrgExist && isOrgExist.length > 0)) {
-    let _header = await headerUpload(strapi, file, header, JobId);
     let orgObj = {
       data: {
         name: orgName,
@@ -540,8 +544,13 @@ const createOrgnization = async (strapi, orgName, JobId, file, logo, header) => 
       }
     }
     _org = await strapi.service('api::organization.organization').addOrg(orgObj);
+    if (_org?.success?.organization?.id) {
+      _orgId = _org?.success?.organization?.id;
+    }
+  } else if (isOrgExist && isOrgExist.length && isOrgExist[0].id) {
+    _orgId = isOrgExist[0].id;
   }
-  return { _logo, _org };
+  return { _logo, _header, _org, _orgId };
 }
 
 /**
