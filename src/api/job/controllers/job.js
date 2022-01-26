@@ -223,6 +223,13 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
             }
           } else {
             let job = await strapi.service("api::job.job").find();
+            if (job?.results && job?.results.length) {
+              job = job.results.map( val => {
+                delete val?.created_by;
+                delete val?.updated_by;
+                return val;
+              })
+            }
             return {
               success: {
                 job: job
@@ -231,6 +238,13 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           }
         } else {
           let job = await strapi.service("api::job.job").find();
+          if (job?.results && job?.results.length) {
+            job = job.results.map( val => {
+              delete val?.created_by;
+              delete val?.updated_by;
+              return val;
+            })
+          }
           return {
             success: {
               job: job
@@ -574,6 +588,8 @@ const getJobs = async (payload = null) => {
   let job = payload ? await strapi.service("api::job.job").find(payload): await strapi.service("api::job.job").find();
   return {
     data: job.results.map( val => {
+      delete val?.created_by;
+      delete val?.updated_by;
       return { id: val.id, attributes: val };
     },job.results),
     meta: {
