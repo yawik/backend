@@ -4,9 +4,9 @@
   "version": "0.1.1",
   "description": "jobwizard backend based on strapi",
   "scripts": {
-    "dev": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
+    "dev": "yarn strapi develop",
+    "start": "yarn strapi start",
+    "build": "yarn strapi build",
     "build:mail": "./node_modules/.bin/mjml ./mjml/de/job-created.mjml --config.filePath ./mjml/de/partials/ --output ./mjml/de/job-created.html",
     "strapi": "strapi"
   },
