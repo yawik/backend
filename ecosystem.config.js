@@ -15,7 +15,7 @@ module.exports = {
       host : 'api.yawik.org',
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
-      path : '/home/yawik/production',
+      path : '/home/yawik/api.yawik.org',
       'pre-deploy-local': 'ls -l',
       'post-deploy' : 'yarn && yarn build && pm2 reload ecosystem.config.js --env production -- --port 3000',
       'pre-setup': 'pm2 ps'
