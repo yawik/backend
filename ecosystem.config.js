@@ -29,7 +29,7 @@ module.exports = {
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/strapi/pm2',
-      'post-deploy' : 'yarn && yarn build && pm2 reload',
+      'post-deploy' : 'yarn && yarn build && pm2 reload all',
       'pre-setup': 'pm2 ps'
     }    
   }
