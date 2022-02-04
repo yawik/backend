@@ -3,6 +3,7 @@ module.exports = {
     name: 'strapi',
     script: 'yarn',
     args: 'start',
+    interpreter: '/bin/bash',
     env: {
       NODE_ENV: "development",
       PORT: 1337
