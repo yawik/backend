@@ -30,7 +30,7 @@ module.exports = {
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/strapi/pm2',
       'pre-deploy-local' : 'rsync -a --delete /home/strapi/backend/build/ /home/strapi/pm2/build/',
-      'post-deploy' : 'pm2 reload strapi',
+      'post-deploy' : 'pm2 startOrRestart ecosystem.config.js --env development',
       'pre-setup': 'pm2 ps'
     }    
   }
