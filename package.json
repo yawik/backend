@@ -1,5 +1,6 @@
 {
   "name": "backend",
+  "packageManager": "yarn@3.1.1",
   "private": true,
   "version": "0.1.1",
   "description": "jobwizard backend based on strapi",
@@ -10,18 +11,18 @@
     "build:mail": "./node_modules/.bin/mjml ./mjml/de/job-created.mjml --config.filePath ./mjml/de/partials/ --output ./mjml/de/job-created.html",
     "strapi": "strapi"
   },
-  "devDependencies": {
-    "mjml": "^4.11.0"
-  },
   "dependencies": {
-    "@mailchimp/mailchimp_transactional": "^1.0.46",
-    "@strapi/plugin-documentation": "^4.0.0",
-    "@strapi/plugin-i18n": "^4.0.0",
-    "@strapi/plugin-users-permissions": "^4.0.0",
-    "@strapi/strapi": "^4.0.0",
-    "axios": "^0.24.0",
-    "sqlite3": "5.0.2",
+    "@mailchimp/mailchimp_transactional": "^1.0.47",
+    "@strapi/plugin-documentation": "^4.0.7",
+    "@strapi/plugin-i18n": "^4.0.7",
+    "@strapi/plugin-users-permissions": "^4.0.7",
+    "@strapi/strapi": "^4.0.7",
+    "axios": "^0.25.0",
+    "sqlite3": "^5.0.2",
     "strapi-provider-email-smtp": "^1.0.3"
+  },
+  "devDependencies": {
+    "mjml": "^4.12.0"
   },
   "author": {
     "name": "Carsten Bleek"
@@ -32,6 +33,5 @@
   "engines": {
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }
