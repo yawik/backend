@@ -21,7 +21,7 @@ module.exports = {
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
       path : '/home/yawik/pm2',
-      'pre-deploy-local' : 'rsync -a --delete /home/strapi/backend/build/ yawik@api.yawik.org:pm2/source/build/',
+      'pre-deploy-local' : 'rsync -a --delete build/ yawik@api.yawik.org:pm2/source/build/',
       'post-deploy' : 'pm2 startOrRestart ecosystem.config.js --interpreter bash --env production',
       'pre-setup': 'pm2 ps'
     },
