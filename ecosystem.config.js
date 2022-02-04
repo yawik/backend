@@ -20,8 +20,9 @@ module.exports = {
       host : 'api.yawik.org',
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
-      path : '/home/yawik/api.yawik.org',
-      'post-deploy' : 'NODE_ENV=production yarn && NODE_ENV=production yarn build && pm2 reload ecosystem.config.js --env production -- --port 3000',
+      path : '/home/yawik/pm2',
+      'pre-deploy-local' : 'rsync -a --delete /home/strapi/backend/build/ yawik@api.yawik.org:pm2/source/build/',
+      'post-deploy' : 'pm2 startOrRestart ecosystem.config.js --env production',
       'pre-setup': 'pm2 ps'
     },
     development: {
