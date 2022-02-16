@@ -1,4 +1,4 @@
-image: keymetrics/pm2:latest-slim
+image: image: registry.gitlab.com/yawik/docker/yarn-git-ssh-rsync:main
 
 stages:
   - deploy
@@ -6,7 +6,6 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - apt-get -qq update && apt-get -qq -y install openssh-client git
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
