@@ -20,7 +20,7 @@ module.exports = {
       host : 'api.yawik.org',
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
-      path : '/home/yawik/pm2',
+      path : '/home/yawik/api.yawik.org',
       'pre-deploy-local' : 'rsync -a --delete build/ yawik@api.yawik.org:pm2/source/build/',
       'post-deploy' : 'pm2 startOrRestart ecosystem.config.js --interpreter bash --env production'
     },
@@ -29,7 +29,7 @@ module.exports = {
       host : 'localhost',
       ref  : 'origin/main',
       repo : 'https://gitlab.com/yawik/backend.git',
-      path : '/home/strapi/pm2',
+      path : '/home/strapi/api.yawik.org',
       'pre-deploy-local' : 'rsync -a --delete /home/strapi/backend/build/ /home/strapi/pm2/build/',
       'post-deploy' : 'pm2 startOrRestart ecosystem.config.js --interpreter bash --env development'
     }    
