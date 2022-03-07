@@ -16,7 +16,7 @@ deploy_prod:
     - mkdir -p ~/.ssh
     - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
     - yarn
-    - NODE_ENV=production yarn build -- --clean
+    - NODE_ENV=production yarn build
     - pm2 deploy ecosystem.config.js production
   only:
   - main
