@@ -4,6 +4,7 @@
       "get": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -4149,11 +4150,12 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "get/jobs"
       },
       "post": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -8195,6 +8197,7 @@
           "Job"
         ],
         "parameters": [],
+        "operationId": "post/jobs",
         "requestBody": {
           "required": true,
           "content": {
@@ -8220,6 +8223,7 @@
       "get": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -12272,11 +12276,12 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "get/jobs/{id}"
       },
       "put": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -16329,6 +16334,7 @@
             }
           }
         ],
+        "operationId": "put/jobs/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -16502,6 +16508,7 @@
       "delete": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -16672,7 +16679,7 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "delete/jobs/{id}"
       }
     }
   }

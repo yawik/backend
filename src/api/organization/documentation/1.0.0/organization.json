@@ -4,6 +4,7 @@
       "get": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -3720,11 +3721,12 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "get/organizations"
       },
       "post": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -7337,6 +7339,7 @@
           "Organization"
         ],
         "parameters": [],
+        "operationId": "post/organizations",
         "requestBody": {
           "required": true,
           "content": {
@@ -7442,6 +7445,7 @@
       "get": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -11065,11 +11069,12 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "get/organizations/{id}"
       },
       "put": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -14693,6 +14698,7 @@
             }
           }
         ],
+        "operationId": "put/organizations/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -14796,6 +14802,7 @@
       "delete": {
         "responses": {
           "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -14966,7 +14973,7 @@
             }
           }
         ],
-        "requestBody": {}
+        "operationId": "delete/organizations/{id}"
       }
     }
   }
