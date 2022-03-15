@@ -1246,13 +1246,6 @@
     methods "^1.1.2"
     path-to-regexp "^6.1.0"
 
-"@mailchimp/mailchimp_transactional@^1.0.47":
-  version "1.0.47"
-  resolved "https://registry.yarnpkg.com/@mailchimp/mailchimp_transactional/-/mailchimp_transactional-1.0.47.tgz#53f4b52485bcf6c3903fc1265187c6b6855af89d"
-  integrity sha512-dZ45jWALktR4+/mMnUprSodWdnVHprrXK0uxPo9mUShihBNHIOeHGYoxahsTyhqPPx6lVu7nNj96VLzomUL1YQ==
-  dependencies:
-    axios "^0.21.1"
-
 "@node-redis/bloom@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@node-redis/bloom/-/bloom-1.0.1.tgz#144474a0b7dc4a4b91badea2cfa9538ce0a1854e"
@@ -1761,6 +1754,14 @@
     request "^2.83.0"
     url-join "4.0.1"
     uuid "^3.1.0"
+
+"@strapi/provider-email-nodemailer@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-nodemailer/-/provider-email-nodemailer-4.1.3.tgz#fda93ecd5f3d6ac1f53a7d21b718e61c2c01a2b4"
+  integrity sha512-zUipXxw+Ok8l7CkxaWmgd4gSMRbuUSmCqIj5wL6yQGMNwHWGYhQM9kYxun1pVlRM8Hm5YtxQAS5kFm9H1O+GUw==
+  dependencies:
+    lodash "4.17.21"
+    nodemailer "6.5.0"
 
 "@strapi/provider-email-sendmail@4.1.3":
   version "4.1.3"
@@ -2635,13 +2636,6 @@ axios@0.25.0, axios@^0.25.0:
   integrity sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==
   dependencies:
     follow-redirects "^1.14.7"
-
-axios@^0.21.1:
-  version "0.21.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
-  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
-  dependencies:
-    follow-redirects "^1.14.0"
 
 babel-loader@8.2.3:
   version "8.2.3"
@@ -4817,7 +4811,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.4, follow-redirects@^1.14.7:
+follow-redirects@^1.0.0, follow-redirects@^1.14.4, follow-redirects@^1.14.7:
   version "1.14.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
   integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
@@ -7765,10 +7759,10 @@ nodemailer-shared@1.1.0:
   dependencies:
     nodemailer-fetch "1.6.0"
 
-nodemailer@^6.4.6:
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.7.2.tgz#44b2ad5f7ed71b7067f7a21c4fedabaec62b85e0"
-  integrity sha512-Dz7zVwlef4k5R71fdmxwR8Q39fiboGbu3xgswkzGwczUfjp873rVxt1O46+Fh0j1ORnAC6L9+heI8uUpO6DT7Q==
+nodemailer@6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
+  integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
 
 "nopt@2 || 3":
   version "3.0.6"
@@ -9860,14 +9854,6 @@ std-env@^2.2.1:
   integrity sha512-eOsoKTWnr6C8aWrqJJ2KAReXoa7Vn5Ywyw6uCXgA/xDhxPoaIsBa5aNJmISY04dLwXPBnDHW4diGM7Sn5K4R/g==
   dependencies:
     ci-info "^3.1.1"
-
-strapi-provider-email-smtp@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/strapi-provider-email-smtp/-/strapi-provider-email-smtp-1.0.3.tgz#b207d9fcbe1279ab03f1b5cfa1b03a50ae85b7bf"
-  integrity sha512-f66dyyWygzLmxHuzQfiPjX6vSZE/y2za4bwYBRKWkSeLu7WyVnwJ8xyfnleHXWhan7Xmo2QRoFfUOq367su0Rw==
-  dependencies:
-    lodash "^4.17.15"
-    nodemailer "^6.4.6"
 
 stream-browserify@^3.0.0:
   version "3.0.0"

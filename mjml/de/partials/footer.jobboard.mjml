@@ -1,0 +1,11 @@
+<mj-section>
+
+  <mj-column>
+    <mj-divider border-color="#FAA427"></mj-divider>
+    <mj-text>
+      Diese Mail wurde versendet vom <a href="https://jobboard.yawik.org">jobboard</a>.
+      Ein Yawik Service.
+    </mj-text>
+  </mj-column>
+
+</mj-section>
