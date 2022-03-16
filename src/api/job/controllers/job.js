@@ -60,8 +60,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           };
         }
         const sub =  userData.data.sub;
-        let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: sub});
-        console.log('UserData: ', userData.data, strapiUser);
         let { _logo, _header, _org, _orgId } = await createOrgnization(strapi, bodyData.organization, bodyData.jobId, ctx.request.files, bodyData.logo, bodyData.header);
         if (newJob?.data) {
           newJob.data.logo = _logo;
@@ -69,67 +67,38 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
           newJob.data.org = _orgId;
         }
 
-        if (!strapiUser) {
-          console.log('Create User');
-          if (userData?.data?.sub) {
-            let newUserCreated = await strapi.service('plugin::users-permissions.user').add(
-            {
-              sub: sub,
-              email: userData.data.email,
-              username: userData.data.name
-            });
-            if (!newUserCreated) {
-              return {
-                error: {
-                  status: 4002,
-                  name: "user_creation_failed",
-                  message: "Could not create User",
-                },
-              };
-            } else {
-              let job = await createJob(strapi, newUserCreated.id, newJob, ctx.request.files, bodyData.html);
-              return job;
-            }
-          } else {
-            console.log('USER found');
-            let job = await createJob(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
-            return job;
-          }
-        } else { // title: newJob?.data?.title, jobId: newJob?.data?.title
-          let jobId = newJob.data.jobId;
+        let jobId = newJob.data.jobId;
 
-          console.log('user found', jobId)
-          let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
-          console.log("Job found !!!!!!", isJobExist);
-          if (isJobExist && isJobExist.length > 0) {
-            // todo update job
-            let data = ctx.request.body.data;
-            console.log("CTX", data );
-            let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, jobId);
-            newJob.data.html = _html;
-            let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
-            if (!updateResponse) {
-              return {
-                error: {
-                    status: 5001,
-                    name: "update_failed",
-                    message: "Job " + jobId + " already Exist!",
-                },
-              };
-            } else {
-              console.log('Debug OK4');
-              return {
-                success: {
-                  job: updateResponse
-                }
+        console.log('user found', jobId)
+        let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
+        console.log("Job found !!!!!!", isJobExist);
+        if (isJobExist && isJobExist.length > 0) {
+          // todo update job
+          let data = ctx.request.body.data;
+          console.log("CTX", data );
+          let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, jobId);
+          newJob.data.html = _html;
+          let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
+          if (!updateResponse) {
+            return {
+              error: {
+                  status: 5001,
+                  name: "update_failed",
+                  message: "Job " + jobId + " already Exist!",
+              },
+            };
+          } else {
+            console.log('Debug OK4');
+            return {
+              success: {
+                job: updateResponse
               }
             }
-          } else {
-            console.log('Debug OK5', strapiUser);
-            let job = await createJob(strapi, strapiUser.id, newJob, ctx.request.files, bodyData.html);
-            console.log('Debug OK5');
-            return job;
           }
+        } else {
+          let job = await createJob(strapi, ctx.state.user.id, newJob, ctx.request.files, bodyData.html);
+          console.log('Debug OK5');
+          return job;
         }
 
       } else {
@@ -159,30 +128,34 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header &&
         ctx.request.header.authorization
       ) {  
-        const userData = await authUser(ctx.request.header.authorization);
-        if (userData?.data?.sub) {
-          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
-          console.log('authenticated user', strapiUser.id);
-          if (strapiUser && strapiUser.id) {
+        if (ctx.state &&
+            ctx.state.user && 
+            ctx.state.user.id) {
+          let strapiUser = ctx.state.user.id;
+          console.log('authenticated user', strapiUser);
+          if (strapiUser) {
             ctx.query = { 
               ...ctx.query, 
               publicationState: 'preview',
               filters: {
-                user: strapiUser.id
+                user: strapiUser
               } 
             }
-            console.log('authenticated user', strapiUser.id, ctx.query);
+            console.log('authenticated user', strapiUser, ctx.query);
             let job = await getJobs(ctx.query);
             return job;
           } else {
+            console.log('authenticated user, but no user id');
             let job = await getJobs(ctx.query);
             return job;
           }
         } else {
+          console.log('XX authenticated user, but no user id');
           let job = await getJobs(ctx.query);
           return job;
         }
       } else {
+        console.log('XXX authenticated user, but no user id');
         let job = await getJobs(ctx.query);
         return job;
       }
@@ -357,32 +330,20 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START delete", ctx);
-        const userData = await authUser(ctx.request.header.authorization);
-        if (userData && userData.error) return userData;
-        if (userData?.data?.sub) {
-          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
-          if (strapiUser && strapiUser.id) {
-            ctx.query = { 
-              ...ctx.query, 
-              filters: {
-                user: strapiUser.id
-              }
+        let strapiUser = ctx.state.user.id
+        if (strapiUser) {
+          ctx.query = { 
+            ...ctx.query, 
+            filters: {
+              user: strapiUser
             }
-            
-            let job = await strapi.service("api::job.job").delete(id, ctx.query);
-            return {
-              success: {
-                job: job
-              }
+          }
+          
+          let job = await strapi.service("api::job.job").delete(id, ctx.query);
+          return {
+            success: {
+              job: job
             }
-          } else {
-            return {
-              error: {
-                status: 4002,
-                name: "no_job_id",
-                message: "Request requires a uuid jobId " + jobId,
-              },
-            };
           }
         } else {
           return {

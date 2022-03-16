@@ -1,6 +1,7 @@
-# Jobwizard backend
+# Yawik backend 
 
-this is the backend for our https://jobwizard.yawik.org
+this is the backend for our https://jobwizard.yawik.org and
+https://jobboard.yawik.org.
 
 Sources are located at https://gitlab.com/yawik/jobwizard
 
