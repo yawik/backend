@@ -27,9 +27,6 @@
                                 "type": "string",
                                 "format": "date-time"
                               },
-                              "jobId": {
-                                "type": "string"
-                              },
                               "location": {},
                               "intro": {
                                 "type": "string"
@@ -904,9 +901,6 @@
                                               }
                                             }
                                           },
-                                          "sub": {
-                                            "type": "string"
-                                          },
                                           "jobs": {
                                             "type": "object",
                                             "properties": {
@@ -927,9 +921,6 @@
                                                         "dateDeleted": {
                                                           "type": "string",
                                                           "format": "date-time"
-                                                        },
-                                                        "jobId": {
-                                                          "type": "string"
                                                         },
                                                         "location": {},
                                                         "intro": {
@@ -4176,9 +4167,6 @@
                               "type": "string",
                               "format": "date-time"
                             },
-                            "jobId": {
-                              "type": "string"
-                            },
                             "location": {},
                             "intro": {
                               "type": "string"
@@ -5053,9 +5041,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -5076,9 +5061,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {
@@ -8207,8 +8189,155 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "jobId": {
+                      "organization": {
                         "type": "string"
+                      },
+                      "dateDeleted": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "location": {},
+                      "intro": {
+                        "type": "string"
+                      },
+                      "tasks": {
+                        "type": "string"
+                      },
+                      "offer": {
+                        "type": "string"
+                      },
+                      "jobTitle": {
+                        "type": "string"
+                      },
+                      "reference": {
+                        "type": "string"
+                      },
+                      "applyEmail": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "applyUrl": {
+                        "type": "string"
+                      },
+                      "formattedAddress": {
+                        "type": "string"
+                      },
+                      "applyPost": {
+                        "type": "boolean"
+                      },
+                      "introLabel": {
+                        "type": "string"
+                      },
+                      "taskLabel": {
+                        "type": "string"
+                      },
+                      "profileLabel": {
+                        "type": "string"
+                      },
+                      "offerLabel": {
+                        "type": "string"
+                      },
+                      "contactInfoLabel": {
+                        "type": "string"
+                      },
+                      "contactInfo": {
+                        "type": "string"
+                      },
+                      "html": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
+                      },
+                      "user": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
+                      },
+                      "meta": {},
+                      "logo": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
+                      },
+                      "header": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "string or id"
+                        }
+                      },
+                      "org": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
+                      },
+                      "profile": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
+                      },
+                      "updatedBy": {
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "example": "string or id"
                       }
                     }
                   }
@@ -8243,9 +8372,6 @@
                             "dateDeleted": {
                               "type": "string",
                               "format": "date-time"
-                            },
-                            "jobId": {
-                              "type": "string"
                             },
                             "location": {},
                             "intro": {
@@ -9121,9 +9247,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -9144,9 +9267,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {
@@ -12302,9 +12422,6 @@
                               "type": "string",
                               "format": "date-time"
                             },
-                            "jobId": {
-                              "type": "string"
-                            },
                             "location": {},
                             "intro": {
                               "type": "string"
@@ -13179,9 +13296,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -13202,9 +13316,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {
@@ -16350,9 +16461,6 @@
                       "dateDeleted": {
                         "type": "string",
                         "format": "date-time"
-                      },
-                      "jobId": {
-                        "type": "string"
                       },
                       "location": {},
                       "intro": {

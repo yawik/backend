@@ -1223,9 +1223,6 @@
                                               }
                                             }
                                           },
-                                          "sub": {
-                                            "type": "string"
-                                          },
                                           "jobs": {
                                             "type": "object",
                                             "properties": {
@@ -1246,9 +1243,6 @@
                                                         "dateDeleted": {
                                                           "type": "string",
                                                           "format": "date-time"
-                                                        },
-                                                        "jobId": {
-                                                          "type": "string"
                                                         },
                                                         "location": {},
                                                         "intro": {
@@ -4943,9 +4937,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -4966,9 +4957,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {
@@ -8662,9 +8650,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -8685,9 +8670,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {
@@ -12291,9 +12273,6 @@
                                             }
                                           }
                                         },
-                                        "sub": {
-                                          "type": "string"
-                                        },
                                         "jobs": {
                                           "type": "object",
                                           "properties": {
@@ -12314,9 +12293,6 @@
                                                       "dateDeleted": {
                                                         "type": "string",
                                                         "format": "date-time"
-                                                      },
-                                                      "jobId": {
-                                                        "type": "string"
                                                       },
                                                       "location": {},
                                                       "intro": {

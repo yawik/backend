@@ -23,11 +23,6 @@
     "dateDeleted": {
       "type": "datetime"
     },
-    "jobId": {
-      "type": "uid",
-      "primaryKey": true,
-      "required": true
-    },
     "location": {
       "type": "json"
     },

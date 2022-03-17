@@ -162,7 +162,11 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
       console.log("FIND ONE", id);
       //let job = await strapi.service("api::job.job").findOne(id);
       let job = await strapi.entityService.findOne('api::job.job', id, {
-        populate: { logo: true },
+        populate: { 
+          logo: true,
+          html: true,
+          header: true 
+        },
         publicationState: 'preview',
       });
       return {
@@ -190,68 +194,27 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START update", ctx);
-        const userData = await authUser(ctx.request.header.authorization);
-        if (userData && userData.error) return userData;
-        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {};
+        const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {}
         const newJob = createJobObject(bodyData);
-        if (!newJob?.data?.jobId) {
-          return {
-            error: {
-              status: 4002,
-              name: "no_job_id",
-              message: "Request requires a uuid jobId " + jobId,
-            },
-          };
-        }
-
-        if (userData?.data?.sub) {
-          let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({sub: userData.data.sub});
-          if (strapiUser && strapiUser.id) {
-            ctx.query = { 
-              ...ctx.query, 
-              filters: {
-                user: strapiUser.id
-              }
-            }
-            let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, newJob.data.jobId);
-            newJob.data.user = strapiUser.id;
-            newJob.data.html = _html;
-            let { _logo, _header, _org, _orgId } = await createOrgnization(strapi, newJob.data.organization, newJob.data.jobId, ctx.request.files, bodyData.logo, bodyData.header);
-            if (newJob?.data) {
-              newJob.data.logo = _logo;
-              newJob.data.header = _header;
-              newJob.data.org = _orgId;
-            }
-            let job = await strapi.service("api::job.job").update(id, newJob);
-            return {
-              success: {
-                job: job
-              }
-            }
-          } else {
-            return {
-              error: {
-                status: 4002,
-                name: "no_job_id",
-                message: "Request requires a uuid jobId " + jobId,
-              },
-            };
+        let strapiUser = ctx.state.user.id;
+        ctx.query = { 
+          ...ctx.query, 
+          filters: {
+            user: strapiUser
           }
-        } else {
-          return {
-            error: {
-              status: 4002,
-              name: "no_job_id",
-              message: "Request requires a uuid jobId " + jobId,
-            },
-          };
+        }
+        newJob.data.user = strapiUser;
+        let job = await strapi.service("api::job.job").update(id, newJob);
+        return {
+          success: {
+            job: job
+          }
         }
       } else {
-        let job = await getJobs(ctx.query);
-        return job;
+         console.log("xxx anonymous request =======================", e)
       }
     } catch (e) {
-      console.log("xxx eee =======================", e)
+      console.log("xxx update =======================", e)
       return {
         error: {
           status: 5000,

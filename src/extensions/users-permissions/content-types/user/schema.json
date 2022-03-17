@@ -63,9 +63,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "sub": {
-      "type": "uid"
-    },
     "jobs": {
       "type": "relation",
       "relation": "oneToMany",
