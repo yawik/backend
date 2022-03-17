@@ -25,16 +25,22 @@ module.exports = {
         _htmlFile = _htmlFile && _htmlFile.length && _htmlFile[0].url;
         _mergeContent.push({ name: "link", content: encodeURI("https://api.yawik.org" + _htmlFile) })
       }
-      if (data?.params?.data?.user) {
-        let userId = data?.params?.data?.user;
-        let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({ id: userId });
-        _mergeContent.push({ name: "username", content: strapiUser.username })
-      }
+//      if (data?.params?.data?.user) {
+//        let userId = data?.params?.data?.user;
+//        let strapiUser = await strapi.service('plugin::users-permissions.user').fetch({ id: userId });
+//        _mergeContent.push({ name: "username", content: strapiUser.username })
+//      }
 
       // there is no link in data set. Let's test with an hardcoded url
       // _mergeContent.push({ name: "link", content: 'https://jobwizard.yawik.org' })
-      const _finalRes = await strapi.service('api::email.email')
-        .sendMailchimpMail('Job Created', 'contact@yawik.org', 'de-job-created-check', _mergeContent);
+      const _finalRes = await strapi.plugins['email'].services.email.send({
+          to: 'bleek@cross-solution.de',
+          subject: 'job created',
+          text: 'test',
+          html: '<p><b>t</b>est</p>'            
+        });
+        
+      // 'Job Created', 'contact@yawik.org', 'de-job-created-check', _mergeContent);
 
       console.log("_finalRes in lifecycle =====------=====------>>", _finalRes)
         // await strapi.plugins['email'].services.email.send({
