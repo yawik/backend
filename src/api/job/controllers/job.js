@@ -45,61 +45,12 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header &&
         ctx.request.header.authorization
       ) {
-        const userData = await authUser(ctx.request.header.authorization);
-        if (userData && userData.error) return userData;
         const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {};
         console.log(bodyData);
-        const newJob = createJobObject(bodyData);
-        if (!newJob?.data?.jobId) {
-          return {
-            error: {
-              status: 4002,
-              name: "no_job_id",
-              message: "Request requires a uuid jobId " + jobId,
-            },
-          };
-        }
-        const sub =  userData.data.sub;
-        let { _logo, _header, _org, _orgId } = await createOrgnization(strapi, bodyData.organization, bodyData.jobId, ctx.request.files, bodyData.logo, bodyData.header);
-        if (newJob?.data) {
-          newJob.data.logo = _logo;
-          newJob.data.header = _header;
-          newJob.data.org = _orgId;
-        }
-
-        let jobId = newJob.data.jobId;
-
-        console.log('user found', jobId)
-        let isJobExist = await strapi.service("api::job.job").JobFindOne({jobId:jobId});
-        console.log("Job found !!!!!!", isJobExist);
-        if (isJobExist && isJobExist.length > 0) {
-          // todo update job
-          let data = ctx.request.body.data;
-          console.log("CTX", data );
-          let _html = await htmlUpload(strapi, ctx.request.files, bodyData.html, jobId);
-          newJob.data.html = _html;
-          let updateResponse = await strapi.service("api::job.job").edit({ id: isJobExist[0].id }, { jobTitle: data?.jobTitle });
-          if (!updateResponse) {
-            return {
-              error: {
-                  status: 5001,
-                  name: "update_failed",
-                  message: "Job " + jobId + " already Exist!",
-              },
-            };
-          } else {
-            console.log('Debug OK4');
-            return {
-              success: {
-                job: updateResponse
-              }
-            }
-          }
-        } else {
-          let job = await createJob(strapi, ctx.state.user.id, newJob, ctx.request.files, bodyData.html);
-          console.log('Debug OK5');
-          return job;
-        }
+        const newJob = createJobObject(bodyData); 
+        const job = await createJob(strapi, ctx.state.user.id, newJob, ctx.request.files, bodyData.html);
+        console.log('Debug OK5');
+        return job;
 
       } else {
         return {
