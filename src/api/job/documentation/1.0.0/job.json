@@ -2485,7 +2485,7 @@
                                                                         }
                                                                       }
                                                                     },
-                                                                    "Header": {
+                                                                    "header": {
                                                                       "type": "object",
                                                                       "properties": {
                                                                         "data": {
@@ -6625,7 +6625,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {
@@ -10831,7 +10831,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {
@@ -14880,7 +14880,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {

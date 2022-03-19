@@ -393,7 +393,7 @@
                                   }
                                 }
                               },
-                              "Header": {
+                              "header": {
                                 "type": "object",
                                 "properties": {
                                   "data": {
@@ -2807,7 +2807,7 @@
                                                                         }
                                                                       }
                                                                     },
-                                                                    "Header": {
+                                                                    "header": {
                                                                       "type": "object",
                                                                       "properties": {
                                                                         "data": {
@@ -4107,7 +4107,7 @@
                                 }
                               }
                             },
-                            "Header": {
+                            "header": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -6521,7 +6521,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {
@@ -7351,7 +7351,7 @@
                         ],
                         "example": "string or id"
                       },
-                      "Header": {
+                      "header": {
                         "type": "array",
                         "items": {
                           "oneOf": [
@@ -7820,7 +7820,7 @@
                                 }
                               }
                             },
-                            "Header": {
+                            "header": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -10234,7 +10234,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {
@@ -11443,7 +11443,7 @@
                                 }
                               }
                             },
-                            "Header": {
+                            "header": {
                               "type": "object",
                               "properties": {
                                 "data": {
@@ -13857,7 +13857,7 @@
                                                                       }
                                                                     }
                                                                   },
-                                                                  "Header": {
+                                                                  "header": {
                                                                     "type": "object",
                                                                     "properties": {
                                                                       "data": {
@@ -14698,7 +14698,7 @@
                         ],
                         "example": "string or id"
                       },
-                      "Header": {
+                      "header": {
                         "type": "array",
                         "items": {
                           "oneOf": [

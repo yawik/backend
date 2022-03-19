@@ -23,7 +23,7 @@
         "images"
       ]
     },
-    "Header": {
+    "header": {
       "type": "media",
       "multiple": true,
       "required": false,
