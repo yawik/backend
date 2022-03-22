@@ -64,8 +64,30 @@ module.exports = createCoreController('api::organization.organization', ({ strap
       };
     }
   },
+  async findOne(ctx) {
+    const { id } = ctx.params;
+    try {
+      console.log("FIND ONE", id);
+      //let job = await strapi.service("api::job.job").findOne(id);
+      let org = await strapi.entityService.findOne('api::organization.organization', id, {
+        populate: { 
+          logo: true,
+          header: true 
+        }
+      });
+      return org
+    } catch (e) {
+      console.log("xxx eee =======================", e)
+      return {
+        error: {
+          status: 5000,
+          name: "internal_error",
+          message: " " + e,
+        },
+      };
+    }
+  },
 }));
-
 
 
 /**

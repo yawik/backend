@@ -148,12 +148,6 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {}
         const newJob = createJobObject(bodyData);
         let strapiUser = ctx.state.user.id;
-        ctx.query = { 
-          ...ctx.query, 
-          filters: {
-            user: strapiUser
-          }
-        }
         newJob.data.user = strapiUser;
         let job = await strapi.service("api::job.job").update(id, newJob);
         return {
