@@ -106,13 +106,14 @@
         "images"
       ]
     },
-    "org": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::organization.organization"
-    },
     "profile": {
       "type": "richtext"
+    },
+    "org": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization.organization",
+      "inversedBy": "jobs"
     }
   }
 }

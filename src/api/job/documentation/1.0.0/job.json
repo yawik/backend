@@ -2100,6 +2100,9 @@
                                                             }
                                                           }
                                                         },
+                                                        "profile": {
+                                                          "type": "string"
+                                                        },
                                                         "org": {
                                                           "type": "object",
                                                           "properties": {
@@ -2942,9 +2945,6 @@
                                                               }
                                                             }
                                                           }
-                                                        },
-                                                        "profile": {
-                                                          "type": "string"
                                                         },
                                                         "createdAt": {
                                                           "type": "string",
@@ -3811,6 +3811,9 @@
                                   }
                                 }
                               },
+                              "profile": {
+                                "type": "string"
+                              },
                               "org": {
                                 "type": "object",
                                 "properties": {
@@ -3827,9 +3830,6 @@
                                     }
                                   }
                                 }
-                              },
-                              "profile": {
-                                "type": "string"
                               },
                               "createdAt": {
                                 "type": "string",
@@ -6240,6 +6240,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -7082,9 +7085,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -7951,6 +7951,9 @@
                                 }
                               }
                             },
+                            "profile": {
+                              "type": "string"
+                            },
                             "org": {
                               "type": "object",
                               "properties": {
@@ -7967,9 +7970,6 @@
                                   }
                                 }
                               }
-                            },
-                            "profile": {
-                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -8291,6 +8291,9 @@
                           "example": "string or id"
                         }
                       },
+                      "profile": {
+                        "type": "string"
+                      },
                       "org": {
                         "oneOf": [
                           {
@@ -8301,9 +8304,6 @@
                           }
                         ],
                         "example": "string or id"
-                      },
-                      "profile": {
-                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -10446,6 +10446,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -11288,9 +11291,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -12157,6 +12157,9 @@
                                 }
                               }
                             },
+                            "profile": {
+                              "type": "string"
+                            },
                             "org": {
                               "type": "object",
                               "properties": {
@@ -12173,9 +12176,6 @@
                                   }
                                 }
                               }
-                            },
-                            "profile": {
-                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -14495,6 +14495,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -15337,9 +15340,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -16206,6 +16206,9 @@
                                 }
                               }
                             },
+                            "profile": {
+                              "type": "string"
+                            },
                             "org": {
                               "type": "object",
                               "properties": {
@@ -16222,9 +16225,6 @@
                                   }
                                 }
                               }
-                            },
-                            "profile": {
-                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -16557,6 +16557,9 @@
                           "example": "string or id"
                         }
                       },
+                      "profile": {
+                        "type": "string"
+                      },
                       "org": {
                         "oneOf": [
                           {
@@ -16567,9 +16570,6 @@
                           }
                         ],
                         "example": "string or id"
-                      },
-                      "profile": {
-                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",

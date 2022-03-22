@@ -2422,6 +2422,9 @@
                                                             }
                                                           }
                                                         },
+                                                        "profile": {
+                                                          "type": "string"
+                                                        },
                                                         "org": {
                                                           "type": "object",
                                                           "properties": {
@@ -3264,9 +3267,6 @@
                                                               }
                                                             }
                                                           }
-                                                        },
-                                                        "profile": {
-                                                          "type": "string"
                                                         },
                                                         "createdAt": {
                                                           "type": "string",
@@ -6136,6 +6136,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -6978,9 +6981,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -9849,6 +9849,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -10691,9 +10694,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -13472,6 +13472,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "profile": {
+                                                        "type": "string"
+                                                      },
                                                       "org": {
                                                         "type": "object",
                                                         "properties": {
@@ -14314,9 +14317,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "profile": {
-                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
