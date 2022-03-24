@@ -10,6 +10,7 @@ module.exports = createCoreController('api::organization.organization', ({ strap
       async create(ctx) {
         try {
           if (ctx.request && ctx.request.body) {
+            ctx.request.body.data.user = ctx.state.user.id;          
             const org = await strapi.service('api::organization.organization').addOrg(ctx.request.body);
             return org;
           } else {

@@ -25,6 +25,7 @@ module.exports = createCoreService('api::organization.organization', ({ strapi }
      * @returns Added org
      */
     async addOrg(organization) {
+        console.log("addOrg:",organization);
         let org = await strapi.query('api::organization.organization').create(organization);
         return {
             success: {

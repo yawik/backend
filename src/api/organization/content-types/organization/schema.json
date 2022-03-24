@@ -42,6 +42,9 @@
       "relation": "oneToMany",
       "target": "api::job.job",
       "mappedBy": "org"
+    },
+    "misc": {
+      "type": "json"
     }
   }
 }
