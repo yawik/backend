@@ -116,7 +116,8 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         populate: { 
           logo: true,
           html: true,
-          header: true 
+          header: true,
+          org: true 
         },
         publicationState: 'preview',
       });
@@ -237,13 +238,13 @@ const createJobObject = (payload) => {
       formattedAddress: payload.formattedAddress || '',
       intro: payload.intro || '',
       introLabel: payload.introLabel || '',
-      jobId: payload.jobId,
       jobTitle: payload.jobTitle || '',
       location: payload.location || {},
       meta: payload.meta || {},
       offer: payload.offer || '',
       offerLabel: payload.offerLabel || '',
       organization: payload.organization || '',
+      org: payload.org || '',
       profile: payload.profile || '',
       profileLabel: payload.profileLabel || '',
       reference: payload.reference || '',
@@ -259,6 +260,8 @@ const createJobObject = (payload) => {
 }
 
 /**
+ * Deprecated. Not needed anymore
+ *
  * INFO: Authenticate user from token
  * @param {Token} authorization 
  * @returns authenticated user
