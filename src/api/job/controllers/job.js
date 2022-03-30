@@ -22,7 +22,7 @@ const uploadFiles = async (strapi, file, refId, field = "html") => {
   const _upload = await strapi.plugins.upload.services.upload.upload({
     data: {
       refId: refId,
-      ref: "job",
+      ref: "api::job.job",
       field: field,
     },
     files: {
@@ -146,11 +146,17 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {
         console.log("START update", ctx);
+        console.log("HTML: ", ctx.request.files);
+        
         const bodyData = ctx.request.body && ctx.request.body.data ? JSON.parse(ctx.request.body.data) : {}
+        const strapiUser = ctx.state.user.id;
         const newJob = createJobObject(bodyData);
-        let strapiUser = ctx.state.user.id;
+        const html = ctx.request.files.html;
+
         newJob.data.user = strapiUser;
         let job = await strapi.service("api::job.job").update(id, newJob);
+        uploadFiles(strapi, html, bodyData.id);
+        
         return {
           success: {
             job: job
@@ -230,6 +236,7 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
 const createJobObject = (payload) => {
   let newJob = {
     data: {
+      id: payload.id || false,
       applyEmail: payload.applyEmail || '',
       applyPost: payload.applyPost || false,
       applyUrl: payload.applyUrl || '',
@@ -299,8 +306,10 @@ const htmlUpload = async (strapi, file, html, jobId) => {
   let _html;
   if (file && Object.keys(file).length > 0 && file.html && Object.keys(file.html).length > 0) {
     file = file.html;
+    console.log("JOB_ID 1:", jobId);
     _html = await uploadFiles(strapi, file, jobId);
   } else if (html && Object.keys(html).length > 0) {
+    console.log("JOB_ID 2:", jobId);
     file = html;
     _html = await uploadFiles(strapi, file, jobId);
   }
