@@ -369,6 +369,9 @@
                                   }
                                 }
                               }
+                            },
+                            "sitemap_exclude": {
+                              "type": "boolean"
                             }
                           }
                         }
@@ -939,6 +942,9 @@
                                   }
                                 }
                               }
+                            },
+                            "sitemap_exclude": {
+                              "type": "boolean"
                             }
                           }
                         }
@@ -1476,6 +1482,9 @@
                                     }
                                   }
                                 }
+                              },
+                              "sitemap_exclude": {
+                                "type": "boolean"
                               }
                             }
                           }
@@ -2113,6 +2122,9 @@
                                   }
                                 }
                               }
+                            },
+                            "sitemap_exclude": {
+                              "type": "boolean"
                             }
                           }
                         }
