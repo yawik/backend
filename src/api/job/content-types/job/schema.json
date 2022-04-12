@@ -114,6 +114,12 @@
       "relation": "manyToOne",
       "target": "api::organization.organization",
       "inversedBy": "jobs"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "job"
     }
   }
 }
