@@ -401,6 +401,8 @@ const createJob = async (strapi, strapiUserId, Jobs, file, html) => {
   let _html = await htmlUpload(strapi, file, html, Jobs.data.jobId);
   Jobs.data.user = strapiUserId;
   Jobs.data.html = _html;
+
+  delete Jobs.data.id;
   let job = await strapi.query("api::job.job").create(Jobs);
   return {
     success: {
