@@ -74,6 +74,12 @@
       "relation": "oneToMany",
       "target": "api::organization.organization",
       "mappedBy": "user"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "mappedBy": "users_permissions_users"
     }
   }
 }

@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Firstname": {
+    "firstname": {
       "type": "string"
     },
-    "Lastname": {
+    "lastname": {
       "type": "string"
     },
     "email": {
@@ -30,7 +30,7 @@
     "phone": {
       "type": "string"
     },
-    "Attachments": {
+    "attachments": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -42,11 +42,53 @@
       ]
     },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "organization": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization.organization",
+      "inversedBy": "applications"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "applications"
+    },
+    "extras": {
+      "type": "json"
+    },
+    "summary": {
+      "type": "richtext"
+    },
+    "street": {
+      "type": "string"
+    },
+    "housenumber": {
+      "type": "string"
+    },
+    "postalcode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female",
+        "diverse"
+      ]
     }
   }
 }
