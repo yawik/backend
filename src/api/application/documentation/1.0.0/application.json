@@ -2607,6 +2607,23 @@
                                                                                       "diverse"
                                                                                     ]
                                                                                   },
+                                                                                  "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                      "new",
+                                                                                      "waiting_list",
+                                                                                      "in_rating",
+                                                                                      "assessed",
+                                                                                      "telephone_interview",
+                                                                                      "first_interview",
+                                                                                      "short_list",
+                                                                                      "assessment",
+                                                                                      "offer_received",
+                                                                                      "hired",
+                                                                                      "pool",
+                                                                                      "declined"
+                                                                                    ]
+                                                                                  },
                                                                                   "createdAt": {
                                                                                     "type": "string",
                                                                                     "format": "date-time"
@@ -4468,6 +4485,23 @@
                                   "male",
                                   "female",
                                   "diverse"
+                                ]
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "new",
+                                  "waiting_list",
+                                  "in_rating",
+                                  "assessed",
+                                  "telephone_interview",
+                                  "first_interview",
+                                  "short_list",
+                                  "assessment",
+                                  "offer_received",
+                                  "hired",
+                                  "pool",
+                                  "declined"
                                 ]
                               },
                               "createdAt": {
@@ -7389,6 +7423,23 @@
                                                                                     "diverse"
                                                                                   ]
                                                                                 },
+                                                                                "status": {
+                                                                                  "type": "string",
+                                                                                  "enum": [
+                                                                                    "new",
+                                                                                    "waiting_list",
+                                                                                    "in_rating",
+                                                                                    "assessed",
+                                                                                    "telephone_interview",
+                                                                                    "first_interview",
+                                                                                    "short_list",
+                                                                                    "assessment",
+                                                                                    "offer_received",
+                                                                                    "hired",
+                                                                                    "pool",
+                                                                                    "declined"
+                                                                                  ]
+                                                                                },
                                                                                 "createdAt": {
                                                                                   "type": "string",
                                                                                   "format": "date-time"
@@ -9252,6 +9303,23 @@
                                 "diverse"
                               ]
                             },
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "new",
+                                "waiting_list",
+                                "in_rating",
+                                "assessed",
+                                "telephone_interview",
+                                "first_interview",
+                                "short_list",
+                                "assessment",
+                                "offer_received",
+                                "hired",
+                                "pool",
+                                "declined"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -9572,6 +9640,23 @@
                           "male",
                           "female",
                           "diverse"
+                        ]
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "new",
+                          "waiting_list",
+                          "in_rating",
+                          "assessed",
+                          "telephone_interview",
+                          "first_interview",
+                          "short_list",
+                          "assessment",
+                          "offer_received",
+                          "hired",
+                          "pool",
+                          "declined"
                         ]
                       },
                       "createdAt": {
@@ -12225,6 +12310,23 @@
                                                                                     "diverse"
                                                                                   ]
                                                                                 },
+                                                                                "status": {
+                                                                                  "type": "string",
+                                                                                  "enum": [
+                                                                                    "new",
+                                                                                    "waiting_list",
+                                                                                    "in_rating",
+                                                                                    "assessed",
+                                                                                    "telephone_interview",
+                                                                                    "first_interview",
+                                                                                    "short_list",
+                                                                                    "assessment",
+                                                                                    "offer_received",
+                                                                                    "hired",
+                                                                                    "pool",
+                                                                                    "declined"
+                                                                                  ]
+                                                                                },
                                                                                 "createdAt": {
                                                                                   "type": "string",
                                                                                   "format": "date-time"
@@ -14086,6 +14188,23 @@
                                 "male",
                                 "female",
                                 "diverse"
+                              ]
+                            },
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "new",
+                                "waiting_list",
+                                "in_rating",
+                                "assessed",
+                                "telephone_interview",
+                                "first_interview",
+                                "short_list",
+                                "assessment",
+                                "offer_received",
+                                "hired",
+                                "pool",
+                                "declined"
                               ]
                             },
                             "createdAt": {
@@ -16916,6 +17035,23 @@
                                                                                     "diverse"
                                                                                   ]
                                                                                 },
+                                                                                "status": {
+                                                                                  "type": "string",
+                                                                                  "enum": [
+                                                                                    "new",
+                                                                                    "waiting_list",
+                                                                                    "in_rating",
+                                                                                    "assessed",
+                                                                                    "telephone_interview",
+                                                                                    "first_interview",
+                                                                                    "short_list",
+                                                                                    "assessment",
+                                                                                    "offer_received",
+                                                                                    "hired",
+                                                                                    "pool",
+                                                                                    "declined"
+                                                                                  ]
+                                                                                },
                                                                                 "createdAt": {
                                                                                   "type": "string",
                                                                                   "format": "date-time"
@@ -18779,6 +18915,23 @@
                                 "diverse"
                               ]
                             },
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "new",
+                                "waiting_list",
+                                "in_rating",
+                                "assessed",
+                                "telephone_interview",
+                                "first_interview",
+                                "short_list",
+                                "assessment",
+                                "offer_received",
+                                "hired",
+                                "pool",
+                                "declined"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -19110,6 +19263,23 @@
                           "male",
                           "female",
                           "diverse"
+                        ]
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "new",
+                          "waiting_list",
+                          "in_rating",
+                          "assessed",
+                          "telephone_interview",
+                          "first_interview",
+                          "short_list",
+                          "assessment",
+                          "offer_received",
+                          "hired",
+                          "pool",
+                          "declined"
                         ]
                       },
                       "createdAt": {

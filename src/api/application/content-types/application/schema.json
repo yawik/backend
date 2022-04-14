@@ -89,6 +89,24 @@
         "female",
         "diverse"
       ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "waiting_list",
+        "in_rating",
+        "assessed",
+        "telephone_interview",
+        "first_interview",
+        "short_list",
+        "assessment",
+        "offer_received",
+        "hired",
+        "pool",
+        "declined"
+      ],
+      "default": "new"
     }
   }
 }
