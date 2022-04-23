@@ -80,12 +80,18 @@ module.exports = createCoreController("api::job.job", ({ strapi }) => ({
         ctx.request.header.authorization
       ) {  
         let strapiUser = ctx.state.user.id;
+        let filter = {}
+
+        if (ctx.request.query && ctx.request.query.filters) {
+          filter =  JSON.parse(ctx.request.query.filters);
+        }
 
         ctx.query = { 
           ...ctx.query, 
           publicationState: 'preview',
           filters: {
-            user: strapiUser
+            user: strapiUser,
+            ...filter
           } 
         }
         console.log('authenticated user', strapiUser, ctx.query);
