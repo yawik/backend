@@ -34,8 +34,8 @@ module.exports = {
                 await strapi.plugins['email'].services.email.send({
                     to: jobInfo.applyEmail,
                     subject: 'Job Unpublished',
-                    text: contentIncludedFrom("./message.txt", {id}),
-                    html: contentIncludedFrom("./message.html", {id}),
+                    text: contentIncludedFrom("./mails/job_was_unpublished.txt", {id}),
+                    html: contentIncludedFrom("./mails/job_was_unpublished.html", {id}),
                 });   
             }
         }));
