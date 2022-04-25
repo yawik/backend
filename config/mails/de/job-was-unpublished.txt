@@ -1,0 +1,7 @@
+Dear {{firstname}} {{lastname}},
+
+your job "{{title}}" was unpublished
+
+greetings,
+
+yawik team

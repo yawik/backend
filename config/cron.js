@@ -35,16 +35,17 @@ module.exports = {
                 const params = {
                     id,
                     jobTitle: jobInfo.jobTitle,
-                    username: jobInfo.user.username,
+                    firstname: jobInfo.user.firstname,
+                    lastname: jobInfo.user.lastname,
                     link: process.env.APP_URL + jobInfo.locale + "/edit/job/" + jobInfo.id
                 }
                 await strapi.plugins['email'].services.email.send({
                     to: jobInfo.applyEmail,
                     subject: 'Job Unpublished',
-                    text: "",
+                    text: contentIncludedFrom("./mails/de/job-was-unpublished.txt", params),
                     html: contentIncludedFrom("./mails/de/job-was-unpublished.html", params),
                 });       
-            }
+            }   
             
         }));
 

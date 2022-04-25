@@ -80,6 +80,14 @@
       "relation": "manyToMany",
       "target": "api::application.application",
       "mappedBy": "users_permissions_users"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
     }
   }
 }
