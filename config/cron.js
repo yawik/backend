@@ -18,6 +18,7 @@ const contentIncludedFrom = (fileName, params) => {
 module.exports = {
     '*/10 * * * *': async ({ strapi }) => {
         const publishedJob = await strapi.api.job.services.job.find({
+            populate: "*"
         });
 
         await Promise.all(publishedJob.results.map(async (jobInfo) => {
@@ -31,13 +32,20 @@ module.exports = {
                             publishedAt: null
                         }
                 });
+                const params = {
+                    id,
+                    jobTitle: jobInfo.jobTitle,
+                    username: jobInfo.user.username,
+                    link: process.env.APP_URL + jobInfo.locale + "/edit/job/" + jobInfo.id
+                }
                 await strapi.plugins['email'].services.email.send({
                     to: jobInfo.applyEmail,
                     subject: 'Job Unpublished',
-                    text: contentIncludedFrom("./mails/de/job-was-unpublished.txt", {id}),
-                    html: contentIncludedFrom("./mails/de/job-was-unpublished.html", {id}),
-                });   
+                    text: "",
+                    html: contentIncludedFrom("./mails/de/job-was-unpublished.html", params),
+                });       
             }
+            
         }));
 
     },
