@@ -4037,6 +4037,12 @@
                                               }
                                             }
                                           },
+                                          "firstname": {
+                                            "type": "string"
+                                          },
+                                          "lastname": {
+                                            "type": "string"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -9249,6 +9255,12 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "firstname": {
+                                          "type": "string"
+                                        },
+                                        "lastname": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -14563,6 +14575,12 @@
                                             }
                                           }
                                         },
+                                        "firstname": {
+                                          "type": "string"
+                                        },
+                                        "lastname": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -19684,6 +19702,12 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "firstname": {
+                                          "type": "string"
+                                        },
+                                        "lastname": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -25184,6 +25208,12 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "firstname": {
+                                          "type": "string"
+                                        },
+                                        "lastname": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
