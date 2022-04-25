@@ -15,7 +15,13 @@ module.exports = {
                             status: 'unpublished',
                             publishedAt: null
                         }
-                    });
+                });
+                await strapi.plugins['email'].services.email.send({
+                    to: jobInfo.applyEmail,
+                    subject: 'Job Unpublished',
+                    text: 'Job Unpublished',
+                    html: `<div><div>Your Job Unpublished: </div><div>ID:${id} </div></div>`,
+                });
             }
         }));
 
