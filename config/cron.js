@@ -1,4 +1,19 @@
 const moment = require("moment");
+const fs = require("fs");
+const path = require('path');
+
+const contentIncludedFrom = (fileName, params) => {
+    const filePath = path.join(__dirname , fileName)
+    let fileData = fs.readFileSync(filePath, "utf8")
+    for (let key in params) {
+        const keyReplace = `{{${key}}}`;
+        if (fileData.indexOf(keyReplace) > -1) {
+            var re = new RegExp(keyReplace, 'g');
+            fileData = fileData.replace(re, params[key]);
+        }
+    }
+    return fileData;
+}
 
 module.exports = {
     '*/10 * * * *': async ({ strapi }) => {
@@ -19,9 +34,9 @@ module.exports = {
                 await strapi.plugins['email'].services.email.send({
                     to: jobInfo.applyEmail,
                     subject: 'Job Unpublished',
-                    text: 'Job Unpublished',
-                    html: `<div><div>Your Job Unpublished: </div><div>ID:${id} </div></div>`,
-                });
+                    text: contentIncludedFrom("./message.txt", {id}),
+                    html: contentIncludedFrom("./message.html", {id}),
+                });   
             }
         }));
 
