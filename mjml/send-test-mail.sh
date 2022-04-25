@@ -2,7 +2,7 @@
 
 ./build.sh
 
-cat de/job-created.html | mail \
+cat ../config/mails/de/job-created-check.html | mail \
 -a "From: bleek@cross-solution.de" \
 -a "MIME-Version: 1.0" \
 -a "Content-Type: text/html" \
