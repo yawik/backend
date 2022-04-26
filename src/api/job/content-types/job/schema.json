@@ -29,11 +29,11 @@
         }
       }
     },
-    "dateDeleted": {
+    "pusblishEnd": {
       "type": "datetime",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -89,7 +89,7 @@
       "type": "email",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -97,7 +97,7 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -238,6 +238,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::application.application",
+      "mappedBy": "job"
+    },
+    "statistics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::statistic.statistic",
       "mappedBy": "job"
     }
   }

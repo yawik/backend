@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/contacts": {
+    "/newsletters": {
       "get": {
         "responses": {
           "200": {
@@ -20,27 +20,22 @@
                           "attributes": {
                             "type": "object",
                             "properties": {
-                              "message": {
-                                "type": "string"
-                              },
-                              "firstname": {
-                                "type": "string"
-                              },
-                              "lastname": {
-                                "type": "string"
-                              },
-                              "phone": {
-                                "type": "string"
-                              },
                               "email": {
                                 "type": "string",
                                 "format": "email"
+                              },
+                              "email_verified": {
+                                "type": "boolean"
                               },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
                               },
                               "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "publishedAt": {
                                 "type": "string",
                                 "format": "date-time"
                               },
@@ -512,7 +507,7 @@
           }
         },
         "tags": [
-          "Contact"
+          "Newsletter"
         ],
         "parameters": [
           {
@@ -596,7 +591,7 @@
             }
           }
         ],
-        "operationId": "get/contacts"
+        "operationId": "get/newsletters"
       },
       "post": {
         "responses": {
@@ -615,27 +610,22 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "message": {
-                              "type": "string"
-                            },
-                            "firstname": {
-                              "type": "string"
-                            },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "phone": {
-                              "type": "string"
-                            },
                             "email": {
                               "type": "string",
                               "format": "email"
+                            },
+                            "email_verified": {
+                              "type": "boolean"
                             },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -1086,10 +1076,10 @@
           }
         },
         "tags": [
-          "Contact"
+          "Newsletter"
         ],
         "parameters": [],
-        "operationId": "post/contacts",
+        "operationId": "post/newsletters",
         "requestBody": {
           "required": true,
           "content": {
@@ -1099,27 +1089,22 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "message": {
-                        "type": "string"
-                      },
-                      "firstname": {
-                        "type": "string"
-                      },
-                      "lastname": {
-                        "type": "string"
-                      },
-                      "phone": {
-                        "type": "string"
-                      },
                       "email": {
                         "type": "string",
                         "format": "email"
+                      },
+                      "email_verified": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
                       },
                       "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
                         "type": "string",
                         "format": "date-time"
                       },
@@ -1157,7 +1142,7 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/newsletters/{id}": {
       "get": {
         "responses": {
           "200": {
@@ -1175,27 +1160,22 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "message": {
-                              "type": "string"
-                            },
-                            "firstname": {
-                              "type": "string"
-                            },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "phone": {
-                              "type": "string"
-                            },
                             "email": {
                               "type": "string",
                               "format": "email"
+                            },
+                            "email_verified": {
+                              "type": "boolean"
                             },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -1646,7 +1626,7 @@
           }
         },
         "tags": [
-          "Contact"
+          "Newsletter"
         ],
         "parameters": [
           {
@@ -1660,7 +1640,7 @@
             }
           }
         ],
-        "operationId": "get/contacts/{id}"
+        "operationId": "get/newsletters/{id}"
       },
       "put": {
         "responses": {
@@ -1679,27 +1659,22 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "message": {
-                              "type": "string"
-                            },
-                            "firstname": {
-                              "type": "string"
-                            },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "phone": {
-                              "type": "string"
-                            },
                             "email": {
                               "type": "string",
                               "format": "email"
+                            },
+                            "email_verified": {
+                              "type": "boolean"
                             },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -2150,7 +2125,7 @@
           }
         },
         "tags": [
-          "Contact"
+          "Newsletter"
         ],
         "parameters": [
           {
@@ -2164,7 +2139,7 @@
             }
           }
         ],
-        "operationId": "put/contacts/{id}",
+        "operationId": "put/newsletters/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -2174,27 +2149,22 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "message": {
-                        "type": "string"
-                      },
-                      "firstname": {
-                        "type": "string"
-                      },
-                      "lastname": {
-                        "type": "string"
-                      },
-                      "phone": {
-                        "type": "string"
-                      },
                       "email": {
                         "type": "string",
                         "format": "email"
+                      },
+                      "email_verified": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
                       },
                       "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
                         "type": "string",
                         "format": "date-time"
                       },
@@ -2391,7 +2361,7 @@
           }
         },
         "tags": [
-          "Contact"
+          "Newsletter"
         ],
         "parameters": [
           {
@@ -2405,7 +2375,7 @@
             }
           }
         ],
-        "operationId": "delete/contacts/{id}"
+        "operationId": "delete/newsletters/{id}"
       }
     }
   }

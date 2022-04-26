@@ -4,10 +4,11 @@
   "info": {
     "singularName": "contact",
     "pluralName": "contacts",
-    "displayName": "Contacts"
+    "displayName": "Contacts",
+    "description": "Customer contacts."
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
