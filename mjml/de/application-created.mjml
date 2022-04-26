@@ -1,0 +1,44 @@
+<!--
+
+mail is sent to the review team.
+ 
+-->
+<mjml>
+
+  <mj-include path="./head.mjml" />
+
+  <mj-body background-color="#eee">
+
+    <mj-include path="./header.mjml" />
+
+    <mj-section background-color="#fff">
+
+      <mj-column>
+        <mj-text align="left">
+          <p>
+	    Hallo {{firstname}} {{lastname}},
+          </p>
+          <p>
+            für ihre Stellenanzeige "{{jobTitle}}" ist eine Bewerbung eingegabne.
+          </p>
+          <h2>Bewerber: {{applicant_name}}</h2>
+          <h2>Email: {{applicant_email}}</h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#fff">
+      <mj-column>
+        <mj-button href="{{link}}" font-family="Helvetica" background-color="#5498D7" color="white">
+          Zur Bewerbung
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-include path="./sponsor.mjml" />
+
+    <mj-include path="./footer.mjml" />
+
+  </mj-body>
+
+</mjml>
