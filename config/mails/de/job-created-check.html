@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-  <title> Jobwizard: {{jobTitle}}
+  <title> Jobwizard:  <%= params.jobTitle %>
   </title>
   <!--[if !mso]><!-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -146,14 +146,13 @@
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                         <div style="font-family:Arial;font-size:13px;line-height:1;text-align:left;color:#555555;">
-                          <p> Hallo <%= params.firstname="" %=""> <%= params.lastname="" %="">,
-          </%=></%=></p>
+                          <p> Hallo <%= params.firstname %> <%= params.lastname %>,</p>
           <p>
             ihre Stellenanzeige ist bei uns angekommen. Sie wird von uns kurz &uuml;berpr&uuml;ft 
             und dann freigeschaltet. Wir informieren Sie, wenn die Anzeige online ist.
           </p>
-          <h2>Titel: <%= params.jobTitle="" %=""/></h2>
-          <h2>Firma: <%= params.organization="" %=""/></h2></div>
+          <h2>Titel: <%= params.jobTitle %></h2>
+          <h2>Firma: <%= params.organization %></h2></div>
     
                 </td>
               </tr>

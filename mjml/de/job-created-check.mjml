@@ -16,7 +16,11 @@ mail is sent to the review team.
       <mj-column>
         <mj-text align="left">
           <p>
-	    Hallo <%= params.firstname %> <%= params.lastname %>,
+	    Hallo
+            <mj-raw>
+            <!-- htmlmin:ignore --><%= params.firstname %><!-- htmlmin:ignore -->
+            <!-- htmlmin:ignore --><%= params.lastname %><!-- htmlmin:ignore -->,
+            </mj-raw>
           </p>
           <p>
             ihre Stellenanzeige ist bei uns angekommen. Sie wird von uns kurz &uuml;berpr&uuml;ft 
@@ -41,3 +45,6 @@ mail is sent to the review team.
   </mj-body>
 
 </mjml>
+
+
+
