@@ -55,7 +55,7 @@ module.exports = {
     }
     const _finalRes = await strapi.plugins['email'].services.email.sendTemplatedEmail(
       {
-        to: publishedJob.applyEmail
+        to: publishedJob.user.email
       },
       emailTemplate,
       {
