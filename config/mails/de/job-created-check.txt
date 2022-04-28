@@ -1,0 +1,7 @@
+Dear <%= params.firstname %> <%= params.lastname %>,
+
+your job "<%= params.title %>" created
+
+greetings,
+
+yawik team

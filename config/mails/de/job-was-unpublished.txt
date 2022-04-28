@@ -1,6 +1,6 @@
-Dear {{firstname}} {{lastname}},
+Dear <%= firstname %> <%= lastname %>,
 
-your job "{{title}}" was unpublished
+your job "<%= title %>" was unpublished
 
 greetings,
 
