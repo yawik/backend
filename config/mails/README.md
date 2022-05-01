@@ -1,7 +1,9 @@
 # Mail Templates
 
-Mail Templates adre creted using mjml. The html version of mail templates are generated with
+Mail Templates are created using mjml. The html version of mail templates are generated with
 [mjml/build.sh](../mjml/build.sh). They are stored in `config/mails/[lang]/
+
+DONT EDIT conig/mail/(de|en|fr)/*.html FILES. CHANGES ARE OVERWRITTEN.
 
 ## Mails
 

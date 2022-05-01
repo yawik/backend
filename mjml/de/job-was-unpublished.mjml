@@ -16,10 +16,10 @@ mail is sent to the review team.
       <mj-column>
         <mj-text align="left">
           <p>
-	    Hallo <span mc:edit="username">{{firstname}} {{lastname}}</span>,
+	    Hallo <%= params.firstname %> <%= params.lastname %>,
           </p>
           <p>
-            ihre Stellenanzeige "{{jobTitle}}" wurde deaktiviert.
+            ihre Stellenanzeige "<%= params.jobTitle %>" wurde deaktiviert.
           </p>
         </mj-text>
       </mj-column>
@@ -27,7 +27,7 @@ mail is sent to the review team.
 
     <mj-section background-color="#fff">
       <mj-column>
-        <mj-button href="{{link}}" font-family="Helvetica" background-color="#5498D7" color="white">
+        <mj-button href="<%= params.link %>" font-family="Helvetica" background-color="#5498D7" color="white">
           Zur Anzeigenverwaltung
         </mj-button>
       </mj-column>

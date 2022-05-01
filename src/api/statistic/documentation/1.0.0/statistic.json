@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/applications": {
+    "/statistics": {
       "get": {
         "responses": {
           "200": {
@@ -20,15 +20,12 @@
                           "attributes": {
                             "type": "object",
                             "properties": {
-                              "firstname": {
-                                "type": "string"
+                              "clicks": {
+                                "type": "integer"
                               },
-                              "lastname": {
-                                "type": "string"
-                              },
-                              "email": {
+                              "date": {
                                 "type": "string",
-                                "format": "email"
+                                "format": "date"
                               },
                               "job": {
                                 "type": "object",
@@ -3518,136 +3515,11 @@
                                   }
                                 }
                               },
-                              "phone": {
-                                "type": "string"
-                              },
-                              "organization": {
-                                "type": "object",
-                                "properties": {
-                                  "data": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "users_permissions_users": {
-                                "type": "object",
-                                "properties": {
-                                  "data": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "attributes": {
-                                          "type": "object",
-                                          "properties": {}
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "extras": {},
-                              "summary": {
-                                "type": "string"
-                              },
-                              "street": {
-                                "type": "string"
-                              },
-                              "housenumber": {
-                                "type": "string"
-                              },
-                              "postalcode": {
-                                "type": "string"
-                              },
-                              "city": {
-                                "type": "string"
-                              },
-                              "country": {
-                                "type": "string"
-                              },
-                              "gender": {
-                                "type": "string",
-                                "enum": [
-                                  "male",
-                                  "female",
-                                  "diverse"
-                                ]
-                              },
-                              "status": {
-                                "type": "string",
-                                "enum": [
-                                  "new",
-                                  "waiting_list",
-                                  "in_rating",
-                                  "assessed",
-                                  "telephone_interview",
-                                  "first_interview",
-                                  "short_list",
-                                  "assessment",
-                                  "offer_received",
-                                  "hired",
-                                  "pool",
-                                  "declined"
-                                ]
-                              },
-                              "private_uploads_attachments": {
-                                "type": "object",
-                                "properties": {
-                                  "data": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string"
-                                        },
-                                        "attributes": {
-                                          "type": "object",
-                                          "properties": {}
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "photo": {
-                                "type": "object",
-                                "properties": {
-                                  "data": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
                               },
                               "updatedAt": {
-                                "type": "string",
-                                "format": "date-time"
-                              },
-                              "publishedAt": {
                                 "type": "string",
                                 "format": "date-time"
                               },
@@ -3868,7 +3740,7 @@
           }
         },
         "tags": [
-          "Application"
+          "Statistic"
         ],
         "parameters": [
           {
@@ -3952,7 +3824,7 @@
             }
           }
         ],
-        "operationId": "get/applications"
+        "operationId": "get/statistics"
       },
       "post": {
         "responses": {
@@ -3971,15 +3843,12 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "firstname": {
-                              "type": "string"
+                            "clicks": {
+                              "type": "integer"
                             },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "email": {
+                            "date": {
                               "type": "string",
-                              "format": "email"
+                              "format": "date"
                             },
                             "job": {
                               "type": "object",
@@ -7469,136 +7338,11 @@
                                 }
                               }
                             },
-                            "phone": {
-                              "type": "string"
-                            },
-                            "organization": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "users_permissions_users": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "extras": {},
-                            "summary": {
-                              "type": "string"
-                            },
-                            "street": {
-                              "type": "string"
-                            },
-                            "housenumber": {
-                              "type": "string"
-                            },
-                            "postalcode": {
-                              "type": "string"
-                            },
-                            "city": {
-                              "type": "string"
-                            },
-                            "country": {
-                              "type": "string"
-                            },
-                            "gender": {
-                              "type": "string",
-                              "enum": [
-                                "male",
-                                "female",
-                                "diverse"
-                              ]
-                            },
-                            "status": {
-                              "type": "string",
-                              "enum": [
-                                "new",
-                                "waiting_list",
-                                "in_rating",
-                                "assessed",
-                                "telephone_interview",
-                                "first_interview",
-                                "short_list",
-                                "assessment",
-                                "offer_received",
-                                "hired",
-                                "pool",
-                                "declined"
-                              ]
-                            },
-                            "private_uploads_attachments": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "photo": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -7798,10 +7542,10 @@
           }
         },
         "tags": [
-          "Application"
+          "Statistic"
         ],
         "parameters": [],
-        "operationId": "post/applications",
+        "operationId": "post/statistics",
         "requestBody": {
           "required": true,
           "content": {
@@ -7811,114 +7555,14 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "firstname": {
-                        "type": "string"
+                      "clicks": {
+                        "type": "integer"
                       },
-                      "lastname": {
-                        "type": "string"
-                      },
-                      "email": {
+                      "date": {
                         "type": "string",
-                        "format": "email"
+                        "format": "date"
                       },
                       "job": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "phone": {
-                        "type": "string"
-                      },
-                      "organization": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "users_permissions_users": {
-                        "type": "array",
-                        "items": {
-                          "oneOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ],
-                          "example": "string or id"
-                        }
-                      },
-                      "extras": {},
-                      "summary": {
-                        "type": "string"
-                      },
-                      "street": {
-                        "type": "string"
-                      },
-                      "housenumber": {
-                        "type": "string"
-                      },
-                      "postalcode": {
-                        "type": "string"
-                      },
-                      "city": {
-                        "type": "string"
-                      },
-                      "country": {
-                        "type": "string"
-                      },
-                      "gender": {
-                        "type": "string",
-                        "enum": [
-                          "male",
-                          "female",
-                          "diverse"
-                        ]
-                      },
-                      "status": {
-                        "type": "string",
-                        "enum": [
-                          "new",
-                          "waiting_list",
-                          "in_rating",
-                          "assessed",
-                          "telephone_interview",
-                          "first_interview",
-                          "short_list",
-                          "assessment",
-                          "offer_received",
-                          "hired",
-                          "pool",
-                          "declined"
-                        ]
-                      },
-                      "private_uploads_attachments": {
-                        "type": "array",
-                        "items": {
-                          "oneOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ],
-                          "example": "string or id"
-                        }
-                      },
-                      "photo": {
                         "oneOf": [
                           {
                             "type": "integer"
@@ -7934,10 +7578,6 @@
                         "format": "date-time"
                       },
                       "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "publishedAt": {
                         "type": "string",
                         "format": "date-time"
                       },
@@ -7975,7 +7615,7 @@
         }
       }
     },
-    "/applications/{id}": {
+    "/statistics/{id}": {
       "get": {
         "responses": {
           "200": {
@@ -7993,15 +7633,12 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "firstname": {
-                              "type": "string"
+                            "clicks": {
+                              "type": "integer"
                             },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "email": {
+                            "date": {
                               "type": "string",
-                              "format": "email"
+                              "format": "date"
                             },
                             "job": {
                               "type": "object",
@@ -11491,136 +11128,11 @@
                                 }
                               }
                             },
-                            "phone": {
-                              "type": "string"
-                            },
-                            "organization": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "users_permissions_users": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "extras": {},
-                            "summary": {
-                              "type": "string"
-                            },
-                            "street": {
-                              "type": "string"
-                            },
-                            "housenumber": {
-                              "type": "string"
-                            },
-                            "postalcode": {
-                              "type": "string"
-                            },
-                            "city": {
-                              "type": "string"
-                            },
-                            "country": {
-                              "type": "string"
-                            },
-                            "gender": {
-                              "type": "string",
-                              "enum": [
-                                "male",
-                                "female",
-                                "diverse"
-                              ]
-                            },
-                            "status": {
-                              "type": "string",
-                              "enum": [
-                                "new",
-                                "waiting_list",
-                                "in_rating",
-                                "assessed",
-                                "telephone_interview",
-                                "first_interview",
-                                "short_list",
-                                "assessment",
-                                "offer_received",
-                                "hired",
-                                "pool",
-                                "declined"
-                              ]
-                            },
-                            "private_uploads_attachments": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "photo": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -11820,7 +11332,7 @@
           }
         },
         "tags": [
-          "Application"
+          "Statistic"
         ],
         "parameters": [
           {
@@ -11834,7 +11346,7 @@
             }
           }
         ],
-        "operationId": "get/applications/{id}"
+        "operationId": "get/statistics/{id}"
       },
       "put": {
         "responses": {
@@ -11853,15 +11365,12 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "firstname": {
-                              "type": "string"
+                            "clicks": {
+                              "type": "integer"
                             },
-                            "lastname": {
-                              "type": "string"
-                            },
-                            "email": {
+                            "date": {
                               "type": "string",
-                              "format": "email"
+                              "format": "date"
                             },
                             "job": {
                               "type": "object",
@@ -15351,136 +14860,11 @@
                                 }
                               }
                             },
-                            "phone": {
-                              "type": "string"
-                            },
-                            "organization": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "users_permissions_users": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "extras": {},
-                            "summary": {
-                              "type": "string"
-                            },
-                            "street": {
-                              "type": "string"
-                            },
-                            "housenumber": {
-                              "type": "string"
-                            },
-                            "postalcode": {
-                              "type": "string"
-                            },
-                            "city": {
-                              "type": "string"
-                            },
-                            "country": {
-                              "type": "string"
-                            },
-                            "gender": {
-                              "type": "string",
-                              "enum": [
-                                "male",
-                                "female",
-                                "diverse"
-                              ]
-                            },
-                            "status": {
-                              "type": "string",
-                              "enum": [
-                                "new",
-                                "waiting_list",
-                                "in_rating",
-                                "assessed",
-                                "telephone_interview",
-                                "first_interview",
-                                "short_list",
-                                "assessment",
-                                "offer_received",
-                                "hired",
-                                "pool",
-                                "declined"
-                              ]
-                            },
-                            "private_uploads_attachments": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string"
-                                      },
-                                      "attributes": {
-                                        "type": "object",
-                                        "properties": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "photo": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
-                                  }
-                                }
-                              }
-                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
                             },
                             "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
                               "type": "string",
                               "format": "date-time"
                             },
@@ -15680,7 +15064,7 @@
           }
         },
         "tags": [
-          "Application"
+          "Statistic"
         ],
         "parameters": [
           {
@@ -15694,7 +15078,7 @@
             }
           }
         ],
-        "operationId": "put/applications/{id}",
+        "operationId": "put/statistics/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -15704,114 +15088,14 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "firstname": {
-                        "type": "string"
+                      "clicks": {
+                        "type": "integer"
                       },
-                      "lastname": {
-                        "type": "string"
-                      },
-                      "email": {
+                      "date": {
                         "type": "string",
-                        "format": "email"
+                        "format": "date"
                       },
                       "job": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "phone": {
-                        "type": "string"
-                      },
-                      "organization": {
-                        "oneOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "example": "string or id"
-                      },
-                      "users_permissions_users": {
-                        "type": "array",
-                        "items": {
-                          "oneOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ],
-                          "example": "string or id"
-                        }
-                      },
-                      "extras": {},
-                      "summary": {
-                        "type": "string"
-                      },
-                      "street": {
-                        "type": "string"
-                      },
-                      "housenumber": {
-                        "type": "string"
-                      },
-                      "postalcode": {
-                        "type": "string"
-                      },
-                      "city": {
-                        "type": "string"
-                      },
-                      "country": {
-                        "type": "string"
-                      },
-                      "gender": {
-                        "type": "string",
-                        "enum": [
-                          "male",
-                          "female",
-                          "diverse"
-                        ]
-                      },
-                      "status": {
-                        "type": "string",
-                        "enum": [
-                          "new",
-                          "waiting_list",
-                          "in_rating",
-                          "assessed",
-                          "telephone_interview",
-                          "first_interview",
-                          "short_list",
-                          "assessment",
-                          "offer_received",
-                          "hired",
-                          "pool",
-                          "declined"
-                        ]
-                      },
-                      "private_uploads_attachments": {
-                        "type": "array",
-                        "items": {
-                          "oneOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ],
-                          "example": "string or id"
-                        }
-                      },
-                      "photo": {
                         "oneOf": [
                           {
                             "type": "integer"
@@ -15827,10 +15111,6 @@
                         "format": "date-time"
                       },
                       "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "publishedAt": {
                         "type": "string",
                         "format": "date-time"
                       },
@@ -16027,7 +15307,7 @@
           }
         },
         "tags": [
-          "Application"
+          "Statistic"
         ],
         "parameters": [
           {
@@ -16041,7 +15321,7 @@
             }
           }
         ],
-        "operationId": "delete/applications/{id}"
+        "operationId": "delete/statistics/{id}"
       }
     }
   }
