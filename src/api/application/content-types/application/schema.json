@@ -30,25 +30,6 @@
     "phone": {
       "type": "string"
     },
-    "attachments": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "photo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "organization": {
       "type": "relation",
       "relation": "manyToOne",
@@ -107,6 +88,16 @@
         "declined"
       ],
       "default": "new"
+    },
+    "private_uploads_attachments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::private-upload.private-upload"
+    },
+    "photo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::private-upload.private-upload"
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "private_uploads",
+  "info": {
+    "singularName": "private-upload",
+    "pluralName": "private-uploads",
+    "displayName": "private upload",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attachment": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "private_upload"
+    }
+  }
+}

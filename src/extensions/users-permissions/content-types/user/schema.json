@@ -88,6 +88,12 @@
     "lastname": {
       "type": "string",
       "required": true
+    },
+    "private_upload": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::private-upload.private-upload",
+      "inversedBy": "users"
     }
   }
 }
