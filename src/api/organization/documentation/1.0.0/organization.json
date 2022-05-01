@@ -3785,10 +3785,6 @@
                                                                                                   "type": "string",
                                                                                                   "format": "date-time"
                                                                                                 },
-                                                                                                "publishedAt": {
-                                                                                                  "type": "string",
-                                                                                                  "format": "date-time"
-                                                                                                },
                                                                                                 "createdBy": {
                                                                                                   "type": "object",
                                                                                                   "properties": {
@@ -4192,18 +4188,21 @@
                                           "lastname": {
                                             "type": "string"
                                           },
-                                          "private_upload": {
+                                          "private_uploads": {
                                             "type": "object",
                                             "properties": {
                                               "data": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "attributes": {
+                                                      "type": "object",
+                                                      "properties": {}
+                                                    }
                                                   }
                                                 }
                                               }
@@ -8394,10 +8393,6 @@
                                                                                                 "type": "string",
                                                                                                 "format": "date-time"
                                                                                               },
-                                                                                              "publishedAt": {
-                                                                                                "type": "string",
-                                                                                                "format": "date-time"
-                                                                                              },
                                                                                               "createdBy": {
                                                                                                 "type": "object",
                                                                                                 "properties": {
@@ -8801,18 +8796,21 @@
                                         "lastname": {
                                           "type": "string"
                                         },
-                                        "private_upload": {
+                                        "private_uploads": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -13020,10 +13018,6 @@
                                                                                                 "type": "string",
                                                                                                 "format": "date-time"
                                                                                               },
-                                                                                              "publishedAt": {
-                                                                                                "type": "string",
-                                                                                                "format": "date-time"
-                                                                                              },
                                                                                               "createdBy": {
                                                                                                 "type": "object",
                                                                                                 "properties": {
@@ -13427,18 +13421,21 @@
                                         "lastname": {
                                           "type": "string"
                                         },
-                                        "private_upload": {
+                                        "private_uploads": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -17538,10 +17535,6 @@
                                                                                                 "type": "string",
                                                                                                 "format": "date-time"
                                                                                               },
-                                                                                              "publishedAt": {
-                                                                                                "type": "string",
-                                                                                                "format": "date-time"
-                                                                                              },
                                                                                               "createdBy": {
                                                                                                 "type": "object",
                                                                                                 "properties": {
@@ -17945,18 +17938,21 @@
                                         "lastname": {
                                           "type": "string"
                                         },
-                                        "private_upload": {
+                                        "private_uploads": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }

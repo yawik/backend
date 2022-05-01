@@ -89,9 +89,9 @@
       "type": "string",
       "required": true
     },
-    "private_upload": {
+    "private_uploads": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::private-upload.private-upload",
       "inversedBy": "users"
     }
