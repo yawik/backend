@@ -17,6 +17,9 @@ deploy_prod:
     - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
     - yarn
     - NODE_ENV=production yarn build
+    - git config --global user.email "you@example.com"
+    - git config --global user.name "Your Name"
+    - git stash
     - pm2 deploy ecosystem.config.js production
   only:
   - main
