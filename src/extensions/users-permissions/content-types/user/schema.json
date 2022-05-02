@@ -83,11 +83,11 @@
     },
     "firstname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "lastname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "private_uploads": {
       "type": "relation",
