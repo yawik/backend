@@ -16,20 +16,21 @@ mail is sent to the review team.
       <mj-column>
         <mj-text align="left">
           <p>
-	    Hallo {{firstname}} {{lastname}},
+	    Hallo ${ firstname } ${ lastname },
           </p>
           <p>
-            für ihre Stellenanzeige "{{jobTitle}}" ist eine Bewerbung eingegabne.
+            für ihre Stellenanzeige <b>%{jobTitle}}</b> ist eine Bewerbung
+            eingegangen.
           </p>
-          <h2>Bewerber: {{applicant_name}}</h2>
-          <h2>Email: {{applicant_email}}</h2>
+          <h2>Bewerber: ${ applicant_name }</h2>
+          <h2>Email: ${ applicant_email }$</h2>
         </mj-text>
       </mj-column>
     </mj-section>
 
     <mj-section background-color="#fff">
       <mj-column>
-        <mj-button href="{{link}}" font-family="Helvetica" background-color="#5498D7" color="white">
+        <mj-button href="${ link }" font-family="Helvetica" background-color="#5498D7" color="white">
           Zur Bewerbung
         </mj-button>
       </mj-column>

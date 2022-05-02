@@ -28,7 +28,7 @@ mail is sent to the review team.
 
     <mj-section background-color="#fff">
       <mj-column>
-        <mj-button href="<%= URL %>?confirmation=<%= CODE %>" font-family="Helvetica" background-color="#5498D7" color="white">
+        <mj-button href="${ URL }?confirmation=${ CODE }" font-family="Helvetica" background-color="#5498D7" color="white">
           Email-Adresse bestätigen
         </mj-button>
       </mj-column>
