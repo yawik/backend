@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "collectors",
+  "info": {
+    "singularName": "collector",
+    "pluralName": "collectors",
+    "displayName": "Collector"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    },
+    "job": {
+      "type": "uid"
+    }
+  }
+}
