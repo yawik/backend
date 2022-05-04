@@ -65,10 +65,21 @@ module.exports = createCoreController('api::private-upload.private-upload', ({st
         if (!ctx.state.user) {
             return new ForbiddenError("You are not login")
          }
-        if (!ctx.request.query.url) {
+        if (!ctx.request.query.url && !ctx.request.query.id) {
              return new ForbiddenError("Please enter url")
         }
-        const pathInfo = path.join(strapi.dirs.public, "../", ctx.request.query.url);
+        let url =
+         ctx.request.query.url;
+        if (ctx.request.query.id) {
+            const privateUploadObj = await strapi.api["private-upload"].services["private-upload"].findOne(ctx.request.query.id, {
+                populate: "*",
+            });   
+            if(!privateUploadObj || !privateUploadObj.attachment || privateUploadObj.attachment.length === 0) {
+                return new ForbiddenError("Attachment not found")
+            }
+            url = "/private/uploads/" +privateUploadObj.attachment[0].name;
+        }
+        const pathInfo = path.join(strapi.dirs.public, "../", url);
         await sendfile(ctx, pathInfo)
         if (!ctx.status) ctx.throw(404)
     }
