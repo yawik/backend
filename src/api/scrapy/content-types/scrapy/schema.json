@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scrapies",
+  "info": {
+    "singularName": "scrapy",
+    "pluralName": "scrapies",
+    "displayName": "Scrapy",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}
