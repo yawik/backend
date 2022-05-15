@@ -3439,6 +3439,9 @@
                                               }
                                             }
                                           },
+                                          "slug": {
+                                            "type": "string"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -7388,6 +7391,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "slug": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -11410,6 +11416,9 @@
                                             }
                                           }
                                         },
+                                        "slug": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -15268,6 +15277,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "slug": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",

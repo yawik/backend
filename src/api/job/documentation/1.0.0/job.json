@@ -3738,6 +3738,9 @@
                                                             }
                                                           }
                                                         },
+                                                        "slug": {
+                                                          "type": "string"
+                                                        },
                                                         "createdAt": {
                                                           "type": "string",
                                                           "format": "date-time"
@@ -4743,6 +4746,9 @@
                                     }
                                   }
                                 }
+                              },
+                              "slug": {
+                                "type": "string"
                               },
                               "createdAt": {
                                 "type": "string",
@@ -8817,6 +8823,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "slug": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -9823,6 +9832,9 @@
                                 }
                               }
                             },
+                            "slug": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -10210,6 +10222,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "slug": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -14010,6 +14025,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "slug": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -15015,6 +15033,9 @@
                                   }
                                 }
                               }
+                            },
+                            "slug": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -18998,6 +19019,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "slug": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -20004,6 +20028,9 @@
                                 }
                               }
                             },
+                            "slug": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -20402,6 +20429,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "slug": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -24378,6 +24408,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "slug": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -25384,6 +25417,9 @@
                                 }
                               }
                             },
+                            "slug": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -25782,6 +25818,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "slug": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",

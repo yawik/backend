@@ -245,6 +245,14 @@
       "relation": "oneToMany",
       "target": "api::statistic.statistic",
       "mappedBy": "job"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

@@ -22,8 +22,8 @@ module.exports = {
                 const params = {
                     id,
                     jobTitle: jobInfo.jobTitle,
-                    firstname: jobInfo.user.firstname,
-                    lastname: jobInfo.user.lastname,
+                    firstname: jobInfo.user.firstname || '',
+                    lastname: jobInfo.user.lastname || '',
                     link: process.env.APP_URL + jobInfo.locale + "/edit/job/" + jobInfo.id
                 }
                 const htmlFilePath = path.join(__dirname , "./mails/de/job-was-unpublished.html")
