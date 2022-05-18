@@ -1,14 +1,62 @@
-image: registry.gitlab.com/yawik/docker/yarn-git-ssh-rsync:main
-
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
 
 stages:
+  - test
   - deploy
 
-deploy_prod:
+testing:
+  image: node:14
+  script:
+    - cp .env.example .env
+    - yarn
+    - mkdir .tmp
+    - touch .tmp/data.db
+    - yarn test
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      - node_modules/
+  variables:
+    NODE_ENV: test
+
+.build_docker: &build_docker
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:$TAG || true
+    - docker build --target $TARGET -t $CI_REGISTRY_IMAGE:$TAG .
+    - docker push $CI_REGISTRY_IMAGE:$TAG
+
+build docker dev:
+  <<: *build_docker
+  variables:
+    NODE_ENV: development
+    TARGET: yawik_dev
+    TAG: dev
+  only:
+    - main
+
+build docker latest:
+  <<: *build_docker
+  only:
+    - tags
+  variables:
+    NODE_ENV: development
+    TARGET: yawik_prod
+    TAG: latest
+
+deploy:
+  image: registry.gitlab.com/yawik/docker/yarn-git-ssh-rsync:main
   stage: deploy
   script:
     - eval $(ssh-agent -s)
