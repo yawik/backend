@@ -12,11 +12,11 @@
     "test": "jest --forceExit --detectOpenHandles"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "4.1.11",
-    "@strapi/plugin-i18n": "4.1.11",
-    "@strapi/plugin-users-permissions": "4.1.11",
-    "@strapi/provider-email-nodemailer": "4.1.11",
-    "@strapi/strapi": "4.1.11",
+    "@strapi/plugin-documentation": "4.1.12",
+    "@strapi/plugin-i18n": "4.1.12",
+    "@strapi/plugin-users-permissions": "4.1.12",
+    "@strapi/provider-email-nodemailer": "4.1.12",
+    "@strapi/strapi": "4.1.12",
     "axios": "^0.25.0",
     "koa-sendfile": "^3.0.0",
     "sqlite3": "^5.0.8",
